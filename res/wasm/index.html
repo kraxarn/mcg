@@ -17,8 +17,12 @@
 	</head>
 	<body>
 		<canvas id="glcanvas" tabindex='1'></canvas>
-		<!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
-		<script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
+		<!--
+			https://not-fl3.github.io/miniquad-samples/gl.js is usually the recommended source,
+			as it's minified and such, but is currently the incorrect version, so load the latest
+			from master instead for now.
+		-->
+		<script src="gl.js"></script>
 		<script>load("mcg.wasm")</script>
 	</body>
 </html>
