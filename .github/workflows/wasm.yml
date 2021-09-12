@@ -1,0 +1,35 @@
+name: Wasm
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: rustup target add wasm32-unknown-unknown
+
+      - name: Build
+        run: cargo build --target wasm32-unknown-unknown --release
+
+      - name: Bundle
+        run: |
+          mkdir ${{runner.workspace}}/build
+          cp ${{runner.workspace}}/mcg/target/wasm32-unknown-unknown/release/mcg.wasm ${{runner.workspace}}/build/
+          cp ${{runner.workspace}}/mcg/res/wasm/index.html ${{runner.workspace}}/build/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg-wasm
+          path: ${{runner.workspace}}/build
