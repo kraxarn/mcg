@@ -1,0 +1,20 @@
+[package]
+name = "mcg"
+description = "Mobile card games"
+version = "0.1.0"
+edition = "2018"
+
+# hi :3
+
+[dependencies]
+
+[dependencies.macroquad]
+version = "0.3"
+features = [
+    # For better crash logs
+    "backtrace",
+]
+
+[package.metadata.android]
+# Only build for amd64
+build_targets = ["aarch64-linux-android"]
