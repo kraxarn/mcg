@@ -18,3 +18,5 @@ features = [
 [package.metadata.android]
 # Only build for amd64
 build_targets = ["aarch64-linux-android"]
+# Set asset folder
+assets = "assets/"
