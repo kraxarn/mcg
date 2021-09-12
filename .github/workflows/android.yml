@@ -8,6 +8,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  JAVA_HOME: ${{JAVA_HOME_8_X64}}
+  NDK_HOME: ${{ANDROID_NDK_HOME}}
 
 jobs:
   build:
