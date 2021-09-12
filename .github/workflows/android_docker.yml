@@ -12,9 +12,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: notfl3/cargo-apk:latest
 
     steps:
-      - uses: docker://notfl3/cargo-apk:latest
       - uses: actions/checkout@v2
 
       - name: Build
