@@ -28,6 +28,12 @@ jobs:
           cp ${{runner.workspace}}/mcg/target/wasm32-unknown-unknown/release/mcg.wasm ${{runner.workspace}}/build/
           cp ${{runner.workspace}}/mcg/res/wasm/index.html ${{runner.workspace}}/build/
 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          publish_dir: ${{runner.workspace}}/build
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
