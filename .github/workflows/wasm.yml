@@ -27,6 +27,7 @@ jobs:
           mkdir ${{runner.workspace}}/build
           cp ${{runner.workspace}}/mcg/target/wasm32-unknown-unknown/release/mcg.wasm ${{runner.workspace}}/build/
           cp ${{runner.workspace}}/mcg/res/wasm/index.html ${{runner.workspace}}/build/
+          cp -r ${{runner.workspace}}/mcg/assets ${{runner.workspace}}/build/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
