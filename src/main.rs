@@ -1,5 +1,8 @@
 use macroquad::prelude::*;
 
+mod color;
+mod entity;
+
 pub const APP_NAME: &str = "MobileCardGames: Alpha";
 
 fn window_conf() -> Conf {
@@ -16,40 +19,67 @@ fn window_conf() -> Conf {
 async fn main() {
 	macroquad::file::set_pc_assets_folder("assets");
 
-	let mut max_text_width = 0_f32;
-
-	let text_params = TextParams {
+	let mini_font = TextParams {
 		font: macroquad::text::load_ttf_font("font/mini.ttf")
 			.await
 			.unwrap(),
-		font_size: 32_u16,
-		color: WHITE,
+		font_size: 24_u16,
+		color: color::FOREGROUND,
 		..Default::default()
 	};
 
+	let bold_font = TextParams {
+		font: macroquad::text::load_ttf_font("font/bold.ttf")
+			.await
+			.unwrap(),
+		font_size: 28_u16,
+		color: color::FOREGROUND,
+		..Default::default()
+	};
+
+	let mut deck = entity::playing_card::deck();
+	entity::playing_card::shuffle(&mut deck);
+
+	let first_card = &mut deck[0];
+	first_card.load_texture().await;
+
+	let card_width = first_card.texture().width();
+	let card_height = first_card.texture().height();
+
+	// Measure card name size to center text
+	let card_name = first_card.to_string();
+	let card_name_width = measure_text(
+		&card_name,
+		Some(bold_font.font),
+		bold_font.font_size as u16,
+		bold_font.font_scale,
+	)
+	.width;
+
 	loop {
-		let text = format!("FPS: {}", get_fps());
+		let window_width = screen_width();
+		let window_height = screen_height();
 
-		let window_width = macroquad::window::screen_width();
-		let text_width = measure_text(
-			&text,
-			Some(text_params.font),
-			text_params.font_size as u16,
-			text_params.font_scale,
-		)
-		.width;
+		clear_background(color::BACKGROUND);
 
-		if text_width > max_text_width {
-			max_text_width = text_width;
-		}
+		// Draw FPS
+		draw_text_ex(&get_fps().to_string(), 16_f32, 32_f32, mini_font);
 
-		clear_background(BLACK);
+		// Draw the card itself
+		let card_y = (window_height / 2_f32) - (card_height / 2_f32);
+		draw_texture(
+			first_card.texture(),
+			(window_width / 2_f32) - (card_width / 2_f32),
+			card_y,
+			WHITE,
+		);
 
+		// Draw name of card centered under card
 		draw_text_ex(
-			&text,
-			(window_width / 2_f32) - (max_text_width / 2_f32),
-			64_f32,
-			text_params,
+			&card_name,
+			(window_width / 2_f32) - (card_name_width / 2_f32),
+			card_y + card_height + 64_f32,
+			bold_font,
 		);
 
 		next_frame().await;

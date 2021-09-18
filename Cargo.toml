@@ -7,6 +7,9 @@ edition = "2018"
 # hi :3
 
 [dependencies]
+fastrand = "1.5"
+strum = "0.21"
+strum_macros = "0.21"
 
 [dependencies.macroquad]
 version = "0.3"
