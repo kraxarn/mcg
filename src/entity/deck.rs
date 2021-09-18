@@ -56,8 +56,8 @@ impl super::Deck {
 		let suit = f32::from(card.suit as u8);
 		let size = self.card_size();
 
-		let x = 4_f32 + (value * size.x) + (10_f32 * size.x);
-		let y = 4_f32 + (suit * size.y) + (10_f32 * size.y);
+		let x = 4_f32 + (value * size.x) + (10_f32 * value);
+		let y = 4_f32 + (suit * size.y) + (10_f32 * suit);
 
 		DrawTextureParams {
 			dest_size: Some(self.card_size()),
