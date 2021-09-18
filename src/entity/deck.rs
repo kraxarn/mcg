@@ -65,4 +65,9 @@ impl super::Deck {
 			..Default::default()
 		}
 	}
+
+	/// Number of cards currently in the deck
+	pub fn len(&self) -> usize {
+		self.cards.len()
+	}
 }

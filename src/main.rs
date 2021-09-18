@@ -23,12 +23,21 @@ async fn draw_button(deck: &mut entity::Deck, card: &mut entity::PlayingCard) {
 	macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
 		.titlebar(false)
 		.ui(&mut *macroquad::ui::root_ui(), |ui| {
-			let button = macroquad::ui::widgets::Button::new("Draw card")
-				.position(vec2(0_f32, 0_f32))
-				.size(window_size);
+			let button = macroquad::ui::widgets::Button::new(if deck.len() > 0 {
+				"Draw card"
+			} else {
+				"Empty deck"
+			})
+			.position(vec2(0_f32, 0_f32))
+			.size(window_size);
 
 			if button.ui(ui) {
-				*card = deck.draw().unwrap();
+				match deck.draw() {
+					Some(c) => {
+						*card = c;
+					}
+					None => {}
+				};
 			}
 		});
 }
