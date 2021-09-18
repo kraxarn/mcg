@@ -70,6 +70,8 @@ async fn main() {
 		.font_size(bold_font.font_size)
 		.text_color(color::FOREGROUND)
 		.color(color::BUTTON)
+		.color_hovered(color::BUTTON_HOVER)
+		.color_clicked(color::BUTTON_CLICK)
 		.build();
 
 	let skin = macroquad::ui::Skin {
