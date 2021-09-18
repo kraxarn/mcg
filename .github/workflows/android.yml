@@ -20,6 +20,19 @@ jobs:
       - name: Build
         run: cargo quad-apk build --release
 
+      - name: Sign APK
+        working-directory: ${{runner.workspace}}
+        env:
+          KEYSTORE: ${{KEYSTORE}}
+          ALIAS: ${{KEYSTORE_ALIAS}}
+          PASSWORD: ${{KEYSTORE_PASSWORD}}
+        run: |
+          echo "$KEYSTORE" > keystore
+          apksigner sign --ks keystore \
+          --ks-key-alias "$ALIAS" \
+          --ks-pass "pass:$PASSWORD"
+          "./mcg/target/android-artifacts/release/apk/mcg.apk"
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
