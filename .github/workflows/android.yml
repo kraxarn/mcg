@@ -1,23 +1,21 @@
 name: Android
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   CARGO_TERM_COLOR: always
-  JAVA_HOME: ${JAVA_HOME_8_X64}
-  NDK_HOME: ${ANDROID_NDK_HOME}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: notfl3/cargo-apk:latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: |
-          rustup target add aarch64-linux-android
-          cargo install cargo-quad-apk
 
       - name: Build
         run: cargo quad-apk build --release
