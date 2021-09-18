@@ -28,11 +28,7 @@ jobs:
           PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
         run: |
           echo -n "$KEYSTORE" | base64 -d > key.keystore
-          cat key.keystore | wc -c
-          apksigner sign --ks key.keystore \
-          --ks-key-alias "$ALIAS" \
-          --ks-pass "pass:$PASSWORD" \
-          "./mcg/target/android-artifacts/release/apk/mcg.apk"
+          apksigner sign --ks "./key.keystore" --ks-key-alias "$ALIAS" --ks-pass "pass:$PASSWORD" "./mcg/target/android-artifacts/release/apk/mcg.apk"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
