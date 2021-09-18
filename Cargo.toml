@@ -23,7 +23,7 @@ features = [
 package_name = "com.kraxarn.mcg"
 label = "Card Games"
 # Launcher icons
-res = "android/ic_launcher/res"
+res = "res/android/ic_launcher/res"
 icon = "@mipmap/ic_launcher"
 # Only build for amd64
 build_targets = ["aarch64-linux-android"]
