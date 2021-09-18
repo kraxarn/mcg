@@ -30,7 +30,7 @@ jobs:
           echo "$KEYSTORE" > keystore
           apksigner sign --ks keystore \
           --ks-key-alias "$ALIAS" \
-          --ks-pass "pass:$PASSWORD"
+          --ks-pass "pass:$PASSWORD" \
           "./mcg/target/android-artifacts/release/apk/mcg.apk"
 
       - name: Upload Artifact
