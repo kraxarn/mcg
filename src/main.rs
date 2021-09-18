@@ -28,7 +28,7 @@ async fn draw_button(deck: &mut entity::Deck, card: &mut entity::PlayingCard) {
 			} else {
 				"Empty deck"
 			})
-			.position(vec2(0_f32, 0_f32))
+			.position(glam::Vec2::ZERO)
 			.size(window_size);
 
 			if button.ui(ui) {
