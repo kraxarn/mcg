@@ -1,82 +1,48 @@
-use macroquad::prelude::*;
-
 #[derive(Copy, Clone, strum_macros::Display, strum_macros::EnumIter)]
 pub enum Value {
 	#[strum(serialize = "ace")]
-	Ace = 1,
+	Ace,
 	#[strum(serialize = "2")]
-	Two = 2,
+	Two,
 	#[strum(serialize = "3")]
-	Three = 3,
+	Three,
 	#[strum(serialize = "4")]
-	Four = 4,
+	Four,
 	#[strum(serialize = "5")]
-	Five = 5,
+	Five,
 	#[strum(serialize = "6")]
-	Six = 6,
+	Six,
 	#[strum(serialize = "7")]
-	Seven = 7,
+	Seven,
 	#[strum(serialize = "8")]
-	Eight = 8,
+	Eight,
 	#[strum(serialize = "9")]
-	Nine = 9,
+	Nine,
 	#[strum(serialize = "10")]
-	Ten = 10,
+	Ten,
 	#[strum(serialize = "jack")]
-	Jack = 11,
+	Jack,
 	#[strum(serialize = "queen")]
-	Queen = 12,
+	Queen,
 	#[strum(serialize = "king")]
-	King = 13,
+	King,
 }
 
 #[derive(Copy, Clone, strum_macros::Display, strum_macros::EnumIter)]
 pub enum Suit {
+	#[strum(serialize = "spades")]
+	Spades,
 	#[strum(serialize = "clubs")]
 	Clubs,
 	#[strum(serialize = "diamonds")]
 	Diamonds,
 	#[strum(serialize = "hearts")]
 	Hearts,
-	#[strum(serialize = "spades")]
-	Spades,
 }
 
 impl super::PlayingCard {
 	pub fn new(value: Value, suit: Suit) -> Self {
-		Self {
-			value,
-			suit,
-			texture: None,
-		}
-	}
-
-	/// Path to texture relative to assets directory
-	pub fn asset_path(&self) -> String {
-		format!("texture/card/{}/{}.png", self.suit, self.value as i32)
-	}
-
-	/// Loads the card texture, if not already loaded.
-	/// Panics on failure, maybe it should return a Result instead?
-	pub async fn load_texture(&mut self) {
-		if self.texture.is_some() {
-			return;
-		}
-		self.texture = Some(
-			macroquad::texture::load_texture(&self.asset_path())
-				.await
-				.unwrap(),
-		);
-	}
-
-	/// Returns card texture, panics if not already loaded with load_texture
-	pub fn texture(&mut self) -> macroquad::texture::Texture2D {
-		match self.texture {
-			Some(t) => t,
-			None => {
-				panic!("texture not loaded, use load_texture before drawing");
-			}
-		}
+		Self { value, suit }
 	}
 }
 

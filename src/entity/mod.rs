@@ -5,10 +5,12 @@ pub mod playing_card;
 pub struct PlayingCard {
 	value: playing_card::Value,
 	suit: playing_card::Suit,
-	texture: std::option::Option<macroquad::texture::Texture2D>,
 }
 
 /// Deck of playing cards
 pub struct Deck {
+	/// All cards currently in the deck
 	cards: std::vec::Vec<PlayingCard>,
+	/// Texture atlas of all cards
+	atlas: macroquad::texture::Texture2D,
 }

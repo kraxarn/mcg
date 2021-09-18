@@ -55,13 +55,13 @@ async fn main() {
 		..Default::default()
 	};
 
-	let mut deck = entity::Deck::new();
+	let mut deck = entity::Deck::new().await;
 	deck.shuffle();
 
 	let mut current_card = deck.draw().unwrap();
-	current_card.load_texture().await;
-	let card_width = current_card.texture().width();
-	let card_height = current_card.texture().height();
+	let card_size = deck.card_size();
+	let card_width = card_size.x;
+	let card_height = card_size.y;
 
 	let button_style = macroquad::ui::root_ui()
 		.style_builder()
@@ -89,13 +89,13 @@ async fn main() {
 		draw_text_ex(&get_fps().to_string(), 16_f32, 32_f32, mini_font);
 
 		// Draw the card itself
-		current_card.load_texture().await;
 		let card_y = (window_height / 2_f32) - (card_height / 2_f32);
-		draw_texture(
-			current_card.texture(),
+		draw_texture_ex(
+			deck.card_atlas(),
 			(window_width / 2_f32) - (card_width / 2_f32),
 			card_y,
 			WHITE,
+			deck.card_source(&current_card),
 		);
 
 		// Measure card name size to center text
