@@ -37,10 +37,10 @@ async fn main() {
 		..Default::default()
 	};
 
-	let mut deck = entity::playing_card::deck();
-	entity::playing_card::shuffle(&mut deck);
+	let mut deck = entity::Deck::new();
+	deck.shuffle();
 
-	let first_card = &mut deck[0];
+	let mut first_card = deck.draw().unwrap();
 	first_card.load_texture().await;
 
 	let card_width = first_card.texture().width();

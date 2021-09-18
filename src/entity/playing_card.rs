@@ -43,7 +43,7 @@ pub enum Suit {
 }
 
 impl super::PlayingCard {
-	fn new(value: Value, suit: Suit) -> Self {
+	pub fn new(value: Value, suit: Suit) -> Self {
 		Self {
 			value,
 			suit,
@@ -84,23 +84,4 @@ impl std::fmt::Display for super::PlayingCard {
 	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
 		write!(f, "{} of {}", self.value, self.suit)
 	}
-}
-
-/// Get an entire 52 card deck of playing cards
-pub fn deck() -> std::vec::Vec<super::PlayingCard> {
-	let mut cards: std::vec::Vec<super::PlayingCard> = std::vec::Vec::with_capacity(52_usize);
-
-	use strum::IntoEnumIterator;
-	for suit in Suit::iter() {
-		for value in Value::iter() {
-			cards.push(super::PlayingCard::new(value, suit));
-		}
-	}
-
-	cards
-}
-
-/// Shuffle deck of cards
-pub fn shuffle(cards: &mut std::vec::Vec<super::PlayingCard>) {
-	fastrand::shuffle(cards);
 }
