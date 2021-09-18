@@ -23,9 +23,9 @@ jobs:
       - name: Sign APK
         working-directory: ${{runner.workspace}}
         env:
-          KEYSTORE: ${{secret.KEYSTORE}}
-          ALIAS: ${{secret.KEYSTORE_ALIAS}}
-          PASSWORD: ${{secret.KEYSTORE_PASSWORD}}
+          KEYSTORE: ${{secrets.KEYSTORE}}
+          ALIAS: ${{secrets.KEYSTORE_ALIAS}}
+          PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
         run: |
           echo "$KEYSTORE" > keystore
           apksigner sign --ks keystore \
