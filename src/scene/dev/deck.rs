@@ -1,16 +1,7 @@
 use macroquad::prelude::*;
 use macroquad::ui::hash;
 
-/// Scene for testing going through a deck of cards
-pub struct DevDeck {
-	mini_font: TextParams,
-	bold_font: TextParams,
-	deck: crate::entity::Deck,
-	current_card: crate::entity::PlayingCard,
-	skin: macroquad::ui::Skin,
-}
-
-impl DevDeck {
+impl super::DevDeck {
 	pub async fn new() -> Self {
 		let bold_font = TextParams {
 			font: macroquad::text::load_ttf_font("font/bold.ttf")
@@ -86,7 +77,7 @@ impl DevDeck {
 	}
 }
 
-impl super::Scene for DevDeck {
+impl crate::scene::Scene for super::DevDeck {
 	fn update(&mut self) {
 		let card_size = self.deck.card_size();
 		let card_width = card_size.x;

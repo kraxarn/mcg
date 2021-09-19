@@ -1,4 +1,4 @@
-pub mod dev_deck;
+pub mod dev;
 
 /// A scene, or screen, in the game
 pub trait Scene {

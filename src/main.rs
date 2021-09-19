@@ -24,7 +24,7 @@ async fn main() {
 
 	let mut game = game::Game::new();
 	game.scene_manager
-		.push(Box::new(scene::dev_deck::DevDeck::new().await));
+		.push(Box::new(scene::dev::DevDeck::new().await));
 
 	loop {
 		clear_background(color::BACKGROUND);
