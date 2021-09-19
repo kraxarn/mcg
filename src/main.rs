@@ -68,7 +68,7 @@ async fn main() {
 	deck.shuffle();
 
 	let mut current_card = deck.draw().unwrap();
-	let mut card_size = deck.card_size();
+	let card_size = deck.card_size();
 	let card_width = card_size.x;
 	let card_height = card_size.y;
 
@@ -97,20 +97,14 @@ async fn main() {
 		// Draw FPS
 		draw_text_ex(&get_fps().to_string(), 16_f32, 32_f32, mini_font);
 
-		// Card texture scale (40% of screen width)
-		let card_scale = (window_width * 0.4) / card_width;
-
 		// Draw the card itself
-		let card_y = (window_height / 2_f32) - (card_height * card_scale / 2_f32);
+		let card_y = (window_height / 2_f32) - (card_height / 2_f32);
 		draw_texture_ex(
 			deck.card_atlas(),
-			(window_width / 2_f32) - (card_width * card_scale / 2_f32),
+			(window_width / 2_f32) - (card_width / 2_f32),
 			card_y,
 			WHITE,
-			DrawTextureParams {
-				dest_size: Some(card_size * card_scale),
-				..deck.card_source(&current_card)
-			},
+			deck.card_source(&current_card),
 		);
 
 		// Measure card name size to center text
@@ -127,7 +121,7 @@ async fn main() {
 		draw_text_ex(
 			&card_name,
 			(window_width / 2_f32) - (card_name_width / 2_f32),
-			card_y + card_height * card_scale + 64_f32,
+			card_y + card_height + 64_f32,
 			bold_font,
 		);
 
