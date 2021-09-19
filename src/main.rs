@@ -68,7 +68,7 @@ async fn main() {
 	deck.shuffle();
 
 	let mut current_card = deck.draw().unwrap();
-	let mut card_size = deck.card_size();
+	let card_size = deck.card_size();
 	let card_width = card_size.x;
 	let card_height = card_size.y;
 
