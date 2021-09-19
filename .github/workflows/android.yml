@@ -21,17 +21,18 @@ jobs:
         run: cargo quad-apk build --release
 
       - name: Sign APK
-        id: sign_app
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: ${{runner.workspace}}/mcg/target/android-artifacts/release
-          signingKeyBase64: ${{secrets.KEYSTORE}}
-          alias: ${{secrets.KEYSTORE_ALIAS}}
-          keyStorePassword: ${{secrets.KEYSTORE_PASSWORD}}
-          keyPassword: ${{secrets.KEYSTORE_PASSWORD}}
+        working-directory: ${{runner.workspace}}
+        env:
+          KEYSTORE: ${{secrets.KEYSTORE}}
+          ALIAS: ${{secrets.KEYSTORE_ALIAS}}
+          PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
+          WORKSPACE: ${{runner.workspace}}
+        run: |
+          echo -n "$KEYSTORE" | base64 -d > "$WORKSPACE/keystore.jks"
+          apksigner sign --ks "$WORKSPACE/keystore.jks" --ks-key-alias "$ALIAS" --ks-pass "pass:$PASSWORD" "$WORKSPACE/mcg/target/android-artifacts/release/apk/mcg.apk"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: mcg-android
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          path: ${{runner.workspace}}/mcg/target/android-artifacts/release/apk/mcg.apk
