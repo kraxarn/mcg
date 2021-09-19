@@ -13,4 +13,6 @@ pub struct Deck {
 	cards: std::vec::Vec<PlayingCard>,
 	/// Texture atlas of all cards
 	atlas: macroquad::texture::Texture2D,
+	/// Zoom level used when rendering bitmap
+	atlas_scale: f32,
 }

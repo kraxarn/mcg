@@ -6,6 +6,7 @@ impl super::Deck {
 		let mut deck = Self {
 			cards: std::vec::Vec::with_capacity(52_usize),
 			atlas: load_texture("texture/playing_cards.png").await.unwrap(),
+			atlas_scale: 2_f32,
 		};
 
 		deck.reset();
@@ -44,20 +45,20 @@ impl super::Deck {
 	/// Size in px of each card.
 	/// Currently always 140x190px.
 	pub fn card_size(&self) -> macroquad::math::Vec2 {
-		macroquad::math::Vec2::new(140_f32, 190_f32)
+		macroquad::math::Vec2::new(140_f32 * self.atlas_scale, 190_f32 * self.atlas_scale)
 	}
 
 	/// Get draw params for drawing a specific card, inside, or outside, of the deck
 	pub fn card_source(&self, card: &super::PlayingCard) -> macroquad::texture::DrawTextureParams {
-		// Texture has a 4px padding
-		// All cards have 10px gutters
-
 		let value = f32::from(card.value as u8);
 		let suit = f32::from(card.suit as u8);
 		let size = self.card_size();
 
-		let x = 4_f32 + (value * size.x) + (10_f32 * value);
-		let y = 4_f32 + (suit * size.y) + (10_f32 * suit);
+		let padding = 4_f32 * self.atlas_scale;
+		let spacing = 10_f32 * self.atlas_scale;
+
+		let x = padding + (value * size.x) + (spacing * value);
+		let y = padding + (suit * size.y) + (spacing * suit);
 
 		DrawTextureParams {
 			dest_size: Some(self.card_size()),
