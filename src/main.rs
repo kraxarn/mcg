@@ -5,7 +5,7 @@ mod color;
 mod entity;
 mod scene;
 
-pub const APP_NAME: &str = "MobileCardGames: Alpha";
+pub const APP_NAME: &str = "Card Games: Alpha";
 
 fn window_conf() -> Conf {
 	Conf {
