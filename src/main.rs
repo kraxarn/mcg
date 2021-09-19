@@ -17,7 +17,7 @@ fn window_conf() -> Conf {
 }
 
 async fn draw_button(deck: &mut entity::Deck, card: &mut entity::PlayingCard) {
-	let window_size = vec2(screen_width() - 64_f32, screen_height() / 10_f32);
+	let window_size = vec2(screen_width() - 64_f32, 96_f32);
 	let window_position = vec2(32_f32, screen_height() - window_size.y - 64_f32);
 
 	macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
