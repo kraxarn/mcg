@@ -1,43 +1,15 @@
-use macroquad::prelude::*;
+use macroquad::prelude::{load_texture, DrawTextureParams};
 
 impl super::Deck {
 	/// Get a 52 card deck of playing cards
 	pub async fn new() -> Self {
-		let scale = Self::texture_scale();
-
 		let mut deck = Self {
 			cards: std::vec::Vec::with_capacity(52_usize),
-			atlas: Self::load_atlas(scale).await,
-			atlas_scale: scale,
+			atlas: load_texture("texture/playing_cards.png").await.unwrap(),
 		};
 
 		deck.reset();
 		deck
-	}
-
-	/// Scale needed for textures to not appear blurry at half of window size
-	/// (assuming default texture size is 140x190 per card)
-	fn texture_scale() -> u16 {
-		// Default size for card texture is 140x190
-		(screen_width() / 2_f32 / 140_f32).ceil() as u16
-	}
-
-	/// Load texture atlas of cards with specific scale
-	async fn load_atlas(scale: u16) -> macroquad::texture::Texture2D {
-		let mut opt = usvg::Options::default();
-		opt.fontdb.load_system_fonts();
-
-		let svg_data = load_file("texture/playing_cards.svg").await.unwrap();
-		let tree = usvg::Tree::from_data(&svg_data, &opt.to_ref()).unwrap();
-
-		let pixmap_size = tree.svg_node().size.to_screen_size();
-		let width = pixmap_size.width() as u16 * scale;
-		let height = pixmap_size.height() as u16 * scale;
-
-		let mut pixmap = tiny_skia::Pixmap::new(width as u32, height as u32).unwrap();
-		resvg::render(&tree, usvg::FitTo::Zoom(scale as f32), pixmap.as_mut()).unwrap();
-
-		macroquad::texture::Texture2D::from_rgba8(width, height, pixmap.data())
 	}
 
 	// Put all cards back in the deck, in order
@@ -70,27 +42,26 @@ impl super::Deck {
 	}
 
 	/// Size in px of each card.
+	/// Currently always 140x190px.
 	pub fn card_size(&self) -> macroquad::math::Vec2 {
-		let scale = self.atlas_scale as f32;
-		macroquad::math::Vec2::new(140_f32 * scale, 190_f32 * scale)
+		macroquad::math::Vec2::new(140_f32, 190_f32)
 	}
 
 	/// Get draw params for drawing a specific card, inside, or outside, of the deck
 	pub fn card_source(&self, card: &super::PlayingCard) -> macroquad::texture::DrawTextureParams {
-		let value = u16::from(card.value as u8);
-		let suit = u16::from(card.suit as u8);
+		// Texture has a 4px padding
+		// All cards have 10px gutters
+
+		let value = f32::from(card.value as u8);
+		let suit = f32::from(card.suit as u8);
 		let size = self.card_size();
 
-		let padding = 4_u16 * self.atlas_scale;
-		let spacing = 10_u16 * self.atlas_scale;
-
-		let x = padding + (value * size.x as u16) + (spacing * value);
-		let y = padding + (suit * size.y as u16) + (spacing * suit);
+		let x = 4_f32 + (value * size.x) + (10_f32 * value);
+		let y = 4_f32 + (suit * size.y) + (10_f32 * suit);
 
 		DrawTextureParams {
-			source: Some(macroquad::math::Rect::new(
-				x as f32, y as f32, size.x, size.y,
-			)),
+			dest_size: Some(self.card_size()),
+			source: Some(macroquad::math::Rect::new(x, y, size.x, size.y)),
 			..Default::default()
 		}
 	}
