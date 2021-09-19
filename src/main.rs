@@ -1,9 +1,10 @@
-use crate::scene::Scene;
 use macroquad::prelude::*;
 
 mod color;
 mod entity;
+mod game;
 mod scene;
+mod scene_manager;
 
 pub const APP_NAME: &str = "Card Games: Alpha";
 
@@ -20,11 +21,14 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
 	macroquad::file::set_pc_assets_folder("assets");
-	let mut scene = scene::dev_deck::DevDeck::new().await;
+
+	let mut game = game::Game::new();
+	game.scene_manager
+		.push(Box::new(scene::dev_deck::DevDeck::new().await));
 
 	loop {
 		clear_background(color::BACKGROUND);
-		scene.update();
+		game.scene_manager.update();
 		next_frame().await;
 	}
 }
