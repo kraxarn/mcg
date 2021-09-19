@@ -43,7 +43,6 @@ impl super::Deck {
 	}
 
 	/// Size in px of each card.
-	/// Currently always 140x190px.
 	pub fn card_size(&self) -> macroquad::math::Vec2 {
 		macroquad::math::Vec2::new(140_f32 * self.atlas_scale, 190_f32 * self.atlas_scale)
 	}
