@@ -27,7 +27,7 @@ impl super::Deck {
 
 	/// Shuffle deck
 	pub fn shuffle(&mut self) {
-		fastrand::shuffle(&mut self.cards);
+		rand::ChooseRandom::shuffle(&mut self.cards);
 	}
 
 	/// Draw a card, removing it from the deck.

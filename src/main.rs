@@ -7,6 +7,7 @@ mod game;
 mod scene;
 mod scene_manager;
 mod style;
+mod time;
 
 pub const APP_NAME: &str = "Card Games: Alpha";
 
@@ -49,6 +50,7 @@ async fn splash() {
 #[macroquad::main(window_conf)]
 async fn main() {
 	macroquad::file::set_pc_assets_folder("assets");
+	rand::srand(time::current_timestamp());
 
 	let mut assets = assets::Assets::new();
 	splash().await;
