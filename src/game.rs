@@ -3,9 +3,9 @@ pub struct Game {
 }
 
 impl Game {
-	pub fn new() -> std::rc::Rc<Self> {
-		std::rc::Rc::new(Self {
+	pub fn new() -> Self {
+		Self {
 			scene_manager: crate::scene_manager::SceneManager::new(),
-		})
+		}
 	}
 }
