@@ -27,25 +27,28 @@ impl super::DevDeck {
 		}
 	}
 
-	fn draw_button(deck: &mut crate::entity::Deck, card: &mut crate::entity::PlayingCard) {
+	fn draw_ui(&mut self) {
 		let window_size = vec2(screen_width() - 64_f32, 96_f32);
 		let window_position = vec2(32_f32, screen_height() - window_size.y - 64_f32);
 
 		macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
 			.titlebar(false)
 			.ui(&mut *macroquad::ui::root_ui(), |ui| {
-				let button = macroquad::ui::widgets::Button::new(if deck.len() > 0 {
-					"Draw card"
+				let button_text = if self.deck.len() > 0 {
+					format!("Draw card {}", 53 - self.deck.len())
 				} else {
-					"Empty deck"
-				})
-				.position(glam::Vec2::ZERO)
-				.size(window_size);
+					"Empty deck".to_owned()
+				};
+				let button_height = 96_f32;
+
+				let button = macroquad::ui::widgets::Button::new(button_text)
+					.position(vec2(0_f32, window_size.y - button_height))
+					.size(vec2(window_size.x, button_height));
 
 				if button.ui(ui) {
-					match deck.draw() {
+					match self.deck.draw() {
 						Some(c) => {
-							*card = c;
+							self.current_card = c;
 						}
 						None => {}
 					};
@@ -100,7 +103,7 @@ impl crate::scene::Scene for super::DevDeck {
 			self.bold_font,
 		);
 
-		Self::draw_button(&mut self.deck, &mut self.current_card);
+		self.draw_ui();
 		crate::scene::Command::None
 	}
 }
