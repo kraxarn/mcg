@@ -76,8 +76,8 @@ impl Assets {
 	}
 
 	/// Get a loaded texture
-	pub fn texture(&self, name: &AssetTexture) -> &Texture2D {
-		self.textures.get(name).unwrap()
+	pub fn texture(&self, name: &AssetTexture) -> Texture2D {
+		self.textures.get(name).unwrap().clone()
 	}
 
 	/// Get font from data and parse
