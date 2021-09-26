@@ -15,6 +15,7 @@ impl super::DevDeck {
 		let current_card = deck.draw().unwrap();
 
 		Self {
+			assets: assets.clone(),
 			mini_font: TextParams {
 				font: assets.font(&crate::assets::AssetFont::Mini),
 				font_size: 24_u16,
@@ -24,7 +25,8 @@ impl super::DevDeck {
 			bold_font,
 			deck,
 			current_card,
-			skin: Self::skin(bold_font.font_size, assets.clone()),
+			// Skin is loaded on first frame to avoid multiple mutable borrows
+			skin: None,
 		}
 	}
 
@@ -119,7 +121,14 @@ impl crate::scene::Scene for super::DevDeck {
 			self.bold_font,
 		);
 
-		macroquad::ui::root_ui().push_skin(&self.skin);
+		if self.skin.is_none() {
+			self.skin = Some(Self::skin(self.bold_font.font_size, self.assets.clone()));
+		}
+
+		macroquad::ui::root_ui().push_skin(match &self.skin {
+			Some(s) => s,
+			None => panic!(),
+		});
 		Self::draw_button(&mut self.deck, &mut self.current_card);
 
 		crate::scene::Command::None
