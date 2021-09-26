@@ -2,8 +2,7 @@ use macroquad::prelude::*;
 use macroquad::ui::hash;
 
 impl super::DevDeck {
-	pub fn new(game: &crate::game::Game) -> Self {
-		let assets = game.assets();
+	pub fn new(assets: std::rc::Rc<crate::assets::Assets>) -> Self {
 		let bold_font = TextParams {
 			font: assets.font(&crate::assets::AssetFont::Bold),
 			font_size: 28_u16,
