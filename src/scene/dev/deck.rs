@@ -2,25 +2,22 @@ use macroquad::prelude::*;
 use macroquad::ui::hash;
 
 impl super::DevDeck {
-	pub async fn new() -> Self {
+	pub fn new(game: &crate::game::Game) -> Self {
+		let assets = game.assets();
 		let bold_font = TextParams {
-			font: macroquad::text::load_ttf_font("font/bold.ttf")
-				.await
-				.unwrap(),
+			font: assets.font(&crate::assets::AssetFont::Bold),
 			font_size: 28_u16,
 			color: crate::color::FOREGROUND,
 			..Default::default()
 		};
 
-		let mut deck = crate::entity::Deck::new().await;
+		let mut deck = crate::entity::Deck::new(assets.clone());
 		deck.shuffle();
 		let current_card = deck.draw().unwrap();
 
 		Self {
 			mini_font: TextParams {
-				font: macroquad::text::load_ttf_font("font/mini.ttf")
-					.await
-					.unwrap(),
+				font: assets.font(&crate::assets::AssetFont::Mini),
 				font_size: 24_u16,
 				color: crate::color::FOREGROUND,
 				..Default::default()
@@ -28,14 +25,14 @@ impl super::DevDeck {
 			bold_font,
 			deck,
 			current_card,
-			skin: Self::skin(bold_font.font_size).await,
+			skin: Self::skin(bold_font.font_size, assets.clone()),
 		}
 	}
 
-	async fn skin(font_size: u16) -> macroquad::ui::Skin {
+	fn skin(font_size: u16, assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 		let button_style = macroquad::ui::root_ui()
 			.style_builder()
-			.font(load_file("font/bold.ttf").await.unwrap().as_slice())
+			.font(assets.font_data(&crate::assets::AssetFont::Bold))
 			.unwrap()
 			.font_size(font_size)
 			.text_color(crate::color::FOREGROUND)

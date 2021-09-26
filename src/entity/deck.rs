@@ -2,10 +2,10 @@ use macroquad::prelude::*;
 
 impl super::Deck {
 	/// Get a 52 card deck of playing cards
-	pub async fn new() -> Self {
+	pub fn new(assets: std::rc::Rc<crate::assets::Assets>) -> Self {
 		let mut deck = Self {
 			cards: std::vec::Vec::with_capacity(52_usize),
-			atlas: load_texture("texture/playing_cards.png").await.unwrap(),
+			atlas: assets.texture(&crate::assets::AssetTexture::PlayingCards),
 			atlas_scale: 2_f32,
 		};
 
