@@ -15,36 +15,15 @@ impl super::DevDeck {
 		let current_card = deck.draw().unwrap();
 
 		Self {
-			assets: assets.clone(),
 			mini_font: TextParams {
 				font: assets.font(&crate::assets::AssetFont::Mini),
-				font_size: 24_u16,
+				font_size: crate::style::BUTTON_FONT_SIZE,
 				color: crate::color::FOREGROUND,
 				..Default::default()
 			},
 			bold_font,
 			deck,
 			current_card,
-			// Skin is loaded on first frame to avoid multiple mutable borrows
-			skin: None,
-		}
-	}
-
-	fn skin(font_size: u16, assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
-		let button_style = macroquad::ui::root_ui()
-			.style_builder()
-			.font(assets.font_data(&crate::assets::AssetFont::Bold))
-			.unwrap()
-			.font_size(font_size)
-			.text_color(crate::color::FOREGROUND)
-			.color(crate::color::BUTTON)
-			.color_hovered(crate::color::BUTTON_HOVER)
-			.color_clicked(crate::color::BUTTON_CLICK)
-			.build();
-
-		macroquad::ui::Skin {
-			button_style,
-			..macroquad::ui::root_ui().default_skin()
 		}
 	}
 
@@ -121,16 +100,7 @@ impl crate::scene::Scene for super::DevDeck {
 			self.bold_font,
 		);
 
-		if self.skin.is_none() {
-			self.skin = Some(Self::skin(self.bold_font.font_size, self.assets.clone()));
-		}
-
-		macroquad::ui::root_ui().push_skin(match &self.skin {
-			Some(s) => s,
-			None => panic!(),
-		});
 		Self::draw_button(&mut self.deck, &mut self.current_card);
-
 		crate::scene::Command::None
 	}
 }

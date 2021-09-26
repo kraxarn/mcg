@@ -6,6 +6,7 @@ mod entity;
 mod game;
 mod scene;
 mod scene_manager;
+mod style;
 
 pub const APP_NAME: &str = "Card Games: Alpha";
 
@@ -59,7 +60,10 @@ async fn main() {
 
 	loop {
 		clear_background(color::BACKGROUND);
+
+		game.push_skin();
 		game.scene_manager.update();
+
 		next_frame().await;
 	}
 }
