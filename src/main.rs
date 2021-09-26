@@ -1,5 +1,6 @@
 use macroquad::prelude::*;
 
+mod assets;
 mod color;
 mod entity;
 mod game;
@@ -48,9 +49,11 @@ async fn splash() {
 async fn main() {
 	macroquad::file::set_pc_assets_folder("assets");
 
+	let mut assets = assets::Assets::new();
 	splash().await;
+	assets.load_all().await;
 
-	let mut game = game::Game::new();
+	let mut game = game::Game::new(assets);
 	game.scene_manager
 		.push(Box::new(scene::dev::DevDeck::new().await));
 
