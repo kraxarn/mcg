@@ -1,4 +1,4 @@
-use macroquad::prelude::{load_texture, DrawTextureParams};
+use macroquad::prelude::*;
 
 impl super::Deck {
 	/// Get a 52 card deck of playing cards
