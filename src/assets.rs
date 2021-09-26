@@ -1,5 +1,4 @@
 use macroquad::prelude::*;
-use std::future::Future;
 
 /// Available texture
 #[derive(Eq, PartialEq, Hash, strum_macros::Display, strum_macros::EnumIter)]

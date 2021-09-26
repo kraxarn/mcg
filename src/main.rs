@@ -55,7 +55,7 @@ async fn main() {
 
 	let mut game = game::Game::new(assets);
 	game.scene_manager
-		.push(Box::new(scene::dev::DevDeck::new().await));
+		.push(Box::new(scene::dev::DevMenu::new(game.assets())));
 
 	loop {
 		clear_background(color::BACKGROUND);

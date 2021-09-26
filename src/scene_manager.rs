@@ -11,9 +11,18 @@ impl SceneManager {
 
 	/// Update current scene
 	pub fn update(&mut self) {
-		match self.scenes.last_mut() {
+		let command = match self.scenes.last_mut() {
 			Some(s) => s.update(),
-			None => {}
+			None => crate::scene::Command::None,
+		};
+
+		match command {
+			crate::scene::Command::PopScene => {
+				self.pop();
+				()
+			}
+			crate::scene::Command::PushScene(s) => self.push(s),
+			crate::scene::Command::None => {}
 		};
 	}
 

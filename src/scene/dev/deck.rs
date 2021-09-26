@@ -74,7 +74,7 @@ impl super::DevDeck {
 }
 
 impl crate::scene::Scene for super::DevDeck {
-	fn update(&mut self) {
+	fn update(&mut self) -> crate::scene::Command {
 		let card_size = self.deck.card_size();
 		let card_width = card_size.x;
 		let card_height = card_size.y;
@@ -121,5 +121,7 @@ impl crate::scene::Scene for super::DevDeck {
 
 		macroquad::ui::root_ui().push_skin(&self.skin);
 		Self::draw_button(&mut self.deck, &mut self.current_card);
+
+		crate::scene::Command::None
 	}
 }
