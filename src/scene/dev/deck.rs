@@ -1,5 +1,4 @@
 use macroquad::prelude::*;
-use macroquad::ui::hash;
 
 impl super::DevDeck {
 	pub fn new(assets: std::rc::Rc<crate::assets::Assets>) -> Self {
@@ -32,36 +31,32 @@ impl super::DevDeck {
 	}
 
 	fn draw_ui(&mut self) -> crate::scene::Command {
-		let window_size = vec2(screen_width() - 64_f32, 96_f32);
-		let window_position = vec2(32_f32, screen_height() - window_size.y - 64_f32);
+		// Draw card button
+		let button_text = if self.deck.len() > 0 {
+			format!("Draw card {}", 53 - self.deck.len())
+		} else {
+			"Empty deck".to_owned()
+		};
+		let button_size = vec2(screen_width() - 64_f32, 96_f32);
+		let button_position = vec2(32_f32, screen_height() - button_size.y - 64_f32);
 
-		macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
-			.titlebar(false)
-			.ui(&mut *macroquad::ui::root_ui(), |ui| {
-				let button_text = if self.deck.len() > 0 {
-					format!("Draw card {}", 53 - self.deck.len())
-				} else {
-					"Empty deck".to_owned()
-				};
-				let button_height = 96_f32;
+		let card_button = macroquad::ui::widgets::Button::new(button_text)
+			.position(button_position)
+			.size(button_size);
 
-				let button = macroquad::ui::widgets::Button::new(button_text)
-					.position(vec2(0_f32, window_size.y - button_height))
-					.size(vec2(window_size.x, button_height));
-
-				if button.ui(ui) {
-					match self.deck.draw() {
-						Some(c) => {
-							self.current_card = c;
-						}
-						None => {}
-					};
-				}
-			});
-
+		// Go back button
 		let return_button = macroquad::ui::widgets::Button::new(self.return_texture)
 			.position(vec2(32_f32, 32_f32))
 			.size(vec2(64_f32, 64_f32));
+
+		if card_button.ui(&mut *macroquad::ui::root_ui()) {
+			match self.deck.draw() {
+				Some(c) => {
+					self.current_card = c;
+				}
+				None => {}
+			};
+		}
 
 		if return_button.ui(&mut *macroquad::ui::root_ui()) {
 			return crate::scene::Command::PopScene;
