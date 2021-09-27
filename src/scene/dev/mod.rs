@@ -14,4 +14,5 @@ pub struct DevDeck {
 	bold_font: TextParams,
 	deck: crate::entity::Deck,
 	current_card: crate::entity::PlayingCard,
+	return_texture: Texture2D,
 }

@@ -24,12 +24,18 @@ impl super::DevDeck {
 			bold_font,
 			deck,
 			current_card,
+			return_texture: assets.tileset_texture(
+				&crate::assets::AssetTexture::Ui,
+				crate::tileset::Ui::Return as u16,
+			),
 		}
 	}
 
-	fn draw_ui(&mut self) {
+	fn draw_ui(&mut self) -> Option<crate::scene::Command> {
 		let window_size = vec2(screen_width() - 64_f32, 96_f32);
 		let window_position = vec2(32_f32, screen_height() - window_size.y - 64_f32);
+
+		let mut command: Option<crate::scene::Command> = None;
 
 		macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
 			.titlebar(false)
@@ -54,6 +60,16 @@ impl super::DevDeck {
 					};
 				}
 			});
+
+		let return_button = macroquad::ui::widgets::Button::new(self.return_texture)
+			.position(vec2(32_f32, 32_f32))
+			.size(vec2(64_f32, 64_f32));
+
+		if return_button.ui(&mut *macroquad::ui::root_ui()) {
+			command = Some(crate::scene::Command::PopScene);
+		}
+
+		command
 	}
 }
 
@@ -103,7 +119,9 @@ impl crate::scene::Scene for super::DevDeck {
 			self.bold_font,
 		);
 
-		self.draw_ui();
-		crate::scene::Command::None
+		match self.draw_ui() {
+			Some(c) => c,
+			None => crate::scene::Command::None,
+		}
 	}
 }

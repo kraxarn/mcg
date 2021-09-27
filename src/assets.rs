@@ -6,6 +6,9 @@ pub enum AssetTexture {
 	/// texture/playing_cards.png
 	#[strum(serialize = "playing_cards")]
 	PlayingCards,
+	/// texture/ui.png
+	#[strum(serialize = "ui")]
+	Ui,
 }
 
 /// Available font
