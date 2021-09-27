@@ -31,11 +31,9 @@ impl super::DevDeck {
 		}
 	}
 
-	fn draw_ui(&mut self) -> Option<crate::scene::Command> {
+	fn draw_ui(&mut self) -> crate::scene::Command {
 		let window_size = vec2(screen_width() - 64_f32, 96_f32);
 		let window_position = vec2(32_f32, screen_height() - window_size.y - 64_f32);
-
-		let mut command: Option<crate::scene::Command> = None;
 
 		macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
 			.titlebar(false)
@@ -66,10 +64,10 @@ impl super::DevDeck {
 			.size(vec2(64_f32, 64_f32));
 
 		if return_button.ui(&mut *macroquad::ui::root_ui()) {
-			command = Some(crate::scene::Command::PopScene);
+			return crate::scene::Command::PopScene;
 		}
 
-		command
+		crate::scene::Command::None
 	}
 }
 
@@ -119,9 +117,6 @@ impl crate::scene::Scene for super::DevDeck {
 			self.bold_font,
 		);
 
-		match self.draw_ui() {
-			Some(c) => c,
-			None => crate::scene::Command::None,
-		}
+		self.draw_ui()
 	}
 }
