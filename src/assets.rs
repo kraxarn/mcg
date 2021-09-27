@@ -79,6 +79,20 @@ impl Assets {
 		self.textures.get(name).unwrap().clone()
 	}
 
+	/// Get a loaded texture from a tileset
+	/// (assumes square tiles)
+	pub fn tileset_texture(&self, name: &AssetTexture, index: u16) -> Texture2D {
+		let image = self.texture(name).get_texture_data();
+		let source = Rect {
+			x: (image.width * index) as f32,
+			y: 0_f32,
+			w: image.width as f32,
+			h: image.height as f32,
+		};
+
+		Texture2D::from_image(&image.sub_image(source))
+	}
+
 	/// Get font from data and parse
 	pub fn font(&self, name: &AssetFont) -> Font {
 		load_ttf_font_from_bytes(self.font_data(name)).unwrap()

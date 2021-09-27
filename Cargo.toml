@@ -1,8 +1,10 @@
 [package]
 name = "mcg"
 description = "Mobile card games"
-version = "0.1.0"
 edition = "2018"
+
+# Patch is currently automatically incremented on each build
+version = "0.1.10"
 
 # hi :3
 

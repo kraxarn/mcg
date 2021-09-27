@@ -7,6 +7,7 @@ mod game;
 mod scene;
 mod scene_manager;
 mod style;
+mod tileset;
 mod time;
 
 pub const APP_NAME: &str = "Card Games: Alpha";
