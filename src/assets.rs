@@ -3,10 +3,8 @@ use macroquad::prelude::*;
 /// Available texture
 #[derive(Eq, PartialEq, Hash, strum_macros::Display, strum_macros::EnumIter)]
 pub enum AssetTexture {
-	/// texture/playing_cards.png
 	#[strum(serialize = "playing_cards")]
 	PlayingCards,
-	/// texture/ui.png
 	#[strum(serialize = "ui")]
 	Ui,
 }
@@ -14,21 +12,25 @@ pub enum AssetTexture {
 /// Available font
 #[derive(Eq, PartialEq, Hash, strum_macros::Display, strum_macros::EnumIter)]
 pub enum AssetFont {
-	/// font/bold.ttf
 	#[strum(serialize = "bold")]
 	Bold,
-	/// font/mini.ttf
 	#[strum(serialize = "mini")]
 	Mini,
 }
 
+/// Available image
+#[derive(Eq, PartialEq, Hash, strum_macros::Display, strum_macros::EnumIter)]
+pub enum AssetImage {}
+
 /// Container for all loaded assets
 pub struct Assets {
-	/// Textures loaded as Texture2D
+	/// Textures loaded as Texture2D (GPU)
 	textures: std::collections::HashMap<AssetTexture, Texture2D>,
 	/// Fonts loaded as a byte array
 	/// (UI loads fonts as bytes directly)
 	fonts: std::collections::HashMap<AssetFont, Vec<u8>>,
+	/// Images loaded as Image (CPU)
+	images: std::collections::HashMap<AssetImage, Image>,
 }
 
 impl Assets {
@@ -38,6 +40,7 @@ impl Assets {
 		Self {
 			textures: std::collections::HashMap::new(),
 			fonts: std::collections::HashMap::new(),
+			images: std::collections::HashMap::new(),
 		}
 	}
 
@@ -71,10 +74,26 @@ impl Assets {
 		}
 	}
 
+	/// Load all images
+	async fn load_images(&mut self) {
+		use strum::IntoEnumIterator;
+		for image in AssetImage::iter() {
+			let path = format!("image/{}.png", image);
+			match load_image(&path).await {
+				Ok(i) => self.images.insert(image, i),
+				Err(e) => {
+					error!("Failed to load \"{}\": {}", path, e);
+					None
+				}
+			};
+		}
+	}
+
 	/// Load all assets
 	pub async fn load_all(&mut self) {
 		self.load_textures().await;
 		self.load_fonts().await;
+		self.load_images().await;
 	}
 
 	/// Get a loaded texture
@@ -104,5 +123,10 @@ impl Assets {
 	/// Get byte data for font
 	pub fn font_data(&self, name: &AssetFont) -> &[u8] {
 		self.fonts.get(name).unwrap()
+	}
+
+	/// Get a loaded image
+	pub fn image(&self, name: &AssetImage) -> Image {
+		self.images.get(name).unwrap().clone()
 	}
 }
