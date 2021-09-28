@@ -23,6 +23,10 @@ pub enum AssetFont {
 pub enum AssetImage {
 	#[strum(serialize = "panel")]
 	Panel,
+	#[strum(serialize = "button")]
+	Button,
+	#[strum(serialize = "button_clicked")]
+	ButtonClicked,
 }
 
 /// Container for all loaded assets
