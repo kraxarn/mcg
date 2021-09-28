@@ -23,8 +23,6 @@ fn window_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 
 	macroquad::ui::root_ui()
 		.style_builder()
-		.font(assets.font_data(&crate::assets::AssetFont::Thick))
-		.unwrap()
 		.background(assets.image(&crate::assets::AssetImage::Panel))
 		.background_margin(RectOffset::new(PADDING, PADDING, PADDING, PADDING))
 		.margin(RectOffset::new(-PADDING, -PADDING, -PADDING, -PADDING))
