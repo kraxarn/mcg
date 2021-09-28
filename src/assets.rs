@@ -20,7 +20,10 @@ pub enum AssetFont {
 
 /// Available image
 #[derive(Eq, PartialEq, Hash, strum_macros::Display, strum_macros::EnumIter)]
-pub enum AssetImage {}
+pub enum AssetImage {
+	#[strum(serialize = "panel")]
+	Panel,
+}
 
 /// Container for all loaded assets
 pub struct Assets {
