@@ -47,7 +47,7 @@ impl super::DevDeck {
 		// Go back button
 		let return_button = macroquad::ui::widgets::Button::new(self.return_texture)
 			.position(vec2(32_f32, 32_f32))
-			.size(vec2(64_f32, 64_f32));
+			.size(vec2(96_f32, 96_f32));
 
 		if card_button.ui(&mut *macroquad::ui::root_ui()) {
 			match self.deck.draw() {

@@ -4,7 +4,7 @@ use macroquad::prelude::*;
 pub const BUTTON_FONT_SIZE: u16 = 24_u16;
 
 fn button_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
-	const PADDING: f32 = 10_f32;
+	const PADDING: f32 = 32_f32;
 
 	macroquad::ui::root_ui()
 		.style_builder()
@@ -13,18 +13,18 @@ fn button_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 		.font_size(BUTTON_FONT_SIZE)
 		.text_color(crate::color::FOREGROUND)
 		.background(assets.image(&crate::assets::AssetImage::Button))
-		.background_clicked(assets.image(&crate::assets::AssetImage::ButtonClicked))
 		.background_margin(RectOffset::new(PADDING, PADDING, PADDING, PADDING))
 		.build()
 }
 
 fn window_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
-	const PADDING: f32 = 8_f32;
+	const PADDING: f32 = 16_f32;
 
 	macroquad::ui::root_ui()
 		.style_builder()
 		.background(assets.image(&crate::assets::AssetImage::Panel))
 		.background_margin(RectOffset::new(PADDING, PADDING, PADDING, PADDING))
+		// afaik there's no way to fetch padding later, making full-width widgets difficult
 		.margin(RectOffset::new(-PADDING, -PADDING, -PADDING, -PADDING))
 		.build()
 }
