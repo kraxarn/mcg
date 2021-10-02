@@ -7,6 +7,8 @@ pub enum AssetTexture {
 	PlayingCards,
 	#[strum(serialize = "ui")]
 	Ui,
+	#[strum(serialize = "banner")]
+	Banner,
 }
 
 /// Available font
@@ -16,6 +18,8 @@ pub enum AssetFont {
 	Bold,
 	#[strum(serialize = "mini")]
 	Mini,
+	#[strum(serialize = "thick")]
+	Thick,
 }
 
 /// Available image

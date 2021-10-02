@@ -6,6 +6,7 @@ pub mod menu;
 /// Scene for selecting different kind of dev tests
 pub struct DevMenu {
 	assets: std::rc::Rc<crate::assets::Assets>,
+	title: crate::widget::Title,
 }
 
 /// Scene for testing going through a deck of cards
