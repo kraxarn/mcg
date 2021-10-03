@@ -2,6 +2,7 @@ use macroquad::prelude::*;
 
 pub mod deck;
 pub mod menu;
+pub mod scroll;
 
 /// Scene for selecting different kind of dev tests
 pub struct DevMenu {
@@ -16,4 +17,10 @@ pub struct DevDeck {
 	deck: crate::entity::Deck,
 	current_card: crate::entity::PlayingCard,
 	return_texture: Texture2D,
+}
+
+/// Scene for testing scrolling through a list
+pub struct DevScroll {
+	textures: Vec<Texture2D>,
+	deck: crate::entity::Deck,
 }
