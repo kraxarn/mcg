@@ -25,6 +25,8 @@ impl crate::scene::Scene for super::DevScroll {
 		let group_size = self.deck.card_size() / 2_f32;
 		let card_size = group_size * 0.98_f32;
 
+		let mut command = crate::scene::Command::None;
+
 		macroquad::ui::widgets::Window::new(hash!(), window_position, window_size)
 			.titlebar(false)
 			.movable(false)
@@ -38,8 +40,17 @@ impl crate::scene::Scene for super::DevScroll {
 						);
 					});
 				}
+
+				ui.group(hash!(self.textures.len()), group_size, |ui| {
+					if macroquad::ui::widgets::Button::new("Back")
+						.size(card_size)
+						.ui(ui)
+					{
+						command = crate::scene::Command::PopScene;
+					}
+				});
 			});
 
-		crate::scene::Command::None
+		command
 	}
 }
