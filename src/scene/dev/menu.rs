@@ -36,7 +36,11 @@ impl crate::scene::Scene for super::DevMenu {
 				self.button("Scroll", ui);
 				self.button("Input", ui);
 				self.button("Storage", ui);
-				self.button("Back", ui);
+
+				if self.button("Back", ui) {
+					command = crate::scene::Command::PopScene;
+					return;
+				}
 			});
 
 		self.title.ui(&mut *macroquad::ui::root_ui());

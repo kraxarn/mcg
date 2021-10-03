@@ -4,7 +4,7 @@ description = "Mobile card games"
 edition = "2018"
 
 # Patch is currently automatically incremented until 0.1
-version = "0.0.197"
+version = "0.0.198"
 
 # hi :3
 
