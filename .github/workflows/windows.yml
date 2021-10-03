@@ -26,4 +26,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mcg-windows
-          path: ${{runner.workspace}}/mcg/target/release/mcg.exe
+          path: |
+            ${{runner.workspace}}/mcg/target/release/mcg.exe
+            ${{runner.workspace}}/mcg/assets
