@@ -23,39 +23,13 @@ fn window_conf() -> Conf {
 	}
 }
 
-async fn splash() {
-	let splash = load_texture("texture/splash.png").await.unwrap();
-
-	clear_background(color::BACKGROUND);
-
-	draw_texture(
-		splash,
-		screen_width() / 2_f32 - splash.width() / 2_f32,
-		screen_height() / 2_f32 - splash.height() / 2_f32,
-		WHITE,
-	);
-
-	let loading_text = "Loading assets...";
-	let text_size = measure_text(loading_text, None, 32_u16, 1_f32);
-
-	draw_text(
-		loading_text,
-		screen_width() / 2_f32 - text_size.width / 2_f32,
-		screen_height() / 2_f32 + splash.height(),
-		32_f32,
-		color::FOREGROUND,
-	);
-
-	next_frame().await;
-}
-
 #[macroquad::main(window_conf)]
 async fn main() {
 	macroquad::file::set_pc_assets_folder("assets");
 	rand::srand(time::current_timestamp());
 
 	let mut assets = assets::Assets::new();
-	splash().await;
+	scene::splash::splash().await;
 	assets.load_all().await;
 
 	let pattern = assets.texture(&crate::assets::AssetTexture::Pattern);

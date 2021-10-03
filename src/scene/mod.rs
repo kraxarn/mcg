@@ -1,4 +1,5 @@
 pub mod dev;
+pub mod splash;
 
 /// Command to execute after frame update
 #[derive(strum_macros::Display)]
