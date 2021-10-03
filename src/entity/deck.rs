@@ -4,7 +4,7 @@ impl super::Deck {
 	/// Get a 52 card deck of playing cards
 	pub fn new(assets: std::rc::Rc<crate::assets::Assets>) -> Self {
 		let mut deck = Self {
-			cards: std::vec::Vec::with_capacity(52_usize),
+			cards: Vec::with_capacity(52_usize),
 			atlas: assets.texture(&crate::assets::AssetTexture::PlayingCards),
 			atlas_scale: 2_f32,
 		};
@@ -32,23 +32,23 @@ impl super::Deck {
 
 	/// Draw a card, removing it from the deck.
 	/// Returns [`None`] if deck is empty
-	pub fn draw(&mut self) -> std::option::Option<super::PlayingCard> {
+	pub fn draw(&mut self) -> Option<super::PlayingCard> {
 		self.cards.pop()
 	}
 
 	/// Get texture atlas of all cards.
 	/// Use together with `card_source` to draw a specific card.
-	pub fn card_atlas(&self) -> macroquad::texture::Texture2D {
+	pub fn card_atlas(&self) -> Texture2D {
 		self.atlas
 	}
 
 	/// Size in px of each card.
 	pub fn card_size(&self) -> macroquad::math::Vec2 {
-		macroquad::math::Vec2::new(140_f32 * self.atlas_scale, 190_f32 * self.atlas_scale)
+		Vec2::new(140_f32 * self.atlas_scale, 190_f32 * self.atlas_scale)
 	}
 
 	/// Get draw params for drawing a specific card, inside, or outside, of the deck
-	pub fn card_source(&self, card: &super::PlayingCard) -> macroquad::texture::DrawTextureParams {
+	pub fn card_source(&self, card: &super::PlayingCard) -> DrawTextureParams {
 		let value = f32::from(card.value as u8);
 		let suit = f32::from(card.suit as u8);
 		let size = self.card_size();
