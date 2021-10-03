@@ -35,8 +35,6 @@ fn window_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 }
 
 fn scrollbar_handle_style() -> macroquad::ui::Style {
-	pub const PADDING: f32 = 0_f32;
-
 	macroquad::ui::root_ui()
 		.style_builder()
 		.color(Color::new(0.43, 0.29, 0.13, 1.00))
