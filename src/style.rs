@@ -3,7 +3,11 @@ use macroquad::prelude::*;
 /// Font size in buttons
 pub const BUTTON_FONT_SIZE: u16 = 24_u16;
 
+/// Padding used for windows
+pub const WINDOW_PADDING: f32 = 16_f32;
+
 fn button_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
+	/// Padding for button texture
 	const PADDING: f32 = 32_f32;
 
 	macroquad::ui::root_ui()
@@ -18,14 +22,15 @@ fn button_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 }
 
 fn window_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
-	const PADDING: f32 = 16_f32;
-
 	macroquad::ui::root_ui()
 		.style_builder()
 		.background(assets.image(&crate::assets::AssetImage::Panel))
-		.background_margin(RectOffset::new(PADDING, PADDING, PADDING, PADDING))
-		// afaik there's no way to fetch padding later, making full-width widgets difficult
-		.margin(RectOffset::new(-PADDING, -PADDING, -PADDING, -PADDING))
+		.background_margin(RectOffset::new(
+			WINDOW_PADDING,
+			WINDOW_PADDING,
+			WINDOW_PADDING,
+			WINDOW_PADDING,
+		))
 		.build()
 }
 

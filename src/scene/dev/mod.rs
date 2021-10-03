@@ -7,6 +7,7 @@ pub mod menu;
 pub struct DevMenu {
 	assets: std::rc::Rc<crate::assets::Assets>,
 	title: crate::widget::Title,
+	window_size: Vec2,
 }
 
 /// Scene for testing going through a deck of cards
