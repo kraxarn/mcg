@@ -20,7 +20,7 @@ pub async fn splash() {
 		screen_width() / 2_f32 - text_size.width / 2_f32,
 		screen_height() / 2_f32 + splash.height(),
 		32_f32,
-		crate::color::FOREGROUND,
+		crate::color::FOREGROUND_ALT,
 	);
 
 	next_frame().await;

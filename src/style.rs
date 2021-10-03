@@ -1,5 +1,8 @@
 use macroquad::prelude::*;
 
+/// Font size for various labels
+pub const LABEL_FONT_SIZE: u16 = 22_u16;
+
 /// Font size in buttons
 pub const BUTTON_FONT_SIZE: u16 = 24_u16;
 
@@ -10,6 +13,15 @@ fn style_builder() -> macroquad::ui::StyleBuilder {
 	macroquad::ui::root_ui().style_builder()
 }
 
+fn label_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
+	style_builder()
+		.font(assets.font_data(&crate::assets::AssetFont::Mini))
+		.unwrap()
+		.font_size(LABEL_FONT_SIZE)
+		.text_color(crate::color::FOREGROUND)
+		.build()
+}
+
 fn button_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
 	/// Padding for button texture
 	const PADDING: f32 = 32_f32;
@@ -18,7 +30,7 @@ fn button_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 		.font(assets.font_data(&crate::assets::AssetFont::Bold))
 		.unwrap()
 		.font_size(BUTTON_FONT_SIZE)
-		.text_color(crate::color::FOREGROUND)
+		.text_color(crate::color::FOREGROUND_ALT)
 		.background(assets.image(&crate::assets::AssetImage::Button))
 		.background_margin(RectOffset::new(PADDING, PADDING, PADDING, PADDING))
 		.build()
@@ -64,7 +76,7 @@ fn group_style() -> macroquad::ui::Style {
 /// Default UI skin for app
 pub fn skin(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 	macroquad::ui::Skin {
-		// label_style
+		label_style: label_style(assets.clone()),
 		button_style: button_style(assets.clone()),
 		// tabbar_style
 		window_style: window_style(assets.clone()),

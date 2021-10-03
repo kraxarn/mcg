@@ -5,7 +5,7 @@ impl super::DevDeck {
 		let bold_font = TextParams {
 			font: assets.font(&crate::assets::AssetFont::Bold),
 			font_size: 28_u16,
-			color: crate::color::FOREGROUND,
+			color: crate::color::FOREGROUND_ALT,
 			..Default::default()
 		};
 

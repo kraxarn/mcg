@@ -40,7 +40,7 @@ impl super::Title {
 				.font(&self.font_data)
 				.unwrap()
 				.font_size(self.font_size)
-				.text_color(crate::color::FOREGROUND)
+				.text_color(crate::color::FOREGROUND_ALT)
 				.build(),
 			..ui.default_skin()
 		}
