@@ -13,12 +13,10 @@ impl super::DevMenu {
 
 impl crate::scene::Scene for super::DevMenu {
 	fn update(&mut self) -> crate::scene::Command {
-		const WINDOW_PADDING: f32 = 16_f32;
-
-		let window_position = vec2(WINDOW_PADDING, self.title.safe_y());
+		let window_position = vec2(crate::style::WINDOW_PADDING, self.title.safe_y());
 		self.window_size = vec2(
-			screen_width() - WINDOW_PADDING * 2_f32,
-			screen_height() - WINDOW_PADDING - window_position.y,
+			screen_width() - crate::style::WINDOW_PADDING * 2_f32,
+			screen_height() - crate::style::WINDOW_PADDING - window_position.y,
 		);
 
 		let mut command = crate::scene::Command::None;
