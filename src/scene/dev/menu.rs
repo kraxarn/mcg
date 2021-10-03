@@ -32,6 +32,11 @@ impl crate::scene::Scene for super::DevMenu {
 					command = crate::scene::Command::PushScene(Box::new(new_scene));
 					return;
 				}
+
+				self.button("Scroll", ui);
+				self.button("Input", ui);
+				self.button("Storage", ui);
+				self.button("Back", ui);
 			});
 
 		self.title.ui(&mut *macroquad::ui::root_ui());
