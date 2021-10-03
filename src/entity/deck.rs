@@ -66,6 +66,18 @@ impl super::Deck {
 		}
 	}
 
+	/// Generate texture for a specific card,
+	/// prefer using card_source if directly drawing
+	pub fn card_texture(&self, card: &super::PlayingCard) -> Texture2D {
+		let image = self.atlas.get_texture_data();
+		let sub_image = match self.card_source(card).source {
+			None => image,
+			Some(r) => image.sub_image(r),
+		};
+
+		Texture2D::from_image(&sub_image)
+	}
+
 	/// Number of cards currently in the deck
 	pub fn len(&self) -> usize {
 		self.cards.len()
