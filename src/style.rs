@@ -55,6 +55,12 @@ fn scrollbar_handle_style() -> macroquad::ui::Style {
 		.build()
 }
 
+fn group_style() -> macroquad::ui::Style {
+	style_builder()
+		.color(Color::new(0.71, 0.48, 0.25, 1.00))
+		.build()
+}
+
 /// Default UI skin for app
 pub fn skin(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 	macroquad::ui::Skin {
@@ -67,7 +73,7 @@ pub fn skin(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 		// scrollbar_style
 		scrollbar_handle_style: scrollbar_handle_style(),
 		// checkbox_style
-		// group_style
+		group_style: group_style(),
 		..macroquad::ui::root_ui().default_skin()
 	}
 }
