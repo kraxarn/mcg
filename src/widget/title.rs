@@ -2,14 +2,30 @@ use macroquad::prelude::*;
 
 impl super::Title {
 	pub fn new(label: &str, assets: std::rc::Rc<crate::assets::Assets>) -> Self {
-		Self {
-			label: label.to_owned(),
+		let ui = &mut *macroquad::ui::root_ui();
+		let mut title = Self {
+			label: String::new(),
+			label_dimensions: TextDimensions {
+				width: 0_f32,
+				height: 0_f32,
+				offset_y: 0_f32,
+			},
 			texture: assets.texture(&crate::assets::AssetTexture::Banner),
 			font_data: Vec::from(assets.font_data(&crate::assets::AssetFont::Thick)),
 			font: assets.font(&crate::assets::AssetFont::Thick),
-			skin: None,
+			skin: ui.default_skin(),
 			font_size: 18_u16,
-		}
+		};
+
+		title.set_label(label);
+		title.skin = title.skin(ui);
+
+		title
+	}
+
+	fn set_label(&mut self, label: &str) {
+		self.label = label.to_owned();
+		self.label_dimensions = measure_text(&self.label, Some(self.font), self.font_size, 1_f32);
 	}
 
 	/// Safe position to draw stuff under title
@@ -35,20 +51,13 @@ impl super::Title {
 	}
 
 	pub fn ui(&mut self, ui: &mut macroquad::ui::Ui) {
-		match &self.skin {
-			None => {
-				let skin = self.skin(ui);
-				ui.push_skin(&skin);
-				self.skin = Some(skin);
-			}
-			Some(s) => ui.push_skin(s),
-		}
+		ui.push_skin(&self.skin);
 
 		let texture_position = self.position();
-		let label_size = measure_text(&self.label, Some(self.font), self.font_size, 1_f32);
 		let label_position = glam::Vec2::new(
-			texture_position.x + self.texture.width() / 2_f32 - label_size.width / 2_f32,
-			texture_position.y + self.texture.height() / 2_f32 - label_size.height / 2_f32,
+			texture_position.x + self.texture.width() / 2_f32 - self.label_dimensions.width / 2_f32,
+			texture_position.y + self.texture.height() / 2_f32
+				- self.label_dimensions.height / 2_f32,
 		);
 
 		macroquad::ui::widgets::Texture::new(self.texture)
