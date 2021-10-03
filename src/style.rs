@@ -36,6 +36,19 @@ fn window_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 		.build()
 }
 
+fn edit_box_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Style {
+	const PADDING: f32 = 12_f32;
+	let margin = RectOffset::new(PADDING, PADDING, PADDING, PADDING);
+
+	style_builder()
+		.background(assets.image(&crate::assets::AssetImage::Input))
+		.background_margin(margin)
+		.font(assets.font_data(&crate::assets::AssetFont::Mini))
+		.unwrap()
+		.font_size(64_u16)
+		.build()
+}
+
 fn scrollbar_handle_style() -> macroquad::ui::Style {
 	style_builder()
 		.color(Color::new(0.43, 0.29, 0.13, 1.00))
@@ -49,7 +62,7 @@ pub fn skin(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 		button_style: button_style(assets.clone()),
 		// tabbar_style
 		window_style: window_style(assets.clone()),
-		// editbox_style
+		editbox_style: edit_box_style(assets.clone()),
 		// window_titlebar_style
 		// scrollbar_style
 		scrollbar_handle_style: scrollbar_handle_style(),

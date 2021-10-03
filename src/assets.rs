@@ -31,6 +31,8 @@ pub enum AssetImage {
 	Panel,
 	#[strum(serialize = "button")]
 	Button,
+	#[strum(serialize = "input")]
+	Input,
 }
 
 /// Container for all loaded assets
