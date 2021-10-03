@@ -14,12 +14,6 @@ impl super::DevDeck {
 		let current_card = deck.draw().unwrap();
 
 		Self {
-			mini_font: TextParams {
-				font: assets.font(&crate::assets::AssetFont::Mini),
-				font_size: crate::style::BUTTON_FONT_SIZE,
-				color: crate::color::FOREGROUND,
-				..Default::default()
-			},
 			bold_font,
 			deck,
 			current_card,
@@ -74,9 +68,6 @@ impl crate::scene::Scene for super::DevDeck {
 
 		let window_width = screen_width();
 		let window_height = screen_height();
-
-		// Draw FPS
-		draw_text_ex(&get_fps().to_string(), 16_f32, 32_f32, self.mini_font);
 
 		// Card texture scale (40% of screen width)
 		let card_scale = (window_width * 0.4) / card_width;

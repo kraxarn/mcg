@@ -81,6 +81,10 @@ async fn main() {
 		game.push_skin();
 		game.scene_manager.update();
 
+		// Draw FPS in debug
+		#[cfg(debug_assertions)]
+		draw_text(&get_fps().to_string(), 16_f32, 32_f32, 32_f32, WHITE);
+
 		next_frame().await;
 	}
 }
