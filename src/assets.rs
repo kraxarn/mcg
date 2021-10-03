@@ -9,6 +9,8 @@ pub enum AssetTexture {
 	Ui,
 	#[strum(serialize = "banner")]
 	Banner,
+	#[strum(serialize = "pattern")]
+	Pattern,
 }
 
 /// Available font

@@ -58,12 +58,25 @@ async fn main() {
 	splash().await;
 	assets.load_all().await;
 
+	let pattern = assets.texture(&crate::assets::AssetTexture::Pattern);
+
 	let mut game = game::Game::new(assets);
 	game.scene_manager
 		.push(Box::new(scene::dev::DevMenu::new(game.assets())));
 
 	loop {
 		clear_background(color::BACKGROUND);
+
+		for x in 0..(screen_width() / pattern.width()).ceil() as u32 {
+			for y in 0..(screen_height() / pattern.height()).ceil() as u32 {
+				draw_texture(
+					pattern,
+					x as f32 * pattern.width(),
+					y as f32 * pattern.height(),
+					WHITE,
+				);
+			}
+		}
 
 		game.push_skin();
 		game.scene_manager.update();
