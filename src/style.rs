@@ -34,6 +34,15 @@ fn window_style(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::St
 		.build()
 }
 
+fn scrollbar_handle_style() -> macroquad::ui::Style {
+	pub const PADDING: f32 = 0_f32;
+
+	macroquad::ui::root_ui()
+		.style_builder()
+		.color(Color::new(0.43, 0.29, 0.13, 1.00))
+		.build()
+}
+
 /// Default UI skin for app
 pub fn skin(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 	macroquad::ui::Skin {
@@ -44,7 +53,7 @@ pub fn skin(assets: std::rc::Rc<crate::assets::Assets>) -> macroquad::ui::Skin {
 		// editbox_style
 		// window_titlebar_style
 		// scrollbar_style
-		// scrollbar_handle_style
+		scrollbar_handle_style: scrollbar_handle_style(),
 		// checkbox_style
 		// group_style
 		..macroquad::ui::root_ui().default_skin()
