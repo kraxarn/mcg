@@ -37,7 +37,12 @@ impl crate::scene::Scene for super::DevMenu {
 					return;
 				}
 
-				self.button("Input", ui);
+				if self.button("Input", ui) {
+					let new_scene = crate::scene::dev::DevInput::new(self.assets.clone());
+					command = crate::scene::Command::PushScene(Box::new(new_scene));
+					return;
+				}
+
 				self.button("Storage", ui);
 
 				if self.button("Back", ui) {

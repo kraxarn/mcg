@@ -1,6 +1,7 @@
 use macroquad::prelude::*;
 
 pub mod deck;
+pub mod input;
 pub mod menu;
 pub mod scroll;
 
@@ -23,4 +24,9 @@ pub struct DevDeck {
 pub struct DevScroll {
 	textures: Vec<Texture2D>,
 	deck: crate::entity::Deck,
+}
+
+/// Scene for testing text input
+pub struct DevInput {
+	value: String,
 }
