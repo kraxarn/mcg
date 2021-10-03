@@ -15,7 +15,7 @@ pub const APP_NAME: &str = "Card Games: Alpha";
 
 fn window_conf() -> Conf {
 	Conf {
-		window_title: APP_NAME.to_owned(),
+		window_title: format!("{} {}", APP_NAME, env!("CARGO_PKG_VERSION")),
 		window_width: 540_i32,
 		window_height: 960_i32,
 		window_resizable: true,
