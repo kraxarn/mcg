@@ -27,10 +27,14 @@ jobs:
       - name: Test
         run: cargo test --release
 
+      - name: Bundle
+        run: |
+          mkdir ${{runner.workspace}}/build
+          cp ${{runner.workspace}}/mcg/target/release/mcg ${{runner.workspace}}/build/
+          cp -r ${{runner.workspace}}/mcg/assets ${{runner.workspace}}/build/
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: mcg-linux
-          path: |
-            ${{runner.workspace}}/mcg/target/release/mcg
-            ${{runner.workspace}}/mcg/assets
+          path: ${{runner.workspace}}/build
