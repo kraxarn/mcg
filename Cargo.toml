@@ -1,10 +1,11 @@
 [package]
 name = "mcg"
+authors = ["kraxarn"]
 description = "Mobile card games"
 edition = "2018"
 
 # Patch is currently automatically incremented until 0.1
-version = "0.0.264"
+version = "0.0.286"
 
 # hi :3
 
@@ -15,6 +16,9 @@ opt-level = 2
 [dependencies]
 strum = "0.21"
 strum_macros = "0.21"
+nanoserde = "0.1"
+# Should only be required on desktop
+directories = "4.0"
 
 [dependencies.macroquad]
 version = "0.3"
