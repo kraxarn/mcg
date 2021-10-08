@@ -4,6 +4,7 @@ pub mod deck;
 pub mod input;
 pub mod menu;
 pub mod scroll;
+pub mod storage;
 
 /// Scene for selecting different kind of dev tests
 pub struct DevMenu {
@@ -28,5 +29,12 @@ pub struct DevScroll {
 
 /// Scene for testing text input
 pub struct DevInput {
+	value: String,
+}
+
+/// Scene for testing data storage
+pub struct DevStorage {
+	file_name: String,
+	config_dir: String,
 	value: String,
 }

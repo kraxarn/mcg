@@ -43,7 +43,11 @@ impl crate::scene::Scene for super::DevMenu {
 					return;
 				}
 
-				self.button("Storage", ui);
+				if self.button("Storage", ui) {
+					let new_scene = crate::scene::dev::DevStorage::new(self.assets.clone());
+					command = crate::scene::Command::PushScene(Box::new(new_scene));
+					return;
+				}
 
 				if self.button("Back", ui) {
 					command = crate::scene::Command::PopScene;
