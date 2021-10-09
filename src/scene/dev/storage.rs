@@ -3,15 +3,8 @@ use macroquad::ui::hash;
 
 impl super::DevStorage {
 	pub fn new(_assets: std::rc::Rc<crate::assets::Assets>) -> Self {
-		let file_name = format!("debug_file.dat");
-
 		Self {
-			config_dir: match crate::storage::file::dir() {
-				Some(p) => format!("{}", p.join(&file_name).display()),
-				None => "Invalid path".to_owned(),
-			},
-			file_name,
-			value: "(none)".to_owned(),
+			settings: crate::settings::Settings::read(),
 		}
 	}
 }
@@ -30,29 +23,18 @@ impl crate::scene::Scene for super::DevStorage {
 			.titlebar(false)
 			.movable(false)
 			.ui(&mut *macroquad::ui::root_ui(), |ui| {
-				ui.label(None, &self.config_dir);
-				ui.label(None, &self.file_name);
-				ui.label(None, &self.value);
+				ui.label(None, &format!("count: {}", self.settings.count));
 
 				if ui.button(None, "Read") {
-					self.value = match crate::storage::file::read(&self.file_name) {
-						None => "(empty)".to_owned(),
-						Some(s) => s,
-					}
+					self.settings = crate::settings::Settings::read();
 				}
 
 				if ui.button(None, "Write") {
-					self.value = match crate::storage::file::write(&self.file_name, &self.value) {
-						None => "(write failed)".to_owned(),
-						Some(_) => format!("{} (saved)", self.value),
-					}
+					self.settings.write();
 				}
 
 				if ui.button(None, "Add") {
-					self.value = match self.value.parse::<u32>() {
-						Ok(v) => (v + 1).to_string(),
-						Err(_) => "0".to_owned(),
-					}
+					self.settings.count += 1;
 				}
 
 				if ui.button(None, "Back") {

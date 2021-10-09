@@ -34,7 +34,5 @@ pub struct DevInput {
 
 /// Scene for testing data storage
 pub struct DevStorage {
-	file_name: String,
-	config_dir: String,
-	value: String,
+	settings: crate::settings::Settings,
 }
