@@ -19,10 +19,9 @@ jobs:
 
       # Temporary workaround
       - name: Checkout submodules
+        working-directory: ${{runner.workspace}}/mcg
         run: |
-          cd ${{runner.workspace}}/mcg
-          git submodule init
-          git submodule update
+          git clone https://github.com/kraxarn/miniquad.git miniquad-android
 
       - name: Build
         run: cargo quad-apk build --release
