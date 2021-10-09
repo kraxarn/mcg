@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/checkout@v2
+        with:
+          repository: 'https://github.com/kraxarn/miniquad'
+          path: 'miniquad-android'
+
       - name: Build
         run: cargo quad-apk build --release
 
