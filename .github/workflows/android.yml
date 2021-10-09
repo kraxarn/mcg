@@ -21,7 +21,7 @@ jobs:
       - name: Checkout submodules
         working-directory: ${{runner.workspace}}/mcg
         run: |
-          git clone https://github.com/kraxarn/miniquad.git miniquad-android
+          git clone --branch expose-internal-data-path-release https://github.com/kraxarn/miniquad.git miniquad-android
 
       - name: Build
         run: cargo quad-apk build --release
