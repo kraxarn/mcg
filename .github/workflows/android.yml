@@ -19,7 +19,7 @@ jobs:
 
       # Temporary workaround
       - name: Checkout submodules
-        working-directory: ${{runner.workspace}}
+        working-directory: ${{runner.workspace}}/mcg
         run: |
           git submodule init
           git submodule update
