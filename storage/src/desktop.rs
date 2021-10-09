@@ -1,28 +1,27 @@
 /// Write file with specified name
-pub fn write(app_name: &str, name: &str, data: &str) -> Option<()> {
+pub fn write(app_name: &str, name: &str, data: &str) -> std::io::Result<()> {
 	let path = dir(app_name)?.join(name);
-
-	match std::fs::write(path, data) {
-		Ok(_) => Some(()),
-		Err(_) => None,
-	}
+	std::fs::write(path, data)
 }
 
 /// Read from file with specified name if it exists
-pub fn read(app_name: &str, name: &str) -> Option<String> {
-	match std::fs::read_to_string(dir(app_name)?.join(name)) {
-		Ok(s) => Some(s),
-		Err(_) => None,
-	}
+pub fn read(app_name: &str, name: &str) -> std::io::Result<String> {
+	std::fs::read_to_string(dir(app_name)?.join(name))
 }
 
 /// Config directory, created if it doesn't exist.
-fn dir(app_name: &str) -> Option<std::path::PathBuf> {
-	let project_dirs = directories::ProjectDirs::from("", "", app_name)?;
+fn dir(app_name: &str) -> std::io::Result<std::path::PathBuf> {
+	let project_dirs = match directories::ProjectDirs::from("", "", app_name) {
+		None => Err(std::io::Error::new(
+			std::io::ErrorKind::NotFound,
+			"No such directory",
+		)),
+		Some(d) => Ok(d),
+	}?;
 	let config_dir = project_dirs.config_dir();
 
 	match std::fs::create_dir_all(config_dir) {
-		Ok(_) => Some(std::path::PathBuf::from(config_dir)),
-		Err(_) => None,
+		Ok(_) => Ok(std::path::PathBuf::from(config_dir)),
+		Err(e) => Err(e),
 	}
 }

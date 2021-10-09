@@ -24,8 +24,8 @@ impl Settings {
 	/// Load settings from storage, or get default settings
 	pub fn read() -> Self {
 		match mcg_storage::read(crate::APP_NAME, FILE_NAME) {
-			None => Default::default(),
-			Some(s) => match nanoserde::DeRon::deserialize_ron(&s) {
+			Err(_) => Default::default(),
+			Ok(s) => match nanoserde::DeRon::deserialize_ron(&s) {
 				Ok(s) => s,
 				Err(_) => Default::default(),
 			},
@@ -36,8 +36,8 @@ impl Settings {
 	pub fn write(&self) -> bool {
 		let data = nanoserde::SerRon::serialize_ron(self);
 		match mcg_storage::write(crate::APP_NAME, FILE_NAME, &data) {
-			None => false,
-			Some(_) => true,
+			Err(_) => false,
+			Ok(_) => true,
 		}
 	}
 }

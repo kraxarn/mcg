@@ -10,10 +10,11 @@ extern "C" {
 }
 
 /// Write to local storage with specified key
-pub fn write(key: &str, data: &str) {
+pub fn write(key: &str, data: &str) -> std::io::Result<()> {
 	unsafe {
 		storage_set(JsObject::string(key).weak(), JsObject::string(data).weak());
 	}
+	Ok(())
 }
 
 fn to_string(object: JsObject, contains: u32) -> Option<String> {
@@ -28,7 +29,7 @@ fn to_string(object: JsObject, contains: u32) -> Option<String> {
 }
 
 /// Read from local storage with specified key
-pub fn read(key: &str) -> Option<String> {
+pub fn read(key: &str) -> std::io::Result<String> {
 	let object = JsObject::string(key);
 	let weak_object = object.weak();
 
@@ -37,5 +38,11 @@ pub fn read(key: &str) -> Option<String> {
 	});
 
 	drop(object);
-	result
+	match result {
+		None => Err(std::io::Error::new(
+			std::io::ErrorKind::NotFound,
+			"No such key",
+		)),
+		Some(s) => Ok(s),
+	}
 }

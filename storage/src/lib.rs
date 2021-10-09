@@ -8,7 +8,7 @@ mod android;
 mod wasm;
 
 /// Write file
-pub fn write(app_name: &str, name: &str, data: &str) -> Option<()> {
+pub fn write(app_name: &str, name: &str, data: &str) -> std::io::Result<()> {
 	#[cfg(any(target_os = "linux", target_os = "macos", windows))]
 	{
 		return desktop::write(app_name, name, data);
@@ -21,11 +21,10 @@ pub fn write(app_name: &str, name: &str, data: &str) -> Option<()> {
 	{
 		return wasm::write(name, data);
 	}
-	None
 }
 
 /// Read file
-pub fn read(app_name: &str, name: &str) -> Option<String> {
+pub fn read(app_name: &str, name: &str) -> std::io::Result<String> {
 	#[cfg(any(target_os = "linux", target_os = "macos", windows))]
 	{
 		return desktop::read(app_name, name);
@@ -38,5 +37,4 @@ pub fn read(app_name: &str, name: &str) -> Option<String> {
 	{
 		return wasm::read(name);
 	}
-	None
 }
