@@ -1,11 +1,9 @@
-// Desktop
 #[cfg(any(target_os = "linux", target_os = "macos", windows))]
 mod desktop;
 
-// Android
-// TODO
+#[cfg(target_os = "android")]
+mod android;
 
-// Web
 #[cfg(target_arch = "wasm32")]
 mod wasm;
 
@@ -15,12 +13,14 @@ pub fn write(app_name: &str, name: &str, data: &str) -> Option<()> {
 	{
 		return desktop::write(app_name, name, data);
 	}
-
+	#[cfg(target_os = "android")]
+	{
+		return android::write(name, data);
+	}
 	#[cfg(target_arch = "wasm32")]
 	{
 		return wasm::write(name, data);
 	}
-
 	None
 }
 
@@ -30,11 +30,13 @@ pub fn read(app_name: &str, name: &str) -> Option<String> {
 	{
 		return desktop::read(app_name, name);
 	}
-
+	#[cfg(target_os = "android")]
+	{
+		return android::read(name);
+	}
 	#[cfg(target_arch = "wasm32")]
 	{
 		return wasm::read(name);
 	}
-
 	None
 }
