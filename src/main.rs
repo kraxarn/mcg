@@ -6,7 +6,7 @@ mod entity;
 mod game;
 mod scene;
 mod scene_manager;
-mod storage;
+mod settings;
 mod style;
 mod tileset;
 mod time;
