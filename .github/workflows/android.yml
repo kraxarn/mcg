@@ -16,8 +16,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: 'true'
+
+      # Temporary workaround
+      - name: Checkout submodules
+        run: |
+          git submodule init
+          git submodule update
 
       - name: Build
         run: cargo quad-apk build --release
