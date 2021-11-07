@@ -47,7 +47,9 @@ jobs:
 #        run: ./godot --path "./mcg" --export "Android"
 
       - name: Export Project - HTML5
-        run: ./godot --path "./mcg" --export "HTML5"
+        run: |
+          mkdir -p ./mcg/Export/HTML5
+          ./godot --path "./mcg" --export "HTML5"
 
       - name: Upload Artifact - Linux/X11
         uses: actions/upload-artifact@v2
