@@ -14,13 +14,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Download Engine
+        run: |
+          curl -L https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_linux_headless_64.zip -o godot.zip
+          unzip godot.zip
+          rm -f godot.zip
+          ln -s ./Godot_v3.4-stable_mono_linux_headless_64/Godot_v3.4-stable_mono_linux_headless.64 ./godot
+          ./godot --version
+      
+      - name: Download Export Templates
+        run: |
+          curl -L https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_export_templates.tpz -o templates.zip
+          unzip templates.zip
+          rm -f templates.zip
+          cat ./templates/version.txt
 
-      - name: Export Game
-        uses: firebelley/godot-export@v3
-        with:
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_linux_headless_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_export_templates.tpz
-          relative_project_path: .
+      - name: Export - Linux/X11
+        run: ./godot --path "./mcg" --export "Linux/X11"
 
       - name: Upload Artifact - Linux/X11
         uses: actions/upload-artifact@v2
@@ -28,26 +39,26 @@ jobs:
           name: mcg-linux-x11
           path: ${{runner.workspace}}/Export/LinuxX11
 
-      - name: Upload Artifact - Windows Desktop
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-windows-desktop
-          path: ${{runner.workspace}}/Export/WindowsDesktop
-
-      - name: Upload Artifact - Mac OSX
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-mac-osx
-          path: ${{runner.workspace}}/Export/MacOsx
-
-      - name: Upload Artifact - Android
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-android
-          path: ${{runner.workspace}}/Export/Android
-          
-      - name: Upload Artifact - HTML5
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-html5
-          path: ${{runner.workspace}}/Export/HTML5
+#      - name: Upload Artifact - Windows Desktop
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: mcg-windows-desktop
+#          path: ${{runner.workspace}}/Export/WindowsDesktop
+#
+#      - name: Upload Artifact - Mac OSX
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: mcg-mac-osx
+#          path: ${{runner.workspace}}/Export/MacOsx
+#
+#      - name: Upload Artifact - Android
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: mcg-android
+#          path: ${{runner.workspace}}/Export/Android
+#          
+#      - name: Upload Artifact - HTML5
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: mcg-html5
+#          path: ${{runner.workspace}}/Export/HTML5
