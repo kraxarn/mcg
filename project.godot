@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="MobileCardGames"
+run/main_scene="res://Scene/Dev/Menu.tscn"
+boot_splash/image="res://Asset/Image/Splash.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.2, 0.6, 0.854902, 1 )
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=540
+window/size/height=960
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.2, 0.6, 0.854902, 1 )
+environment/default_environment="res://default_env.tres"
