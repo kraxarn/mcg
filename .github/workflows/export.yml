@@ -34,35 +34,41 @@ jobs:
           mv "./templates" "$TEMPLATES_DIR/$TEMPLATES_VERSION"
           echo "Templates $TEMPLATES_VERSION"
 
-      - name: Export - Linux/X11
-        run: ./godot --path "./mcg" --export "Linux/X11"
+      - name: Export Projects
+        run: |
+          EXPORT_PRESETS="Linux/X11,Windows Desktop,Mac OSX,Android,HTML5"
+          IFS=","
+          for preset in $EXPORT_PRESETS
+          do
+            ./godot --path "./mcg" --export "$preset"
+          done
 
       - name: Upload Artifact - Linux/X11
         uses: actions/upload-artifact@v2
         with:
           name: mcg-linux-x11
-          path: ${{runner.workspace}}/Export/LinuxX11
+          path: ${{runner.workspace}}/mcg/Export/LinuxX11
 
-#      - name: Upload Artifact - Windows Desktop
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-windows-desktop
-#          path: ${{runner.workspace}}/Export/WindowsDesktop
-#
-#      - name: Upload Artifact - Mac OSX
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-mac-osx
-#          path: ${{runner.workspace}}/Export/MacOsx
-#
-#      - name: Upload Artifact - Android
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-android
-#          path: ${{runner.workspace}}/Export/Android
-#          
-#      - name: Upload Artifact - HTML5
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-html5
-#          path: ${{runner.workspace}}/Export/HTML5
+      - name: Upload Artifact - Windows Desktop
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg-windows-desktop
+          path: ${{runner.workspace}}/mcg/Export/WindowsDesktop
+
+      - name: Upload Artifact - Mac OSX
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg-mac-osx
+          path: ${{runner.workspace}}/mcg/Export/MacOsx
+
+      - name: Upload Artifact - Android
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg-android
+          path: ${{runner.workspace}}/mcg/Export/Android
+
+      - name: Upload Artifact - HTML5
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg-html5
+          path: ${{runner.workspace}}/mcg/Export/HTML5
