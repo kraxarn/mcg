@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Download Engine
         run: |
           curl -L https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_linux_headless_64.zip -o godot.zip
@@ -22,7 +22,7 @@ jobs:
           rm -f godot.zip
           ln -s ./Godot_v3.4-stable_mono_linux_headless_64/Godot_v3.4-stable_mono_linux_headless.64 ./godot
           echo "Godot $(./godot --version)"
-      
+
       - name: Download Export Templates
         run: |
           curl -L https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_export_templates.tpz -o templates.zip
@@ -34,14 +34,20 @@ jobs:
           mv "./templates" "$TEMPLATES_DIR/$TEMPLATES_VERSION"
           echo "Templates $TEMPLATES_VERSION"
 
-      - name: Export Projects
-        run: |
-          EXPORT_PRESETS="Linux/X11,Windows Desktop,Mac OSX,Android,HTML5"
-          IFS=","
-          for preset in $EXPORT_PRESETS
-          do
-            ./godot --path "./mcg" --export "$preset"
-          done
+      - name: Export Project - Linux/X11
+        run: /godot --path "./mcg" --export "Linux/X11"
+
+      - name: Export Project - Windows Desktop
+        run: /godot --path "./mcg" --export "Windows Desktop"
+
+      - name: Export Project - Mac OSX
+        run: /godot --path "./mcg" --export "Mac OSX"
+
+      - name: Export Project - Android
+        run: /godot --path "./mcg" --export "Android"
+
+      - name: Export Project - HTML5
+        run: /godot --path "./mcg" --export "HTML5"
 
       - name: Upload Artifact - Linux/X11
         uses: actions/upload-artifact@v2
