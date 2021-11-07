@@ -40,8 +40,8 @@ jobs:
       - name: Export Project - Windows Desktop
         run: /godot --path "./mcg" --export "Windows Desktop"
 
-      - name: Export Project - Mac OSX
-        run: /godot --path "./mcg" --export "Mac OSX"
+#      - name: Export Project - Mac OSX
+#        run: /godot --path "./mcg" --export "Mac OSX"
 
       - name: Export Project - Android
         run: /godot --path "./mcg" --export "Android"
@@ -61,11 +61,11 @@ jobs:
           name: mcg-windows-desktop
           path: ${{runner.workspace}}/mcg/Export/WindowsDesktop
 
-      - name: Upload Artifact - Mac OSX
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-mac-osx
-          path: ${{runner.workspace}}/mcg/Export/MacOsx
+#      - name: Upload Artifact - Mac OSX
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: mcg-mac-osx
+#          path: ${{runner.workspace}}/mcg/Export/MacOsx
 
       - name: Upload Artifact - Android
         uses: actions/upload-artifact@v2
