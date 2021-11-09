@@ -44,7 +44,11 @@ jobs:
 #        run: ./godot --path "./mcg" --export "Mac OSX"
 
       - name: Export Project - Android
-        run: ./godot --path "./mcg" --export "Android"
+        run: |
+          CONFIG_PATH="$HOME/.config/godot"
+          mkdir -p "$CONFIG_PATH"
+          curl https://raw.githubusercontent.com/firebelley/godot-export/v3.0.0/dist/editor_settings-3.tres -o "$CONFIG_PATH/editor_settings-3.tres"
+          ./godot --path "./mcg" --export "Android"
 
       - name: Export Project - HTML5
         run: |
