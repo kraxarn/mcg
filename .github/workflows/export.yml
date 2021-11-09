@@ -50,9 +50,7 @@ jobs:
           PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
         run: |
           CONFIG_PATH="$HOME/.config/godot/editor_settings-3.tres"
-          # Create keystore
           KEYSTORE_PATH="$CONFIG_PATH/keystore.jks"
-          echo -n "$KEYSTORE" | base64 -d > "$KEYSTORE_PATH"
           # Setup initial Godot config
           ./godot --editor --quit
           # Append Android config to existing config
@@ -60,6 +58,8 @@ jobs:
           echo "export/android/debug_keystore = \"$KEYSTORE_PATH\"" >> $CONFIG_PATH
           echo "export/android/debug_keystore_user = \"$ALIAS\"" >> $CONFIG_PATH
           echo "export/android/debug_keystore_pass = \"$PASSWORD\"" >> $CONFIG_PATH
+          # Create keystore
+          echo -n "$KEYSTORE" | base64 -d > "$KEYSTORE_PATH"
           # Export
           mkdir -p ./mcg/Export/Android
           ./godot --path "./mcg" --export "Android"
