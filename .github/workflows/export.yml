@@ -43,8 +43,8 @@ jobs:
 #      - name: Export Project - Mac OSX
 #        run: ./godot --path "./mcg" --export "Mac OSX"
 
-#      - name: Export Project - Android
-#        run: ./godot --path "./mcg" --export "Android"
+      - name: Export Project - Android
+        run: ./godot --path "./mcg" --export "Android"
 
       - name: Export Project - HTML5
         run: |
@@ -69,11 +69,11 @@ jobs:
 #          name: mcg-mac-osx
 #          path: ${{runner.workspace}}/mcg/Export/MacOsx
 
-#      - name: Upload Artifact - Android
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-android
-#          path: ${{runner.workspace}}/mcg/Export/Android
+      - name: Upload Artifact - Android
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg-android
+          path: ${{runner.workspace}}/mcg/Export/Android
 
       - name: Upload Artifact - HTML5
         uses: actions/upload-artifact@v2
