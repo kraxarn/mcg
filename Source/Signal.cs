@@ -1,10 +1,7 @@
-using System.ComponentModel;
-
 namespace MobileCardGames.Source
 {
-	public enum Signal
+	public static class Signal
 	{
-		[Description("pressed")]
-		Pressed,
+		public const string Pressed = "pressed";
 	}
 }

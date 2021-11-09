@@ -6,14 +6,11 @@ public class Menu : Node
 {
 	public override void _Ready()
 	{
-		this.Connect("Background/VBox", Signal.Pressed, new[]
-		{
-			("DeckButton", nameof(GoToDeck)),
-			("ScrollButton", nameof(GoToScroll)),
-			("InputButton", nameof(GoToInput)),
-			("StorageButton", nameof(GoToStorage)),
-			("BackButton", nameof(Quit)),
-		});
+		this.Connect("Background/VBox/DeckButton", Signal.Pressed, nameof(GoToDeck));
+		this.Connect("Background/VBox/ScrollButton", Signal.Pressed, nameof(GoToScroll));
+		this.Connect("Background/VBox/InputButton", Signal.Pressed, nameof(GoToInput));
+		this.Connect("Background/VBox/StorageButton", Signal.Pressed, nameof(GoToStorage));
+		this.Connect("Background/VBox/BackButton", Signal.Pressed, nameof(Quit));
 	}
 
 	private void GoToDeck() => throw new NotImplementedException();
