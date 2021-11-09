@@ -35,10 +35,14 @@ jobs:
           echo "Templates $TEMPLATES_VERSION"
 
       - name: Export Project - Linux/X11
-        run: ./godot --path "./mcg" --export "Linux/X11"
+        run: |
+          mkdir -p ./mcg/Export/LinuxX11
+          ./godot --path "./mcg" --export "Linux/X11"
 
       - name: Export Project - Windows Desktop
-        run: ./godot --path "./mcg" --export "Windows Desktop"
+        run: |
+          mkdir -p ./mcg/Export/WindowsDesktop
+          ./godot --path "./mcg" --export "Windows Desktop"
 
 #      - name: Export Project - Mac OSX
 #        run: ./godot --path "./mcg" --export "Mac OSX"
