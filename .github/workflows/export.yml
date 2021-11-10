@@ -19,14 +19,12 @@ jobs:
         run: |
           curl -L https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_linux_headless_64.zip -o godot.zip
           unzip godot.zip
-          rm -f godot.zip
           ln -s ./Godot_v3.4-stable_mono_linux_headless_64/Godot_v3.4-stable_mono_linux_headless.64 ./godot
 
       - name: Download Export Templates
         run: |
           curl -L https://github.com/godotengine/godot/releases/download/3.4-stable/Godot_v3.4-stable_mono_export_templates.tpz -o templates.zip
           unzip templates.zip
-          rm -f templates.zip
           TEMPLATES_VERSION="$(cat ./templates/version.txt)"
           TEMPLATES_DIR="$HOME/.local/share/godot/templates"
           mkdir -p "$TEMPLATES_DIR"
