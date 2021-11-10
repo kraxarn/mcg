@@ -21,7 +21,6 @@ jobs:
           unzip godot.zip
           rm -f godot.zip
           ln -s ./Godot_v3.4-stable_mono_linux_headless_64/Godot_v3.4-stable_mono_linux_headless.64 ./godot
-          echo "Godot $(./godot --version)"
 
       - name: Download Export Templates
         run: |
@@ -32,7 +31,6 @@ jobs:
           TEMPLATES_DIR="$HOME/.local/share/godot/templates"
           mkdir -p "$TEMPLATES_DIR"
           mv "./templates" "$TEMPLATES_DIR/$TEMPLATES_VERSION"
-          echo "Templates $TEMPLATES_VERSION"
 
       - name: Export Project - Linux/X11
         run: |
