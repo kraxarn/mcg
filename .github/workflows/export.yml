@@ -35,12 +35,12 @@ jobs:
       - name: Export Project - Linux/X11
         run: |
           mkdir -p ./mcg/Export/LinuxX11
-          ./godot --path "./mcg" --export "Linux/X11"
+          ./godot --verbose --path "./mcg" --export "Linux/X11"
 
       - name: Export Project - Windows Desktop
         run: |
           mkdir -p ./mcg/Export/WindowsDesktop
-          ./godot --path "./mcg" --export "Windows Desktop"
+          ./godot --verbose --path "./mcg" --export "Windows Desktop"
 
 #      - name: Export Project - Mac OSX
 #        run: ./godot --path "./mcg" --export "Mac OSX"
@@ -64,12 +64,12 @@ jobs:
           echo -n "$KEYSTORE" | base64 -d > "$KEYSTORE_PATH"
           # Export
           mkdir -p ./mcg/Export/Android
-          ./godot --path "./mcg" --export "Android"
+          ./godot --verbose --path "./mcg" --export "Android"
 
       - name: Export Project - HTML5
         run: |
           mkdir -p ./mcg/Export/HTML5
-          ./godot --path "./mcg" --export "HTML5"
+          ./godot --verbose --path "./mcg" --export "HTML5"
 
       - name: Upload Artifact - Linux/X11
         uses: actions/upload-artifact@v2
