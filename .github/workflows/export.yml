@@ -32,14 +32,13 @@ jobs:
 
       - name: Export Project - Linux/X11
         run: |
-          echo "${{runner.workspace}}/mcg/Export/LinuxX11"
-          mkdir -p ${{runner.workspace}}/mcg/Export/LinuxX11
+          mkdir -p "${{runner.workspace}}/mcg/Export/LinuxX11"
           ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Linux/X11"
 
       - name: Export Project - Windows Desktop
         run: |
-          mkdir -p ./mcg/Export/WindowsDesktop
-          ./godot --verbose --path "./mcg" --export "Windows Desktop"
+          mkdir -p "${{runner.workspace}}/mcg/Export/WindowsDesktop"
+          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Windows Desktop"
 
 #      - name: Export Project - Mac OSX
 #        run: ./godot --path "./mcg" --export "Mac OSX"
@@ -62,13 +61,13 @@ jobs:
           # Create keystore
           echo -n "$KEYSTORE" | base64 -d > "$KEYSTORE_PATH"
           # Export
-          mkdir -p ./mcg/Export/Android
-          ./godot --verbose --path "./mcg" --export "Android"
+          mkdir -p "${{runner.workspace}}/mcg/Export/Android"
+          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Android"
 
       - name: Export Project - HTML5
         run: |
-          mkdir -p ./mcg/Export/HTML5
-          ./godot --verbose --path "./mcg" --export "HTML5"
+          mkdir -p ${{runner.workspace}}/mcg/Export/HTML5
+          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "HTML5"
 
       - name: Upload Artifact - Linux/X11
         uses: actions/upload-artifact@v2
