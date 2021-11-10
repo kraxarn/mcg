@@ -34,8 +34,9 @@ jobs:
 
       - name: Export Project - Linux/X11
         run: |
-          mkdir -p ./mcg/Export/LinuxX11
-          ./godot --verbose --path "./mcg" --export "Linux/X11"
+          echo "${{runner.workspace}}/mcg/Export/LinuxX11"
+          mkdir -p ${{runner.workspace}}/mcg/Export/LinuxX11
+          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Linux/X11"
 
       - name: Export Project - Windows Desktop
         run: |
