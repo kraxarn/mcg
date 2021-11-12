@@ -51,9 +51,8 @@ jobs:
         run: |
           CONFIG_PATH="$HOME/.config/godot/editor_settings-3.tres"
           KEYSTORE_PATH="$CONFIG_PATH/keystore.jks"
-          # Setup initial Godot config
-          ./godot --verbose --editor --no-window --quit
-          # Append Android config to existing config
+          # Append Android config
+          mkdir -p "$HOME/.config/godot"
           echo "export/android/android_sdk_path = \"/usr/local/lib/android/sdk\"" >> $CONFIG_PATH
           echo "export/android/debug_keystore = \"$KEYSTORE_PATH\"" >> $CONFIG_PATH
           echo "export/android/debug_keystore_user = \"$ALIAS\"" >> $CONFIG_PATH
