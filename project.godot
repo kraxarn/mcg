@@ -12,7 +12,7 @@ config_version=4
 
 config/name="MobileCardGames"
 config/description="Various card/board games primarily for Mobile devices, with online multiplayer."
-run/main_scene="res://Scene/Dev/Menu.tscn"
+run/main_scene="res://Scenes/Dev/Menu.tscn"
 boot_splash/image="res://Asset/Image/Splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.2, 0.6, 0.854902, 1 )
