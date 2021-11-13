@@ -1,4 +1,4 @@
-name: Export
+name: Android
 
 on:
   push:
@@ -53,20 +53,7 @@ jobs:
           mkdir -p "$TEMPLATES_DIR"
           mv "./templates" "$TEMPLATES_DIR/$TEMPLATES_VERSION"
 
-      - name: Export Project - Linux/X11
-        run: |
-          mkdir -p "${{runner.workspace}}/mcg/Export/LinuxX11"
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Linux/X11"
-
-      - name: Export Project - Windows Desktop
-        run: |
-          mkdir -p "${{runner.workspace}}/mcg/Export/WindowsDesktop"
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Windows Desktop"
-
-#      - name: Export Project - Mac OSX
-#        run: ./godot --path "./mcg" --export "Mac OSX"
-
-      - name: Export Project - Android
+      - name: Export Project
         env:
           KEYSTORE: ${{secrets.KEYSTORE}}
           ALIAS: ${{secrets.KEYSTORE_ALIAS}}
@@ -90,37 +77,8 @@ jobs:
           # It's planned to be fixed in 4.0, so for now, this workaround is required
           ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Android" || true
 
-      - name: Export Project - HTML5
-        run: |
-          mkdir -p ${{runner.workspace}}/mcg/Export/HTML5
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "HTML5"
-
-      - name: Upload Artifact - Linux/X11
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-linux-x11
-          path: ${{runner.workspace}}/mcg/Export/LinuxX11
-
-      - name: Upload Artifact - Windows Desktop
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-windows-desktop
-          path: ${{runner.workspace}}/mcg/Export/WindowsDesktop
-
-#      - name: Upload Artifact - Mac OSX
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-mac-osx
-#          path: ${{runner.workspace}}/mcg/Export/MacOsx
-
-      - name: Upload Artifact - Android
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: mcg-android
           path: ${{runner.workspace}}/mcg/Export/Android
-
-      - name: Upload Artifact - HTML5
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-html5
-          path: ${{runner.workspace}}/mcg/Export/HTML5
