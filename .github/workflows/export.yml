@@ -75,7 +75,10 @@ jobs:
           NAME: ${{matrix.name}}
         run: |
           mkdir -p "${{runner.workspace}}/mcg/Export/$NAME"
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "$NAME"
+          # C# signals can sometimes leak, resulting in result 1 being returned, failing the action
+          # More info: https://github.com/godotengine/godot/issues/39577
+          # It's planned to be fixed in 4.0, so for now, this workaround is required
+          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "$NAME" || true
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
