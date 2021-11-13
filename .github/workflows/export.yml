@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: godot.zip
-          key: godot-$GODOT_VERSION
+          key: godot-v${{env.GODOT_VERSION}}
 
       - name: Download Engine
         if: steps.cache-engine.outputs.cache-hit != 'true'
