@@ -28,15 +28,25 @@ jobs:
       - name: Download Engine
         if: steps.cache-engine.outputs.cache-hit != 'true'
         run: curl -L https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_mono_linux_headless_64.zip -o godot.zip
-      
+
       - name: Install Engine
         run: |
           unzip godot.zip
           ln -s ./Godot_v$GODOT_VERSION-stable_mono_linux_headless_64/Godot_v$GODOT_VERSION-stable_mono_linux_headless.64 ./godot
 
+      - name: Cache Export Templates
+        id: cache-templates
+        uses: actions/cache@v2
+        with:
+          path: templates.zip
+          key: templates-v${{env.GODOT_VERSION}}
+
       - name: Download Export Templates
+        if: steps.cache-templates.outputs.cache-hit != 'true'
+        run: curl -L https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_mono_export_templates.tpz -o templates.zip
+
+      - name: Install Export Templates
         run: |
-          curl -L https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_mono_export_templates.tpz -o templates.zip
           unzip templates.zip
           TEMPLATES_VERSION="$(cat ./templates/version.txt)"
           TEMPLATES_DIR="$HOME/.local/share/godot/templates"
