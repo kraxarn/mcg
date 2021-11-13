@@ -18,9 +18,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Cache Engine
+        id: cache-engine
+        uses: actions/cache@v2
+        with:
+          path: godot.zip
+          key: godot-$GODOT_VERSION
+
       - name: Download Engine
+        if: steps.cache-engine.outputs.cache-hit != 'true'
+        run: curl -L https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_mono_linux_headless_64.zip -o godot.zip
+      
+      - name: Install Engine
         run: |
-          curl -L https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_mono_linux_headless_64.zip -o godot.zip
           unzip godot.zip
           ln -s ./Godot_v$GODOT_VERSION-stable_mono_linux_headless_64/Godot_v$GODOT_VERSION-stable_mono_linux_headless.64 ./godot
 
