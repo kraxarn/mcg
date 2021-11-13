@@ -4,9 +4,9 @@
 [ext_resource path="res://Scenes/Dev/Menu.cs" type="Script" id=2]
 [ext_resource path="res://Assets/NinePatches/Panel.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/Pattern.png" type="Texture" id=4]
-[ext_resource path="res://Theme/ButtonFont.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Theme/Banner.tres" type="Theme" id=6]
-[ext_resource path="res://Theme/ButtonStyle.tres" type="StyleBox" id=7]
+[ext_resource path="res://Themes/ButtonFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Themes/Banner.tres" type="Theme" id=6]
+[ext_resource path="res://Themes/ButtonStyle.tres" type="StyleBox" id=7]
 
 [node name="Menu" type="Node"]
 script = ExtResource( 2 )
