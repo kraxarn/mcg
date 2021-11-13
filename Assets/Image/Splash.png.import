@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Banner.png-727d0a407663be33c2039801823765c5.stex"
+path="res://.import/Splash.png-b2bd02cd6fdab132409e62179badfada.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Texture/Banner.png"
-dest_files=[ "res://.import/Banner.png-727d0a407663be33c2039801823765c5.stex" ]
+source_file="res://Assets/Image/Splash.png"
+dest_files=[ "res://.import/Splash.png-b2bd02cd6fdab132409e62179badfada.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

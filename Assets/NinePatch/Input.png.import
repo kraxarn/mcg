@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Input.png-def43d3dc8b93610f85712accf2abd0e.stex"
+path="res://.import/Input.png-3d242e58418dbe87600d66cc67020eda.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/NinePatch/Input.png"
-dest_files=[ "res://.import/Input.png-def43d3dc8b93610f85712accf2abd0e.stex" ]
+source_file="res://Assets/NinePatch/Input.png"
+dest_files=[ "res://.import/Input.png-3d242e58418dbe87600d66cc67020eda.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

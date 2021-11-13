@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Panel.png-a4e1d62c4f03ac6e01f0d256de773d8c.stex"
+path="res://.import/Pattern.png-b830ee883bbaef87e6e9e00b280fa9a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/NinePatch/Panel.png"
-dest_files=[ "res://.import/Panel.png-a4e1d62c4f03ac6e01f0d256de773d8c.stex" ]
+source_file="res://Assets/Texture/Pattern.png"
+dest_files=[ "res://.import/Pattern.png-b830ee883bbaef87e6e9e00b280fa9a6.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
