@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Panel.png-befa1c66ef92f678a166fd2820728c9a.stex"
+path="res://.import/Button.png-062341e0434730040326ff56d3806690.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/NinePatch/Panel.png"
-dest_files=[ "res://.import/Panel.png-befa1c66ef92f678a166fd2820728c9a.stex" ]
+source_file="res://Assets/NinePatches/Button.png"
+dest_files=[ "res://.import/Button.png-062341e0434730040326ff56d3806690.stex" ]
 
 [params]
 
