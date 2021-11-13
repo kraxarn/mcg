@@ -13,6 +13,10 @@ env:
 
 jobs:
   export:
+    strategy:
+      fail-fast: false
+      matrix: 
+        name: [Linux, Windows, macOS, Android, HTML5]
     runs-on: ubuntu-latest
 
     steps:
@@ -52,75 +56,29 @@ jobs:
           TEMPLATES_DIR="$HOME/.local/share/godot/templates"
           mkdir -p "$TEMPLATES_DIR"
           mv "./templates" "$TEMPLATES_DIR/$TEMPLATES_VERSION"
-
-      - name: Export Project - Linux/X11
-        run: |
-          mkdir -p "${{runner.workspace}}/mcg/Export/LinuxX11"
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Linux/X11"
-
-      - name: Export Project - Windows Desktop
-        run: |
-          mkdir -p "${{runner.workspace}}/mcg/Export/WindowsDesktop"
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Windows Desktop"
-
-#      - name: Export Project - Mac OSX
-#        run: ./godot --path "./mcg" --export "Mac OSX"
-
-      - name: Export Project - Android
-        env:
-          KEYSTORE: ${{secrets.KEYSTORE}}
-          ALIAS: ${{secrets.KEYSTORE_ALIAS}}
-          PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
+      
+      - name: Prepare Android Keystore
+        if: ${{matrix.name}} == 'Android'
         run: |
           CONFIG_PATH="$HOME/.config/godot"
           CONFIG_FILE="$CONFIG_PATH/editor_settings-3.tres"
           KEYSTORE_FILE="$CONFIG_PATH/keystore.jks"
-          # Append Android config
           mkdir -p "$CONFIG_PATH"
           echo "export/android/android_sdk_path = \"/usr/local/lib/android/sdk\"" >> $CONFIG_FILE
           echo "export/android/debug_keystore = \"$KEYSTORE_FILE\"" >> $CONFIG_FILE
           echo "export/android/debug_keystore_user = \"$ALIAS\"" >> $CONFIG_FILE
           echo "export/android/debug_keystore_pass = \"$PASSWORD\"" >> $CONFIG_FILE
-          # Create keystore
           echo -n "$KEYSTORE" | base64 -d > "$KEYSTORE_FILE"
-          # Export
-          mkdir -p "${{runner.workspace}}/mcg/Export/Android"
-          # C# signals can sometimes leak, resulting in result 1 being returned, failing the action
-          # More info: https://github.com/godotengine/godot/issues/39577
-          # It's planned to be fixed in 4.0, so for now, this workaround is required
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "Android" || true
 
-      - name: Export Project - HTML5
+      - name: Export Project
+        env: 
+          NAME: ${{matrix.name}}
         run: |
-          mkdir -p ${{runner.workspace}}/mcg/Export/HTML5
-          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "HTML5"
+          mkdir -p "${{runner.workspace}}/mcg/Export/$NAME"
+          ./godot --verbose --path "${{runner.workspace}}/mcg" --export "$NAME"
 
-      - name: Upload Artifact - Linux/X11
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: mcg-linux-x11
-          path: ${{runner.workspace}}/mcg/Export/LinuxX11
-
-      - name: Upload Artifact - Windows Desktop
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-windows-desktop
-          path: ${{runner.workspace}}/mcg/Export/WindowsDesktop
-
-#      - name: Upload Artifact - Mac OSX
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: mcg-mac-osx
-#          path: ${{runner.workspace}}/mcg/Export/MacOsx
-
-      - name: Upload Artifact - Android
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-android
-          path: ${{runner.workspace}}/mcg/Export/Android
-
-      - name: Upload Artifact - HTML5
-        uses: actions/upload-artifact@v2
-        with:
-          name: mcg-html5
-          path: ${{runner.workspace}}/mcg/Export/HTML5
+          name: mcg-${{matrix.name}}
+          path: ${{runner.workspace}}/mcg/Export/${{matrix.name}}
