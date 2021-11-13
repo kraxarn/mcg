@@ -58,7 +58,7 @@ jobs:
           mv "./templates" "$TEMPLATES_DIR/$TEMPLATES_VERSION"
       
       - name: Prepare Android Keystore
-        if: ${{matrix.name}} == 'Android'
+        if: matrix.name == 'Android'
         run: |
           CONFIG_PATH="$HOME/.config/godot"
           CONFIG_FILE="$CONFIG_PATH/editor_settings-3.tres"
