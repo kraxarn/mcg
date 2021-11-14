@@ -85,3 +85,4 @@ jobs:
         with:
           name: mcg-${{matrix.name}}
           path: ${{runner.workspace}}/mcg/Export/${{matrix.name}}
+          if-no-files-found: error

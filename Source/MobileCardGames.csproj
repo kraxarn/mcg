@@ -5,8 +5,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="..\.github\workflows\export.yml">
+      <Link>Workflows\export.yml</Link>
+    </Content>
+    <Content Include="..\.github\workflows\tests.yml">
+      <Link>Workflows\tests.yml</Link>
+    </Content>
     <Content Include="..\readme.md">
-      <Link>readme.md</Link>
+      <Link>Files\readme.md</Link>
     </Content>
   </ItemGroup>
   <Import Project="..\Shared\MobileCardGames.Shared.projitems" Label="Shared" />
