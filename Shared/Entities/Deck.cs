@@ -53,7 +53,7 @@ namespace MobileCardGames.Shared.Entities
 		/// <summary>
 		/// Draw cards until the deck is empty
 		/// </summary>
-		private IEnumerable<PlayingCard> DrawAll()
+		public IEnumerable<PlayingCard> DrawAll()
 		{
 			while (cards.Any())
 			{
@@ -82,16 +82,6 @@ namespace MobileCardGames.Shared.Entities
 		public void Shuffle()
 		{
 			Shuffle(new Random());
-		}
-
-		/// <summary>
-		/// Shuffle remaining cards in deck using specified seed
-		/// </summary>
-		/// <param name="seed">Seed for randomizer</param>
-		/// <remarks>Should only be used in tests for predictable results</remarks>
-		public void Shuffle(int seed)
-		{
-			Shuffle(new Random(seed));
 		}
 	}
 }

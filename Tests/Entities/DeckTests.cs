@@ -1,3 +1,4 @@
+using System.Linq;
 using MobileCardGames.Shared.Entities;
 using Xunit;
 
@@ -12,27 +13,24 @@ namespace MobileCardGames.Tests.Entities
 			Assert.Equal(Deck.Size, deck.Count);
 		}
 
-		[Fact]
-		public void CanShuffleDeck()
+		[Theory]
+		[InlineData(true, false)]
+		[InlineData(false, true)]
+		public void CanShuffleDeck(bool expected, bool shuffle)
 		{
 			var sorted = new Deck();
 
 			var shuffled = new Deck();
-			// "Random" seed that shuffles entire deck every time
-			shuffled.Shuffle(1248);
+			if (shuffle)
+			{
+				shuffled.Shuffle();
+			}
 
 			Assert.Equal(sorted.Count, shuffled.Count);
 
-			while (sorted.Count > 0 && shuffled.Count > 0)
-			{
-				var sortedCard = sorted.Draw();
-				var shuffledCard = shuffled.Draw();
-
-				Assert.NotEqual(sortedCard, shuffledCard);
-			}
-
-			Assert.Equal(0, sorted.Count);
-			Assert.Equal(0, shuffled.Count);
+			Assert.Equal(expected, sorted
+				.DrawAll()
+				.All(c1 => c1.Equals(shuffled.Draw())));
 		}
 	}
 }
