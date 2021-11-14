@@ -7,12 +7,13 @@ namespace MobileCardGames.Tests.Entities
 	public class CardTests
 	{
 		[Fact]
-		public void SameCardAreEqual()
+		public void SameCardsAreEqual()
 		{
 			var card1 = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Hearts);
 			var card2 = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Hearts);
 
 			Assert.Equal(card1, card2);
+			Assert.Equal(card1.GetHashCode(), card2.GetHashCode());
 		}
 
 		[Fact]
@@ -24,6 +25,9 @@ namespace MobileCardGames.Tests.Entities
 
 			Assert.NotEqual(card1, card2);
 			Assert.NotEqual(card1, card3);
+
+			Assert.NotEqual(card1.GetHashCode(), card2.GetHashCode());
+			Assert.NotEqual(card1.GetHashCode(), card3.GetHashCode());
 		}
 	}
 }
