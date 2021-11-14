@@ -8,7 +8,7 @@ namespace MobileCardGames.Extensions
 	{
 		public static Vector2 GetAtlasPosition(this PlayingCard playingCard)
 		{
-			var value = (float)playingCard.Value;
+			var value = (float)playingCard.Value - 1;
 			var suit = (float)playingCard.Suit;
 
 			return new Vector2
