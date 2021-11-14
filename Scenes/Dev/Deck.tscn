@@ -46,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = -212.0
 margin_bottom = 212.0
+custom_constants/separation = 12
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,12 +58,13 @@ margin_bottom = 380.0
 stretch_mode = 4
 
 [node name="CardName" type="Label" parent="Container"]
-margin_top = 384.0
+margin_top = 392.0
 margin_right = 540.0
-margin_bottom = 424.0
+margin_bottom = 432.0
 theme = SubResource( 2 )
 text = "<card name>"
 align = 1
+valign = 2
 
 [node name="DrawCard" type="Button" parent="."]
 anchor_top = 1.0
