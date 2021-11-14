@@ -70,7 +70,7 @@ namespace MobileCardGames.Shared.Entities
 
 			while (allCards.Any())
 			{
-				var i = random.Next(allCards.Count - 1);
+				var i = random.Next(allCards.Count);
 				cards.Push(allCards[i]);
 				allCards.RemoveAt(i);
 			}
