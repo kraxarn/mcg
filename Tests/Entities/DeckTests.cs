@@ -1,22 +1,22 @@
 using System.Linq;
 using MobileCardGames.Shared.Entities;
-using NUnit.Framework;
+using Xunit;
 
 namespace MobileCardGames.Tests.Entities
 {
-	[TestFixture]
 	public class DeckTests
 	{
-		[Test]
+		[Fact]
 		public void CanGenerateDeck()
 		{
 			var deck = new Deck();
-			Assert.AreEqual(Deck.Size, deck.Count);
+			Assert.Equal(Deck.Size, deck.Count);
 		}
 
-		[TestCase(false, ExpectedResult = true)]
-		[TestCase(true, ExpectedResult = false)]
-		public bool CanShuffleDeck(bool shuffle)
+		[Theory]
+		[InlineData(true, false)]
+		[InlineData(false, true)]
+		public void CanShuffleDeck(bool expected, bool shuffle)
 		{
 			var sorted = new Deck();
 
@@ -26,11 +26,11 @@ namespace MobileCardGames.Tests.Entities
 				shuffled.Shuffle();
 			}
 
-			Assert.AreEqual(sorted.Count, shuffled.Count);
+			Assert.Equal(sorted.Count, shuffled.Count);
 
-			return sorted
+			Assert.Equal(expected, sorted
 				.DrawAll()
-				.All(c1 => c1.Equals(shuffled.Draw()));
+				.All(c1 => c1.Equals(shuffled.Draw())));
 		}
 	}
 }
