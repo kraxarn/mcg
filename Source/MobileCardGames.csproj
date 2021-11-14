@@ -6,10 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="..\.github\workflows\export.yml">
-      <Link>Workflows\export.yml</Link>
+      <Link>Files\Workflows\export.yml</Link>
     </Content>
     <Content Include="..\.github\workflows\tests.yml">
-      <Link>Workflows\tests.yml</Link>
+      <Link>Files\Workflows\tests.yml</Link>
     </Content>
     <Content Include="..\readme.md">
       <Link>Files\readme.md</Link>
