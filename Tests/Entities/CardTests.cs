@@ -1,33 +1,34 @@
 using MobileCardGames.Shared.Entities;
 using MobileCardGames.Shared.Enums;
-using Xunit;
+using NUnit.Framework;
 
 namespace MobileCardGames.Tests.Entities
 {
+	[TestFixture]
 	public class CardTests
 	{
-		[Fact]
+		[Test]
 		public void SameCardsAreEqual()
 		{
 			var card1 = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Hearts);
 			var card2 = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Hearts);
 
-			Assert.Equal(card1, card2);
-			Assert.Equal(card1.GetHashCode(), card2.GetHashCode());
+			Assert.AreEqual(card1, card2);
+			Assert.AreEqual(card1.GetHashCode(), card2.GetHashCode());
 		}
 
-		[Fact]
+		[Test]
 		public void DifferentCardsAreNotEqual()
 		{
 			var card1 = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Hearts);
 			var card2 = new PlayingCard(PlayingCardValue.Two, PlayingCardSuit.Hearts);
 			var card3 = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Diamonds);
 
-			Assert.NotEqual(card1, card2);
-			Assert.NotEqual(card1, card3);
+			Assert.AreNotEqual(card1, card2);
+			Assert.AreNotEqual(card1, card3);
 
-			Assert.NotEqual(card1.GetHashCode(), card2.GetHashCode());
-			Assert.NotEqual(card1.GetHashCode(), card3.GetHashCode());
+			Assert.AreNotEqual(card1.GetHashCode(), card2.GetHashCode());
+			Assert.AreNotEqual(card1.GetHashCode(), card3.GetHashCode());
 		}
 	}
 }
