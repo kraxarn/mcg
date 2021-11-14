@@ -16,4 +16,5 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build Project
-        run: msbuild ${{runner.workspace}}/Tests/MobileCardGames.Tests.csproj -t:rebuild -property:configuration=release
+        working-directory: ${{runner.workspace}}/mcg
+        run: msbuild Tests -t:rebuild -property:configuration=release
