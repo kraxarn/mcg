@@ -65,6 +65,7 @@ jobs:
           KEYSTORE_FILE="$CONFIG_PATH/keystore.jks"
           mkdir -p "$CONFIG_PATH"
           echo "[gd_resource type=\"EditorSettings\" format=2]\n" >> $CONFIG_FILE
+          echo "[resource]" >> $CONFIG_FILE
           echo "export/android/android_sdk_path = \"/usr/local/lib/android/sdk\"" >> $CONFIG_FILE
           echo "export/android/debug_keystore = \"$KEYSTORE_FILE\"" >> $CONFIG_FILE
           echo "export/android/debug_keystore_user = \"$ALIAS\"" >> $CONFIG_FILE
