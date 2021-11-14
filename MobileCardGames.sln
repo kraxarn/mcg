@@ -2,9 +2,9 @@
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCardGames", "Source/MobileCardGames.csproj", "{45E8366E-BA71-4BAE-A0A2-0B67593A76AC}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MobileCardGames.Shared", "MobileCardGames.Shared\MobileCardGames.Shared.shproj", "{5DCCD2A1-0BB6-4FCF-B138-B8BCD50E683F}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MobileCardGames.Shared", "Shared\MobileCardGames.Shared.shproj", "{5DCCD2A1-0BB6-4FCF-B138-B8BCD50E683F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCardGames.Tests", "MobileCardGames.Tests\MobileCardGames.Tests.csproj", "{0D1E2065-B6A7-42CA-9918-8DDCC36EAB20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCardGames.Tests", "Tests\MobileCardGames.Tests.csproj", "{0D1E2065-B6A7-42CA-9918-8DDCC36EAB20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
