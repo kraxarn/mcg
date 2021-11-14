@@ -4,7 +4,7 @@ using MobileCardGames.Shared.Extensions;
 
 namespace MobileCardGames.Shared.Entities
 {
-	public class PlayingCard : IEquatable<PlayingCard>
+	public readonly struct PlayingCard : IEquatable<PlayingCard>
 	{
 		public PlayingCard(PlayingCardValue value, PlayingCardSuit suit)
 		{
