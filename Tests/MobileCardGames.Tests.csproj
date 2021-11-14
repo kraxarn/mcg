@@ -53,7 +53,7 @@
       <PackageReference Include="xunit.extensibility.execution" Version="2.1.0" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Import Project="..\MobileCardGames.Shared\MobileCardGames.Shared.projitems" Label="Shared" />
+    <Import Project="..\Shared\MobileCardGames.Shared.projitems" Label="Shared" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

@@ -4,5 +4,5 @@
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  <Import Project="..\MobileCardGames.Shared\MobileCardGames.Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\MobileCardGames.Shared.projitems" Label="Shared" />
 </Project>
