@@ -9,11 +9,14 @@ namespace MobileCardGames.Shared.Entities
 	{
 		public Deck()
 		{
-			cards = new Stack<PlayingCard>(DeckSize);
+			cards = new Stack<PlayingCard>(Size);
 			Reset();
 		}
 
-		private const int DeckSize = 52;
+		/// <summary>
+		/// Size of full deck
+		/// </summary>
+		public const int Size = 52;
 
 		private readonly Stack<PlayingCard> cards;
 

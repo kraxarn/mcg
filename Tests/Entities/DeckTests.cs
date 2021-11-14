@@ -9,7 +9,7 @@ namespace MobileCardGames.Tests.Entities
 		public void CanGenerateDeck()
 		{
 			var deck = new Deck();
-			Assert.Equal(52, deck.Count);
+			Assert.Equal(Deck.Size, deck.Count);
 		}
 
 		[Fact]
