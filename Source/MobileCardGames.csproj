@@ -4,5 +4,10 @@
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\readme.md">
+      <Link>readme.md</Link>
+    </Content>
+  </ItemGroup>
   <Import Project="..\Shared\MobileCardGames.Shared.projitems" Label="Shared" />
 </Project>
