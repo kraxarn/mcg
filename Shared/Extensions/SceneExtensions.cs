@@ -14,6 +14,7 @@ namespace MobileCardGames.Shared.Extensions
 				Scene.DevScroll => "res://Scenes/Dev/Scroll.tscn",
 				Scene.DevInput => "res://Scenes/Dev/Input.tscn",
 				Scene.DevStorage => "res://Scenes/Dev/Storage.tscn",
+				Scene.DevTcp => "res://Scenes/Dev/Storage.tscn",
 				_ => throw new ArgumentOutOfRangeException(nameof(scene), scene, null),
 			};
 		}

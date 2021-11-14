@@ -9,6 +9,7 @@ namespace MobileCardGames.Shared.Enums
 		DevScroll,
 		DevInput,
 		DevStorage,
+		DevTcp,
 
 		#endregion
 	}
