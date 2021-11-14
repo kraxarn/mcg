@@ -12,6 +12,11 @@ namespace MobileCardGames.Shared.Entities
 			Suit = suit;
 		}
 
+		/// <summary>
+		/// Ace of spaces
+		/// </summary>
+		public static readonly PlayingCard Default = new PlayingCard(PlayingCardValue.Ace, PlayingCardSuit.Spades); 
+
 		public PlayingCardValue Value { get; }
 
 		public PlayingCardSuit Suit { get; }

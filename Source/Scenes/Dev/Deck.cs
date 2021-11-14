@@ -1,6 +1,5 @@
 using Godot;
 using MobileCardGames.Constants;
-using MobileCardGames.Extensions;
 using MobileCardGames.Scenes;
 using MobileCardGames.Shared.Enums;
 
@@ -10,7 +9,7 @@ public class Deck : SceneBase
 
 	private Button? drawCardButton;
 
-	private TextureRect? cardTexture;
+	private CardTexture? cardScene;
 	private Label? cardLabel;
 
 	public override void _Ready()
@@ -20,7 +19,7 @@ public class Deck : SceneBase
 		drawCardButton = GetNode<Button>("DrawCard");
 		drawCardButton.Connect(SignalConstants.Pressed, this, nameof(DrawCard));
 
-		cardTexture = GetNode<TextureRect>("Container/CardTexture");
+		cardScene = GetNode<CardTexture>("Container/CardTexture");
 		cardLabel = GetNode<Label>("Container/CardName");
 
 		deck = new MobileCardGames.Shared.Entities.Deck();
@@ -49,11 +48,9 @@ public class Deck : SceneBase
 			cardLabel.Text = card.ToString();
 		}
 
-		if (cardTexture?.Texture is AtlasTexture cardAtlas)
+		if (cardScene != null)
 		{
-			var region = cardAtlas.Region;
-			region.Position = card.GetAtlasPosition();
-			cardAtlas.Region = region;
+			cardScene.PlayingCard = card.Value;
 		}
 
 		if (drawCardButton != null)
