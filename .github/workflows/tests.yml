@@ -17,4 +17,4 @@ jobs:
 
       - name: Build Project
         working-directory: ${{runner.workspace}}/mcg
-        run: msbuild Tests -t:rebuild -property:configuration=release
+        run: msbuild Tests -r:true -t:rebuild -property:configuration=release
