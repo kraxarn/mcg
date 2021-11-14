@@ -1,6 +1,6 @@
-using MobileCardGames.Source.Enums;
+using MobileCardGames.Shared.Enums;
 
-namespace MobileCardGames.Source.Extensions
+namespace MobileCardGames.Shared.Extensions
 {
 	public static class PlayingCardValueExtensions
 	{

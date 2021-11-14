@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>F2FE7EFB-71A4-40E7-8C62-C4AE12572BEC</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MobileCardGames.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Constants\CardConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Deck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\PlayingCard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\PlayingCardSuit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\PlayingCardValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\PlayingCardSuitExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\PlayingCardValueExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SceneExtensions.cs" />
+  </ItemGroup>
+</Project>

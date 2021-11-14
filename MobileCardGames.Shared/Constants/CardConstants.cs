@@ -1,6 +1,4 @@
-using MobileCardGames.Source.Entities;
-
-namespace MobileCardGames.Source.Constants
+namespace MobileCardGames.Shared.Constants
 {
 	/// <summary>
 	/// Constants for <see cref="PlayingCard"/> (and <see cref="Deck"/>)

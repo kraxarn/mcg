@@ -1,15 +1,17 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using MobileCardGames.Source.Enums;
+using MobileCardGames.Shared.Enums;
 
-namespace MobileCardGames.Source.Entities
+namespace MobileCardGames.Shared.Entities
 {
 	public class Deck
 	{
 		public Deck()
 		{
 			cards = new Stack<PlayingCard>(DeckSize);
+			Reset();
 		}
 
 		private const int DeckSize = 52;
@@ -63,17 +65,13 @@ namespace MobileCardGames.Source.Entities
 		public void Shuffle()
 		{
 			var random = new Random();
-			var shuffled = DrawAll().ToArray();
+			var allCards = DrawAll().ToList();
 
-			for (var i = 0; i < shuffled.Length - 1; i++)
+			while (allCards.Any())
 			{
-				var pos = random.Next(0, shuffled.Length);
-				(shuffled[i], shuffled[pos]) = (shuffled[pos], shuffled[i]);
-			}
-
-			foreach (var card in shuffled)
-			{
-				cards.Push(card);
+				var i = random.Next(allCards.Count - 1);
+				cards.Push(allCards[i]);
+				allCards.RemoveAt(i);
 			}
 		}
 	}

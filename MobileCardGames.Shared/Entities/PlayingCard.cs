@@ -1,7 +1,7 @@
-using MobileCardGames.Source.Enums;
-using MobileCardGames.Source.Extensions;
+using MobileCardGames.Shared.Enums;
+using MobileCardGames.Shared.Extensions;
 
-namespace MobileCardGames.Source.Entities
+namespace MobileCardGames.Shared.Entities
 {
 	public class PlayingCard
 	{

@@ -1,8 +1,8 @@
 using Godot;
-using MobileCardGames.Source;
-using MobileCardGames.Source.Enums;
-using MobileCardGames.Source.Exceptions;
-using MobileCardGames.Source.Extensions;
+using MobileCardGames.Exceptions;
+using MobileCardGames.Extensions;
+using MobileCardGames.Shared.Enums;
+using MobileCardGames.Shared.Extensions;
 
 namespace MobileCardGames.Scenes
 {

@@ -1,8 +1,8 @@
 using System;
 using Godot;
-using MobileCardGames.Source.Enums;
+using MobileCardGames.Shared.Enums;
 
-namespace MobileCardGames.Source.Exceptions
+namespace MobileCardGames.Exceptions
 {
 	/// <summary>
 	/// Exception thrown when failed to go to a new scene

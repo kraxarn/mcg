@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace MobileCardGames.Source.Exceptions
+namespace MobileCardGames.Exceptions
 {
 	/// <summary>
 	/// Exception thrown when an event failed to connect to a code

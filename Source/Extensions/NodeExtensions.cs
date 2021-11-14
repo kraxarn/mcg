@@ -1,6 +1,6 @@
 using Godot;
 
-namespace MobileCardGames.Source
+namespace MobileCardGames.Extensions
 {
 	public static class NodeExtensions
 	{

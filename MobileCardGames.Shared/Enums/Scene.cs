@@ -1,4 +1,4 @@
-namespace MobileCardGames.Source.Enums
+namespace MobileCardGames.Shared.Enums
 {
 	public enum Scene
 	{
