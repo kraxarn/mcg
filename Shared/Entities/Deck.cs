@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MobileCardGames.Shared.Enums;
@@ -60,11 +59,10 @@ namespace MobileCardGames.Shared.Entities
 		}
 
 		/// <summary>
-		/// Shuffle remaining cards in deck
+		/// Shuffle deck with specified randomizer
 		/// </summary>
-		public void Shuffle()
+		private void Shuffle(Random random)
 		{
-			var random = new Random();
 			var allCards = DrawAll().ToList();
 
 			while (allCards.Any())
@@ -73,6 +71,24 @@ namespace MobileCardGames.Shared.Entities
 				cards.Push(allCards[i]);
 				allCards.RemoveAt(i);
 			}
+		}
+
+		/// <summary>
+		/// Shuffle remaining cards in deck
+		/// </summary>
+		public void Shuffle()
+		{
+			Shuffle(new Random());
+		}
+
+		/// <summary>
+		/// Shuffle remaining cards in deck using specified seed
+		/// </summary>
+		/// <param name="seed">Seed for randomizer</param>
+		/// <remarks>Should only be used in tests for predictable results</remarks>
+		public void Shuffle(int seed)
+		{
+			Shuffle(new Random(seed));
 		}
 	}
 }
