@@ -487,3 +487,6 @@ FodyWeavers.xsd
 
 # Exported binaries
 Export/
+
+# Global .NET config
+global.json
