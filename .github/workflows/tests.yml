@@ -15,6 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build Project
+      - name: Run Tests
         working-directory: ${{runner.workspace}}/mcg
-        run: msbuild Tests -r:true -t:rebuild -property:configuration=release
+        run: msbuild Tests -r:true -t:xunittest -property:configuration=release

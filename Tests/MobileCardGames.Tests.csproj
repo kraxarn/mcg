@@ -51,6 +51,10 @@
       <PackageReference Include="xunit.core" Version="2.1.0" />
       <PackageReference Include="xunit.extensibility.core" Version="2.1.0" />
       <PackageReference Include="xunit.extensibility.execution" Version="2.1.0" />
+      <PackageReference Include="xunit.runner.msbuild" Version="2.4.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\Shared\MobileCardGames.Shared.projitems" Label="Shared" />
