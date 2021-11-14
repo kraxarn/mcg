@@ -18,7 +18,8 @@ namespace MobileCardGames.Tests.Entities
 			var sorted = new Deck();
 
 			var shuffled = new Deck();
-			//shuffled.Shuffle();
+			// "Random" seed that shuffles entire deck every time
+			shuffled.Shuffle(1248);
 
 			Assert.Equal(sorted.Count, shuffled.Count);
 
@@ -29,6 +30,9 @@ namespace MobileCardGames.Tests.Entities
 
 				Assert.NotEqual(sortedCard, shuffledCard);
 			}
+
+			Assert.Equal(0, sorted.Count);
+			Assert.Equal(0, shuffled.Count);
 		}
 	}
 }
