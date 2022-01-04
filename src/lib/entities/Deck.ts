@@ -17,13 +17,13 @@ export default class Deck {
 
 		for (
 			let suit = PlayingCardSuite.Spades;
-			i <= PlayingCardSuite.Hearts;
-			i++
+			suit <= PlayingCardSuite.Hearts;
+			suit++
 		) {
 			for (
 				let value = PlayingCardValue.Ace;
-				i <= PlayingCardValue.King;
-				i++
+				value <= PlayingCardValue.King;
+				value++
 			) {
 				this.cards.push(new PlayingCard(suit, value))
 			}
