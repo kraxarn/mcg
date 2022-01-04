@@ -1,0 +1,31 @@
+@import "@fontsource/mali/400.css";
+@import "@fontsource/mali/600.css";
+
+:root {
+	/** Default font */
+	--font-default: "Mali", sans-serif;
+	/** Default font weight */
+	--font-weight-default: 400;
+	/** H1 font weight */
+	--font-weight-title1: 600;
+
+	/** Primary text color for labels etc. */
+	--foreground-color: #263238;
+	/** Alternative text color for buttons etc. */
+	--foreground-alt-color: #eceff1;
+	/** Main background color */
+	--background-color: #3399da;
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: var(--font-default);
+}
+
+button {
+	font-family: var(--font-default);
+}
+
+h1 {
+	font-weight: var(--font-weight-title1);
+}
