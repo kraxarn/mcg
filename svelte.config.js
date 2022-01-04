@@ -12,6 +12,13 @@ const config = {
 
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: "#svelte",
+
+		// GitHub pages
+		paths: {
+			base: process.env.NODE_ENV === "development"
+				? ""
+				: "/mcg",
+		},
 	},
 }
 
