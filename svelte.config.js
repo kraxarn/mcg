@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-static"
+import adapter from "@sveltejs/adapter-vercel"
 import preprocess from "svelte-preprocess"
 
 /** @type {import("@sveltejs/kit").Config} */
@@ -12,13 +12,6 @@ const config = {
 
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: "#svelte",
-
-		// GitHub pages
-		paths: {
-			base: process.env.NODE_ENV === "development"
-				? ""
-				: "/mcg",
-		},
 	},
 }
 
