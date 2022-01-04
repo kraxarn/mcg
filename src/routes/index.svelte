@@ -1,5 +1,14 @@
 <script context="module" lang="ts">
-	export const prerender = true
+	import type { Load } from "@sveltejs/kit"
+
+	export const load: Load = ({ session }) => {
+		if (!session.user) {
+			return {
+				status: 302,
+				redirect: "/login",
+			}
+		}
+	}
 </script>
 
 <div id="container">
