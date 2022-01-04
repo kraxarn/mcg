@@ -20,3 +20,15 @@ jobs:
           cache: 'npm'
       - run: npm install
       - run: npm run build --if-present
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          publish_dir: ${{runner.workspace}}/build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcg
+          path: ${{runner.workspace}}/build
