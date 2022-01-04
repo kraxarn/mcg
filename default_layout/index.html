@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Svelte demo app" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/mcg/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/vendor-ec9510ad.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/pages/__layout.svelte-02d98274.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/app-40d9c270.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/pages/default_layout.svelte-891e9b28.css">
+		<link rel="modulepreload" href="/mcg/_app/start-ec790c88.js">
+		<link rel="modulepreload" href="/mcg/_app/chunks/vendor-f77cd1bd.js">
+		<link rel="modulepreload" href="/mcg/_app/pages/__layout.svelte-14657c6f.js">
+		<link rel="modulepreload" href="/mcg/_app/pages/default_layout.svelte-1c0a3efe.js">
+
+		<script type="module">
+			import { start } from "/mcg/_app/start-ec790c88.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"/mcg","assets":"/mcg"},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/mcg/_app/pages/__layout.svelte-14657c6f.js"),
+						import("/mcg/_app/pages/default_layout.svelte-1c0a3efe.js")
+					],
+					url: new URL("http://prerender/default_layout"),
+					params: {}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<main class="svelte-lbhzz2"><header class="svelte-1mcjagh"><div class="corner svelte-1mcjagh"><a href="https://kit.svelte.dev" class="svelte-1mcjagh"><img src="/mcg/_app/assets/svelte-logo-87df40b8.svg" alt="SvelteKit" class="svelte-1mcjagh"></a></div>
+
+	<nav class="svelte-1mcjagh"><svg viewBox="0 0 2 3" aria-hidden="true" class="svelte-1mcjagh"><path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" class="svelte-1mcjagh"></path></svg>
+		<ul class="svelte-1mcjagh"><li class="svelte-1mcjagh"><a sveltekit:prefetch href="/" class="svelte-1mcjagh">Home</a></li>
+			<li class="svelte-1mcjagh"><a sveltekit:prefetch href="/about" class="svelte-1mcjagh">About</a></li>
+			<li class="svelte-1mcjagh"><a sveltekit:prefetch href="/todos" class="svelte-1mcjagh">Todos</a></li></ul>
+		<svg viewBox="0 0 2 3" aria-hidden="true" class="svelte-1mcjagh"><path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" class="svelte-1mcjagh"></path></svg></nav>
+
+	<div class="corner svelte-1mcjagh"></div>
+</header>
+
+<main class="svelte-1izrdc8"></main>
+
+<footer class="svelte-1izrdc8"><p>visit <a href="https://kit.svelte.dev" class="svelte-1izrdc8">kit.svelte.dev</a> to learn SvelteKit
+	</p>
+</footer>
+</main>
+
+</div>
+	</body>
+</html>

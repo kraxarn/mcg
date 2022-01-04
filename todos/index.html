@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Svelte demo app" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Todos</title>
+
+		
+
+		<link rel="stylesheet" href="/mcg/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/vendor-ec9510ad.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/pages/__layout.svelte-02d98274.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/app-40d9c270.css">
+		<link rel="stylesheet" href="/mcg/_app/assets/pages/todos/index.svelte-784042c1.css">
+		<link rel="modulepreload" href="/mcg/_app/start-ec790c88.js">
+		<link rel="modulepreload" href="/mcg/_app/chunks/vendor-f77cd1bd.js">
+		<link rel="modulepreload" href="/mcg/_app/pages/__layout.svelte-14657c6f.js">
+		<link rel="modulepreload" href="/mcg/_app/pages/todos/index.svelte-4fb093c8.js">
+
+		<script type="module">
+			import { start } from "/mcg/_app/start-ec790c88.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"/mcg","assets":"/mcg"},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/mcg/_app/pages/__layout.svelte-14657c6f.js"),
+						import("/mcg/_app/pages/todos/index.svelte-4fb093c8.js")
+					],
+					url: new URL("http://prerender/todos"),
+					params: {}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<main class="svelte-lbhzz2">
+
+<div class="todos svelte-dmxqmd"><h1>Todos</h1>
+
+	<form class="new svelte-dmxqmd" action="/todos.json" method="post"><input name="text" aria-label="Add todo" placeholder="+ tap to add a todo" class="svelte-dmxqmd"></form>
+
+	
+</div>
+</main>
+
+<script type="application/json" data-type="svelte-data" data-url="/todos.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"[]"}</script></div>
+	</body>
+</html>
