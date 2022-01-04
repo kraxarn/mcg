@@ -6,6 +6,4 @@ user.subscribe((value: string) => {
 	window.localStorage.setItem("user", value)
 })
 
-export {
-	user as default,
-}
+export { user as default }

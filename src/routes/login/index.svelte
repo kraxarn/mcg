@@ -11,10 +11,7 @@
 		faTwitter,
 		faGithub,
 	} from "@fortawesome/free-brands-svg-icons"
-	import {
-		faPhone,
-		faUserSecret,
-	} from "@fortawesome/free-solid-svg-icons"
+	import { faPhone, faUserSecret } from "@fortawesome/free-solid-svg-icons"
 </script>
 
 <img src="/images/logo.webp" alt="mcg logo" />
