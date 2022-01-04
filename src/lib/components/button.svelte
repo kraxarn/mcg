@@ -19,13 +19,14 @@
 		flex-direction: row;
 		align-items: center;
 		gap: 8px;
+		padding: 0;
 
-		padding: 12px;
-		background-color: brown;
-		border: 0;
-		border-radius: 8px;
 		color: var(--foreground-alt-color);
-		font-size: 1.2em;
+		background-color: #a47137;
+		font-size: 1.4em;
+
+		border-width: 18px;
+		border-image: url("images/button.webp") 32;
 	}
 
 	button span {
