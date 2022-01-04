@@ -12,7 +12,7 @@
 </script>
 
 <div id="container">
-	<img src="images/logo.webp" alt="logo" />
+	<img src="/images/logo.webp" alt="logo" />
 </div>
 
 <style>

@@ -26,7 +26,7 @@
 		font-size: 1.4em;
 
 		border-width: 18px;
-		border-image: url("images/button.webp") 32;
+		border-image: url("/images/button.webp") 32;
 	}
 
 	button span {

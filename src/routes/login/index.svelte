@@ -17,7 +17,7 @@
 	} from "@fortawesome/free-solid-svg-icons"
 </script>
 
-<img src="images/logo.webp" alt="mcg logo" />
+<img src="/images/logo.webp" alt="mcg logo" />
 
 <h1>
 	Welcome to<br />
