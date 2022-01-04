@@ -11,15 +11,5 @@ export const handle: Handle = async ({ request, resolve }) => {
 		request.method = method.toUpperCase()
 	}
 
-	if (!cookies.userid
-		&& !request.url.pathname.endsWith("/login")) {
-		return {
-			status: 302,
-			headers: {
-				Location: "/login",
-			},
-		}
-	}
-
 	return resolve(request)
 }
