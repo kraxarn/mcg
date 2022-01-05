@@ -1,8 +1,8 @@
-enum PlayingCardSuite {
+enum PlayingCardSuit {
 	Spades,
 	Clubs,
 	Diamonds,
 	Hearts,
 }
 
-export { PlayingCardSuite as default }
+export { PlayingCardSuit as default }
