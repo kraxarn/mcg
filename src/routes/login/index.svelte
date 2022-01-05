@@ -12,22 +12,9 @@
 		faGithub,
 	} from "@fortawesome/free-brands-svg-icons"
 	import { faPhone, faUserSecret } from "@fortawesome/free-solid-svg-icons"
-	import PlayingCard from "$lib/components/PlayingCard.svelte"
-	import PlayingCardSuit from "$lib/enums/PlayingCardSuit"
-	import PlayingCardValue from "$lib/enums/PlayingCardValue"
 </script>
 
-<!--<img src="/images/logo.webp" alt="mcg logo" />-->
-
-<!-- Move to component -->
-<div id="logo">
-	<PlayingCard
-		suit="{PlayingCardSuit.Hearts}"
-		value="{PlayingCardValue.Queen}" />
-	<PlayingCard
-		suit="{PlayingCardSuit.Spades}"
-		value="{PlayingCardValue.Ten}" />
-</div>
+<img src="/images/logo.webp" alt="mcg logo" />
 
 <h1>
 	Welcome to<br />
