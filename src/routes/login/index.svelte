@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-	import Button from "$lib/components/button.svelte"
+	import Button from "$lib/components/Button.svelte"
 	import {
 		faGoogle,
 		faApple,
