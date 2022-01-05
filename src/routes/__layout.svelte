@@ -1,7 +1,21 @@
+<script context="module" lang="ts">
+	import type { Load } from "@sveltejs/kit"
+
+	export const load: Load = async ({ fetch }) => {
+		const response = await fetch("/version.json")
+		const json = await response.json()
+		return {
+			props: {
+				version: json.version,
+			},
+		}
+	}
+</script>
+
 <script lang="ts">
 	import "../app.css"
 
-	const version = process.env.npm_package_version
+	export let version: string
 </script>
 
 <main>
