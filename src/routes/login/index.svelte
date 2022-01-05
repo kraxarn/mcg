@@ -8,10 +8,9 @@
 		faGoogle,
 		faApple,
 		faFacebook,
-		faTwitter,
-		faGithub,
+		faSteam,
 	} from "@fortawesome/free-brands-svg-icons"
-	import { faPhone, faUserSecret } from "@fortawesome/free-solid-svg-icons"
+	import { faAt, faUserSecret } from "@fortawesome/free-solid-svg-icons"
 </script>
 
 <img src="/images/logo.webp" alt="mcg logo" />
@@ -24,12 +23,11 @@
 <h3>Choose a login method</h3>
 
 <div id="login-methods">
-	<Button content="Google" icon={faGoogle} />
 	<Button content="Apple" icon={faApple} />
 	<Button content="Facebook" icon={faFacebook} />
-	<Button content="Twitter" icon={faTwitter} />
-	<Button content="GitHub" icon={faGithub} />
-	<Button content="Phone number" icon={faPhone} />
+	<Button content="Google" icon={faGoogle} />
+	<Button content="Steam" icon={faSteam} />
+	<Button content="Email" icon={faAt} />
 	<Button content="Anonymous" icon={faUserSecret} />
 </div>
 
