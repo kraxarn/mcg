@@ -35,6 +35,7 @@
 		"@fontsource/mali": "^4.5.0",
 		"@fortawesome/free-brands-svg-icons": "^5.15.4",
 		"@fortawesome/free-solid-svg-icons": "^5.15.4",
+		"@heroiclabs/nakama-js": "^2.3.0",
 		"cookie": "^0.4.1",
 		"svelte-fa": "^2.4.0"
 	}

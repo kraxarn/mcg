@@ -1,5 +1,19 @@
 <script context="module" lang="ts">
+	import type { Load } from "@sveltejs/kit"
+	import { Client } from "@heroiclabs/nakama-js"
+
 	export const prerender = true
+
+	export const load: Load = async ({ fetch }) => {
+		const response = await fetch("/nakama/client")
+		const json = await response.json()
+		return {
+			props: {
+				// TODO: Still exposes server key in network log
+				client: new Client(json.serverKey, json.host),
+			},
+		}
+	}
 </script>
 
 <script lang="ts">
