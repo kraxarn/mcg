@@ -13,7 +13,8 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		background-image: url("/images/banner.webp");
+		min-height: 80px;
+		background-image: url("/images/banner_top.webp");
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -22,6 +23,8 @@
 	}
 
 	h1 {
+		margin-top: 20px;
+		margin-bottom: 34px;
 		text-align: center;
 	}
 </style>
