@@ -10,7 +10,7 @@
 		border-image-repeat: repeat;
 		border-width: 8px;
 		border-style: solid;
-		width: 80%;
+		width: 50%;
 	}
 
 	.panel-content {
@@ -22,5 +22,11 @@
 		box-sizing: border-box;
 		flex-direction: column;
 		background-color: #fff1d3;
+	}
+
+	@media screen and (orientation: portrait) {
+		.panel-container {
+			width: 95%;
+		}
 	}
 </style>
