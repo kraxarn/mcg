@@ -29,14 +29,7 @@
 	import LoginMethod from "./LoginMethod.svelte"
 	import Spinner from "$lib/components/Spinner.svelte"
 
-	import nakama from "@heroiclabs/nakama-js"
-	const { Client } = nakama
-
-	export let serverKey: string
-	export let host: string
-
 	let selectedItem: string
-	let client = new Client(serverKey, host)
 
 	const onLoginClicked = (event: MouseEvent) => {
 		const button = (event.target as Element).closest("button")
