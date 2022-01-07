@@ -48,7 +48,8 @@
 <img src="/images/logo.webp" alt="mcg logo" />
 
 <h1>
-	Welcome to Mobile Card Games
+	Welcome to<br />
+	Mobile Card Games
 </h1>
 
 <Panel on:click={onLoginClicked}>
