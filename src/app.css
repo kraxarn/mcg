@@ -22,6 +22,7 @@ body {
 	color: var(--foreground-color);
 	font-family: var(--font-default);
 	font-weight: var(--font-weight-default);
+	background-image: url("/images/pattern.webp");
 }
 
 button {
