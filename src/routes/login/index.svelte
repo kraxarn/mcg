@@ -77,7 +77,7 @@
 			<TextInput type="text" />
 			<span>Password</span>
 			<TextInput type="password" />
-			<div></div>
+			<div class="spacing"></div>
 			<Button id="email-go" content="Login" icon="{faSignInAlt}" />
 		</div>
 	</LoginMethod>
@@ -85,8 +85,8 @@
 	<LoginMethod name="Anonymous" icon="{faUserSecret}" {selectedItem}>
 		<div id="login-anonymous-details" class="login-details">
 			<span>Username</span>
-			<TextInput type="text" />
-			<div></div>
+			<TextInput classes="input-container" type="text" />
+			<div class="spacing"></div>
 			<Button id="anonymous-go" content="Login" icon="{faSignInAlt}" />
 		</div>
 	</LoginMethod>
@@ -113,5 +113,20 @@
 
 	.login-details span {
 		align-self: center;
+	}
+
+	@media screen and (orientation: portrait) {
+		.login-details {
+			grid-template-columns: 1fr;
+			row-gap: 0;
+		}
+
+		.login-details span:not(:first-child) {
+			margin-top: 12px;
+		}
+
+		.login-details .spacing {
+			height: 12px;
+		}
 	}
 </style>
