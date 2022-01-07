@@ -3,12 +3,12 @@
 	export let type: "text" | "password"
 </script>
 
-<div id="input-container">
+<div class="input-container">
 	<input {id} {type} />
 </div>
 
 <style>
-	#input-container {
+	.input-container {
 		display: flex;
 		flex-direction: row;
 		border-image: url("/images/input.webp") 8;
