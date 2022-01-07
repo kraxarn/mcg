@@ -28,6 +28,7 @@
 	import TextInput from "$lib/components/TextInput.svelte"
 	import LoginMethod from "./LoginMethod.svelte"
 	import Spinner from "$lib/components/Spinner.svelte"
+	import Panel from "$lib/components/Panel.svelte"
 
 	let selectedItem: string
 
@@ -47,13 +48,12 @@
 <img src="/images/logo.webp" alt="mcg logo" />
 
 <h1>
-	Welcome to<br />
-	Mobile Card Games
+	Welcome to Mobile Card Games
 </h1>
 
-<h3>Choose a login method</h3>
+<Panel on:click={onLoginClicked}>
+	<h3>Choose a login method</h3>
 
-<div id="login-methods" on:click={onLoginClicked}>
 	<LoginMethod name="Apple" icon="{faApple}" {selectedItem}>
 		<Spinner />
 	</LoginMethod>
@@ -89,18 +89,17 @@
 			<Button id="anonymous-go" content="Login" icon="{faSignInAlt}" />
 		</div>
 	</LoginMethod>
-</div>
+</Panel>
 
 <style>
 	h1 {
-		text-align: center;
+		color: var(--foreground-alt-color);
+		text-shadow: 0 0 4px var(--foreground-color);
+		margin-bottom: 0;
 	}
 
-	#login-methods {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		width: 80%;
+	h1, h3 {
+		text-align: center;
 	}
 
 	.login-details {
