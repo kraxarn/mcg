@@ -10,6 +10,7 @@
 		border-image-repeat: repeat;
 		border-width: 8px;
 		border-style: solid;
+		width: 80%;
 	}
 
 	.panel-content {
