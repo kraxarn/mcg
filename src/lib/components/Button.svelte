@@ -9,7 +9,9 @@
 <button {id}>
 	<Fa {icon} />
 	{#if content === undefined}
-		<slot />
+		<div>
+			<slot />
+		</div>
 	{:else}
 		<span>
 			{content}
@@ -33,7 +35,7 @@
 		border-image: url("/images/button.webp") 32;
 	}
 
-	button span {
+	button > :first-child {
 		flex: 1;
 	}
 </style>
