@@ -35,9 +35,21 @@
 
 	#version {
 		color: var(--foreground-color);
+		z-index: -1;
 		position: fixed;
 		font-family: monospace;
 		bottom: 12px;
 		left: 12px;
+	}
+
+	@media screen and (orientation: portrait) {
+		main {
+			margin-bottom: 32px;
+		}
+
+		#version {
+			bottom: 1.5%;
+			left: 3%;
+		}
 	}
 </style>
