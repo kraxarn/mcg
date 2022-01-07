@@ -18,7 +18,7 @@
 		height: 100%;
 		display: flex;
 		gap: 12px;
-		padding: 16px;
+		padding: 12px;
 		box-sizing: border-box;
 		flex-direction: column;
 		background-color: #fff1d3;
