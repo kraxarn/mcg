@@ -1,4 +1,4 @@
-<div class="panel-container">
+<div class="panel-container" on:click>
 	<div class="panel-content">
 		<slot />
 	</div>
