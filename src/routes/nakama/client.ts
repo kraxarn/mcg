@@ -1,5 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit"
 import type { Locals } from "$lib/types"
+import { encrypt } from "xor-cryptor"
 
 // GET /client
 export const get: RequestHandler<Locals> = async () => {
@@ -15,7 +16,7 @@ export const get: RequestHandler<Locals> = async () => {
 	return {
 		status: 200,
 		body: {
-			serverKey,
+			serverKey: encrypt(serverKey, host),
 			host,
 		},
 	}
