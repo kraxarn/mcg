@@ -31,3 +31,8 @@ button {
 h1 {
 	font-weight: var(--font-weight-title1);
 }
+
+a {
+	color: var(--foreground-alt-color);
+	text-decoration: none;
+}

@@ -34,6 +34,7 @@
 	}
 
 	#version {
+		color: var(--foreground-color);
 		position: fixed;
 		font-family: monospace;
 		bottom: 12px;
