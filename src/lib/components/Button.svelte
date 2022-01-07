@@ -8,9 +8,13 @@
 
 <button {id}>
 	<Fa {icon} />
-	<span>
-		{content}
-	</span>
+	{#if content === undefined}
+		<slot />
+	{:else}
+		<span>
+			{content}
+		</span>
+	{/if}
 </button>
 
 <style>
