@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Mobile Card Games" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Mobile Card Games</title>
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/vendor-ec9510ad.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-6286c452.css">
+		<link rel="stylesheet" href="/_app/assets/pages/dev/index.svelte-642f9819.css">
+		<link rel="stylesheet" href="/_app/assets/Button-3e9036fe.css">
+		<link rel="stylesheet" href="/_app/assets/Panel-b2bc9026.css">
+		<link rel="modulepreload" href="/_app/start-b103feda.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-b000d5df.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-78af92a0.js">
+		<link rel="modulepreload" href="/_app/pages/dev/index.svelte-44e1c610.js">
+		<link rel="modulepreload" href="/_app/chunks/Button-3c511eeb.js">
+		<link rel="modulepreload" href="/_app/chunks/Panel-ce7cc565.js">
+
+		<script type="module">
+			import { start } from "/_app/start-b103feda.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {user:void 0},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-78af92a0.js"),
+						import("/_app/pages/dev/index.svelte-44e1c610.js")
+					],
+					url: new URL("http://prerender/dev"),
+					params: {}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<main class="svelte-pao4dz"><div class="banner-container svelte-1ulvzgp"><h1 class="svelte-1ulvzgp">Developer</h1>
+</div>
+
+<div class="panel-container svelte-lzwycj"><div class="panel-content svelte-lzwycj"><button class="svelte-wzwvym">
+	<span class="svelte-wzwvym">Deck</span>
+</button>
+	<button class="svelte-wzwvym">
+	<span class="svelte-wzwvym">Scroll</span>
+</button>
+	<button class="svelte-wzwvym">
+	<span class="svelte-wzwvym">Input</span>
+</button>
+	<button class="svelte-wzwvym">
+	<span class="svelte-wzwvym">Storage</span>
+</button>
+	<button class="svelte-wzwvym">
+	<div class="svelte-wzwvym"><a sveltekit:prefetch href="/">Back
+		</a></div>
+</button></div>
+</div></main>
+
+<a id="version" sveltekit:prefetch href="/dev" class="svelte-pao4dz">v0.0.1
+</a>
+
+<script type="application/json" data-type="svelte-data" data-url="/version.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"version\":\"0.0.1\"}"}</script></div>
+	</body>
+</html>
