@@ -4,18 +4,23 @@ import * as fs from "fs"
 
 // TODO: Workaround for #3246
 (() => {
-	const url = new URL("node_modules/@heroiclabs/nakama-js/package.json",
-		import.meta.url)
-	const json = JSON.parse(fs.readFileSync(url, "utf8"))
-	json.type = "module"
+	const base = new URL("node_modules/@heroiclabs/nakama-js/", import.meta.url)
+	// nakama-js.esm.mjs
+	fs.rename(new URL("dist/nakama-js.esm.js", base),
+		new URL("dist/nakama-js.esm.mjs", base),
+		err => void err)
+	// package.json
+	const packageJson = new URL("package.json", base)
+	const json = JSON.parse(fs.readFileSync(packageJson, "utf8"))
+	json.module = "dist/nakama-js.esm.mjs"
 	json.exports = {
 		"./package.json": "./package.json",
 		".": {
-			"import": "./dist/nakama-js.esm.js",
-			"require": "./dist/nakama-js.cjs.js"
-		}
+			"import": "./dist/nakama-js.esm.mjs",
+			"require": "./dist/nakama-js.cjs.js",
+		},
 	}
-	fs.writeFileSync(url, JSON.stringify(json))
+	fs.writeFileSync(packageJson, JSON.stringify(json))
 })()
 
 /** @type {import("@sveltejs/kit").Config} */
