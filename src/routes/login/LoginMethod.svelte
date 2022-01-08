@@ -5,7 +5,7 @@
 	export let icon: string
 	export let selectedItem: string
 
-	const item = name.toLowerCase()
+	const item = name?.toLowerCase()
 </script>
 
 {#if !selectedItem || selectedItem === item}
