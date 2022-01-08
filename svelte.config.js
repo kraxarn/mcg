@@ -1,5 +1,15 @@
 import adapter from "@sveltejs/adapter-vercel"
 import preprocess from "svelte-preprocess"
+import * as fs from "fs"
+
+// TODO: Workaround for #3246
+(() => {
+	const url = new URL("node_modules/@heroiclabs/nakama-js/package.json",
+		import.meta.url)
+	const json = JSON.parse(fs.readFileSync(url, "utf8"))
+	json.main = json.module
+	fs.writeFileSync(url, JSON.stringify(json))
+})()
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
