@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
+        env:
+          NAKAMA_HOST: ${{secrets.NAKAMA_HOST}}
+          NAKAMA_SERVER_KEY: ${{secrets.KEYSTORE_NAKAMA_SERVER_KEY}}
       - run: npm install
       - run: npm run build --if-present
 
