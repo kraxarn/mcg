@@ -4,16 +4,13 @@
 	import Panel from "$lib/components/Panel.svelte"
 </script>
 
-<Banner title="Developer"/>
+<Banner title="Developer" />
 
 <Panel>
-	<Button content="Deck"/>
-	<Button content="Scroll"/>
-	<Button content="Input"/>
-	<Button content="Storage"/>
 	<Button>
-		<a sveltekit:prefetch href="/">
-			Back
-		</a>
+		<a sveltekit:prefetch href="/dev/nakama"> Nakama </a>
+	</Button>
+	<Button>
+		<a sveltekit:prefetch href="/"> Back </a>
 	</Button>
 </Panel>
