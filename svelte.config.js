@@ -2,7 +2,7 @@ import adapter from "@sveltejs/adapter-static"
 import preprocess from "svelte-preprocess"
 import * as fs from "fs"
 
-// TODO: Workaround for #3246
+// TODO: Workaround for heroiclabs/nakama-js#107
 (() => {
 	const base = new URL("node_modules/@heroiclabs/nakama-js/", import.meta.url)
 	// nakama-js.esm.mjs
