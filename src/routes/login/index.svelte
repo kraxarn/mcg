@@ -74,7 +74,7 @@
 	<LoginMethod name="Email" icon="{faAt}" {selectedItem}>
 		<div id="login-email-details" class="login-details">
 			<span>Email</span>
-			<TextInput type="text" />
+			<TextInput type="email" />
 			<span>Password</span>
 			<TextInput type="password" />
 			<div class="spacing"></div>
