@@ -3,12 +3,14 @@ import preprocess from "svelte-preprocess"
 import * as fs from "fs"
 
 // TODO: Workaround for heroiclabs/nakama-js#107
-(() => {
+;(() => {
 	const base = new URL("node_modules/@heroiclabs/nakama-js/", import.meta.url)
 	// nakama-js.esm.mjs
-	fs.rename(new URL("dist/nakama-js.esm.js", base),
+	fs.rename(
+		new URL("dist/nakama-js.esm.js", base),
 		new URL("dist/nakama-js.esm.mjs", base),
-		err => void err)
+		(err) => void err
+	)
 	// package.json
 	const packageJson = new URL("package.json", base)
 	const json = JSON.parse(fs.readFileSync(packageJson, "utf8"))
@@ -16,8 +18,8 @@ import * as fs from "fs"
 	json.exports = {
 		"./package.json": "./package.json",
 		".": {
-			"import": "./dist/nakama-js.esm.mjs",
-			"require": "./dist/nakama-js.cjs.js",
+			import: "./dist/nakama-js.esm.mjs",
+			require: "./dist/nakama-js.cjs.js",
 		},
 	}
 	fs.writeFileSync(packageJson, JSON.stringify(json))

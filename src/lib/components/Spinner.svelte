@@ -1,11 +1,10 @@
 <script lang="ts">
-
 	import Fa from "svelte-fa"
 	import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 </script>
 
 <div class="spinner-container">
-	<Fa icon="{faSpinner}" />
+	<Fa icon={faSpinner} />
 </div>
 
 <style>

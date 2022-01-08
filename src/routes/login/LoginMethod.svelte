@@ -9,7 +9,7 @@
 </script>
 
 {#if !selectedItem || selectedItem === item}
-	<Button id="login-{item}" content="{name}" {icon} />
+	<Button id="login-{item}" content={name} {icon} />
 	{#if selectedItem === item}
 		<div class="login-item-container">
 			<slot />

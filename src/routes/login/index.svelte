@@ -39,9 +39,7 @@
 		}
 
 		const method = button.id.substring(button.id.indexOf("-") + 1)
-		selectedItem = method === selectedItem
-			? undefined
-			: method
+		selectedItem = method === selectedItem ? undefined : method
 	}
 </script>
 
@@ -55,39 +53,39 @@
 <Panel on:click={onLoginClicked}>
 	<h3>Choose a login method</h3>
 
-	<LoginMethod name="Apple" icon="{faApple}" {selectedItem}>
+	<LoginMethod name="Apple" icon={faApple} {selectedItem}>
 		<Spinner />
 	</LoginMethod>
 
-	<LoginMethod name="Facebook" icon="{faFacebook}" {selectedItem}>
+	<LoginMethod name="Facebook" icon={faFacebook} {selectedItem}>
 		<Spinner />
 	</LoginMethod>
 
-	<LoginMethod name="Google" icon="{faGoogle}" {selectedItem}>
+	<LoginMethod name="Google" icon={faGoogle} {selectedItem}>
 		<Spinner />
 	</LoginMethod>
 
-	<LoginMethod name="Steam" icon="{faSteam}" {selectedItem}>
+	<LoginMethod name="Steam" icon={faSteam} {selectedItem}>
 		<Spinner />
 	</LoginMethod>
 
-	<LoginMethod name="Email" icon="{faAt}" {selectedItem}>
+	<LoginMethod name="Email" icon={faAt} {selectedItem}>
 		<div id="login-email-details" class="login-details">
 			<span>Email</span>
 			<TextInput type="email" />
 			<span>Password</span>
 			<TextInput type="password" />
-			<div class="spacing"></div>
-			<Button id="email-go" content="Login" icon="{faSignInAlt}" />
+			<div class="spacing" />
+			<Button id="email-go" content="Login" icon={faSignInAlt} />
 		</div>
 	</LoginMethod>
 
-	<LoginMethod name="Anonymous" icon="{faUserSecret}" {selectedItem}>
+	<LoginMethod name="Anonymous" icon={faUserSecret} {selectedItem}>
 		<div id="login-anonymous-details" class="login-details">
 			<span>Username</span>
 			<TextInput classes="input-container" type="text" />
-			<div class="spacing"></div>
-			<Button id="anonymous-go" content="Login" icon="{faSignInAlt}" />
+			<div class="spacing" />
+			<Button id="anonymous-go" content="Login" icon={faSignInAlt} />
 		</div>
 	</LoginMethod>
 </Panel>
@@ -99,7 +97,8 @@
 		margin-bottom: 0;
 	}
 
-	h1, h3 {
+	h1,
+	h3 {
 		text-align: center;
 	}
 
