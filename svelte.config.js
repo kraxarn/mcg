@@ -7,8 +7,14 @@ import * as fs from "fs"
 	const url = new URL("node_modules/@heroiclabs/nakama-js/package.json",
 		import.meta.url)
 	const json = JSON.parse(fs.readFileSync(url, "utf8"))
-	json.main = json.module
 	json.type = "module"
+	json.exports = {
+		"./package.json": "./package.json",
+		".": {
+			"import": "./dist/nakama-js.esm.js",
+			"require": "./dist/nakama-js.cjs.js"
+		}
+	}
 	fs.writeFileSync(url, JSON.stringify(json))
 })()
 
