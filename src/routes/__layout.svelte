@@ -22,9 +22,9 @@
 	<slot />
 </main>
 
-<span id="version">
+<a id="version" sveltekit:prefetch href="/dev">
 	v{version}
-</span>
+</a>
 
 <style>
 	main {
