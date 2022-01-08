@@ -8,6 +8,7 @@ import * as fs from "fs"
 		import.meta.url)
 	const json = JSON.parse(fs.readFileSync(url, "utf8"))
 	json.main = json.module
+	json.type = "module"
 	fs.writeFileSync(url, JSON.stringify(json))
 })()
 
