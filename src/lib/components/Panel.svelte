@@ -12,6 +12,7 @@
 		border-style: solid;
 		width: 50%;
 		flex: 1;
+		overflow-y: hidden;
 	}
 
 	.panel-content {
@@ -23,6 +24,7 @@
 		box-sizing: border-box;
 		flex-direction: column;
 		background-color: #fff1d3;
+		overflow-y: auto;
 	}
 
 	@media screen and (orientation: portrait) {
