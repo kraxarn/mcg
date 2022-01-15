@@ -1,10 +1,11 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-e2947740.js",
+    "file": "start-c18fc431.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js",
+      "_singletons-a42a5e91.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
@@ -20,15 +21,15 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-fe40394b.js",
+    "file": "pages/__layout.svelte-99782c2e.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-0e499aee.css"
+      "assets/pages/__layout.svelte-3cdcb0cd.css"
     ],
     "assets": [
       "assets/mali-thai-400-normal-e90d369d.woff2",
@@ -44,116 +45,123 @@
     ]
   },
   ".svelte-kit/build/components/error.svelte": {
-    "file": "error.svelte-98f2491f.js",
+    "file": "error.svelte-9368df79.js",
     "src": ".svelte-kit/build/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-96be721b.js",
+    "file": "pages/index.svelte-573e8852.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js",
-      "_Spinner-b60c2095.js"
+      "_vendor-8973b3f2.js",
+      "_Spinner-96f3d94f.js"
     ],
     "css": [
       "assets/pages/index.svelte-7fdeddca.css"
     ]
   },
   "src/routes/login/index.svelte": {
-    "file": "pages/login/index.svelte-4a7611e6.js",
+    "file": "pages/login/index.svelte-c8845d42.js",
     "src": "src/routes/login/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js",
-      "_Button-ae341517.js",
+      "_vendor-8973b3f2.js",
+      "_Button-f7c3a04d.js",
       "src/routes/login/LoginMethod.svelte",
-      "_Spinner-b60c2095.js",
-      "_Panel-8ebc6e51.js"
+      "_Spinner-96f3d94f.js",
+      "_Panel-7d77d93a.js",
+      "_singletons-a42a5e91.js"
     ],
     "css": [
       "assets/pages/login/index.svelte-07e37c3f.css"
     ]
   },
   "src/routes/login/LoginMethod.svelte": {
-    "file": "pages/login/LoginMethod.svelte-47757166.js",
+    "file": "pages/login/LoginMethod.svelte-3fe7a2e9.js",
     "src": "src/routes/login/LoginMethod.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js",
-      "_Button-ae341517.js"
+      "_vendor-8973b3f2.js",
+      "_Button-f7c3a04d.js",
+      "_singletons-a42a5e91.js"
     ],
     "css": [
       "assets/pages/login/LoginMethod.svelte-f0bff7d3.css"
     ]
   },
   "src/routes/dev/index.svelte": {
-    "file": "pages/dev/index.svelte-2a1604b6.js",
+    "file": "pages/dev/index.svelte-c45e6c6f.js",
     "src": "src/routes/dev/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js",
-      "_Button-ae341517.js",
-      "_Banner-bf3096d8.js",
-      "_Panel-8ebc6e51.js"
+      "_vendor-8973b3f2.js",
+      "_Button-f7c3a04d.js",
+      "_Banner-ef6bc125.js",
+      "_Panel-7d77d93a.js",
+      "_singletons-a42a5e91.js"
     ]
   },
   "src/routes/dev/nakama.svelte": {
-    "file": "pages/dev/nakama.svelte-ca4082a2.js",
+    "file": "pages/dev/nakama.svelte-f2f00184.js",
     "src": "src/routes/dev/nakama.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-6a93e758.js",
-      "_Banner-bf3096d8.js",
-      "_Panel-8ebc6e51.js"
+      "_vendor-8973b3f2.js",
+      "_Banner-ef6bc125.js",
+      "_Panel-7d77d93a.js"
     ]
   },
-  "_vendor-6a93e758.js": {
-    "file": "chunks/vendor-6a93e758.js",
+  "_vendor-8973b3f2.js": {
+    "file": "chunks/vendor-8973b3f2.js",
     "css": [
       "assets/vendor-ec9510ad.css"
     ]
   },
-  "_Spinner-b60c2095.js": {
-    "file": "chunks/Spinner-b60c2095.js",
+  "_singletons-a42a5e91.js": {
+    "file": "chunks/singletons-a42a5e91.js"
+  },
+  "_Spinner-96f3d94f.js": {
+    "file": "chunks/Spinner-96f3d94f.js",
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js"
     ],
     "css": [
-      "assets/Spinner-2b7949df.css"
+      "assets/Spinner-d622bba4.css"
     ]
   },
-  "_Button-ae341517.js": {
-    "file": "chunks/Button-ae341517.js",
+  "_Button-f7c3a04d.js": {
+    "file": "chunks/Button-f7c3a04d.js",
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js",
+      "_singletons-a42a5e91.js"
     ],
     "css": [
-      "assets/Button-3e9036fe.css"
+      "assets/Button-1b2834f9.css"
     ]
   },
-  "_Panel-8ebc6e51.js": {
-    "file": "chunks/Panel-8ebc6e51.js",
+  "_Panel-7d77d93a.js": {
+    "file": "chunks/Panel-7d77d93a.js",
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js"
     ],
     "css": [
-      "assets/Panel-b2bc9026.css"
+      "assets/Panel-3c9373f6.css"
     ]
   },
-  "_Banner-bf3096d8.js": {
-    "file": "chunks/Banner-bf3096d8.js",
+  "_Banner-ef6bc125.js": {
+    "file": "chunks/Banner-ef6bc125.js",
     "imports": [
-      "_vendor-6a93e758.js"
+      "_vendor-8973b3f2.js"
     ],
     "css": [
       "assets/Banner-c3c2cfb1.css"
