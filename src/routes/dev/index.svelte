@@ -5,7 +5,6 @@
 	import {
 		faChevronLeft,
 		faRocket,
-		faArrowsAlt,
 	} from "@fortawesome/free-solid-svg-icons"
 </script>
 
@@ -13,6 +12,5 @@
 
 <Panel>
 	<Button href="/dev/nakama" content="Nakama" icon="{faRocket}" />
-	<Button href="/dev/layout" content="Layout" icon="{faArrowsAlt}" />
 	<Button href="/" content="Back" icon="{faChevronLeft}" />
 </Panel>
