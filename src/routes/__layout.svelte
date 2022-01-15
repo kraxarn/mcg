@@ -31,6 +31,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		height: 100vh;
+		padding: 1em 0;
+		box-sizing: border-box;
 	}
 
 	#version {
