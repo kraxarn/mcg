@@ -4,7 +4,7 @@
 </script>
 
 <div class="spinner-container">
-	<Fa icon={faSpinner} />
+	<Fa icon={faSpinner} spin />
 </div>
 
 <style>
@@ -16,18 +16,5 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		animation-name: spinner-spin;
-		animation-duration: 1.5s;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
-	}
-
-	@keyframes spinner-spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
 	}
 </style>
