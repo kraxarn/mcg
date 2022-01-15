@@ -46,13 +46,10 @@
 	}
 
 	@media screen and (orientation: portrait) {
-		main {
-			margin-bottom: 32px;
-		}
-
 		#version {
-			bottom: 1.5%;
+			bottom: 2%;
 			left: 3%;
+			z-index: 1;
 		}
 	}
 </style>
