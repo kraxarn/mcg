@@ -11,9 +11,13 @@
 </script>
 
 <button {id} on:click={onClick}>
-	<Fa {icon} />
+	{#if icon !== undefined}
+		<div class="button-icon">
+			<Fa {icon} />
+		</div>
+	{/if}
 	{#if content === undefined}
-		<div>
+		<div class="button-content">
 			<slot />
 		</div>
 	{:else}
@@ -40,7 +44,11 @@
 		border-image: url("/images/button.webp") 32;
 	}
 
-	button > :first-child {
+	.button-icon {
+		width: 1.2em;
+	}
+
+	.button-content {
 		flex: 1;
 	}
 </style>
