@@ -11,6 +11,7 @@
 		border-width: 8px;
 		border-style: solid;
 		width: 50%;
+		flex: 1;
 	}
 
 	.panel-content {
