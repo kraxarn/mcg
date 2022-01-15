@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-c18fc431.js",
+    "file": "start-7bd4215a.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -21,7 +21,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-99782c2e.js",
+    "file": "pages/__layout.svelte-3555aec3.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -29,7 +29,7 @@
       "_vendor-8973b3f2.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-3cdcb0cd.css"
+      "assets/pages/__layout.svelte-6b1fb7a8.css"
     ],
     "assets": [
       "assets/mali-thai-400-normal-e90d369d.woff2",
@@ -67,7 +67,7 @@
     ]
   },
   "src/routes/login/index.svelte": {
-    "file": "pages/login/index.svelte-c8845d42.js",
+    "file": "pages/login/index.svelte-5f575fbb.js",
     "src": "src/routes/login/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -76,7 +76,7 @@
       "_Button-f7c3a04d.js",
       "src/routes/login/LoginMethod.svelte",
       "_Spinner-96f3d94f.js",
-      "_Panel-7d77d93a.js",
+      "_Panel-3fbae454.js",
       "_singletons-a42a5e91.js"
     ],
     "css": [
@@ -98,7 +98,7 @@
     ]
   },
   "src/routes/dev/index.svelte": {
-    "file": "pages/dev/index.svelte-c45e6c6f.js",
+    "file": "pages/dev/index.svelte-2ce56015.js",
     "src": "src/routes/dev/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -106,19 +106,19 @@
       "_vendor-8973b3f2.js",
       "_Button-f7c3a04d.js",
       "_Banner-ef6bc125.js",
-      "_Panel-7d77d93a.js",
+      "_Panel-3fbae454.js",
       "_singletons-a42a5e91.js"
     ]
   },
   "src/routes/dev/nakama.svelte": {
-    "file": "pages/dev/nakama.svelte-f2f00184.js",
+    "file": "pages/dev/nakama.svelte-09d9d544.js",
     "src": "src/routes/dev/nakama.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-8973b3f2.js",
       "_Banner-ef6bc125.js",
-      "_Panel-7d77d93a.js"
+      "_Panel-3fbae454.js"
     ]
   },
   "_vendor-8973b3f2.js": {
@@ -149,13 +149,13 @@
       "assets/Button-1b2834f9.css"
     ]
   },
-  "_Panel-7d77d93a.js": {
-    "file": "chunks/Panel-7d77d93a.js",
+  "_Panel-3fbae454.js": {
+    "file": "chunks/Panel-3fbae454.js",
     "imports": [
       "_vendor-8973b3f2.js"
     ],
     "css": [
-      "assets/Panel-3c9373f6.css"
+      "assets/Panel-b6b465a0.css"
     ]
   },
   "_Banner-ef6bc125.js": {
