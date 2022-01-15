@@ -7,10 +7,6 @@
 <Banner title="Developer" />
 
 <Panel>
-	<Button>
-		<a sveltekit:prefetch href="/dev/nakama"> Nakama </a>
-	</Button>
-	<Button>
-		<a sveltekit:prefetch href="/"> Back </a>
-	</Button>
+	<Button href="/dev/nakama" content="Nakama" />
+	<Button href="/" content="Back" />
 </Panel>
