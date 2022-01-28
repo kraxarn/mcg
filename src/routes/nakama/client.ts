@@ -13,10 +13,20 @@ export const get: RequestHandler<Locals> = async () => {
 		}
 	}
 
+	const { encrypted, err } = encrypt(serverKey, host)
+	if (err) {
+		return {
+			status: 500,
+			body: {
+				error: err,
+			},
+		}
+	}
+
 	return {
 		status: 200,
 		body: {
-			serverKey: encrypt(serverKey, host),
+			serverKey: encrypted,
 			host,
 		},
 	}
