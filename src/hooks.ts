@@ -1,12 +1,10 @@
 import type { GetSession, Handle } from "@sveltejs/kit"
 import { v4 as uuid } from "uuid"
+import { userId } from "$lib/user"
 
 export const handle: Handle = async ({ event, resolve }) => {
-	let userId = localStorage.getItem("userId")
-
-	if (userId === null) {
-		userId = uuid()
-		localStorage.setItem("userId", userId)
+	if (!userId) {
+		userId.set(uuid())
 	}
 
 	event.locals.userId = userId
