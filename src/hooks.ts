@@ -1,21 +1,20 @@
-import cookie from "cookie"
 import type { GetSession, Handle } from "@sveltejs/kit"
+import { v4 as uuid } from "uuid"
 
-export const handle: Handle = async ({ request, resolve }) => {
-	const cookies = cookie.parse(request.headers.cookie || "")
-	request.locals.user = cookies.user
+export const handle: Handle = async ({ event, resolve }) => {
+	let userId = localStorage.getItem("userId")
 
-	// TODO https://github.com/sveltejs/kit/issues/1046
-	const method = request.url.searchParams.get("_method")
-	if (method) {
-		request.method = method.toUpperCase()
+	if (userId === null) {
+		userId = uuid()
+		localStorage.setItem("userId", userId)
 	}
 
-	return resolve(request)
+	event.locals.userId = userId
+	return resolve(event)
 }
 
 export const getSession: GetSession = async (request) => {
 	return {
-		user: request.locals.user,
+		userId: request.locals.userId,
 	}
 }
