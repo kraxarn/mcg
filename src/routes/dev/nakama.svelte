@@ -14,6 +14,7 @@
 	import Banner from "$lib/components/Banner.svelte"
 	import Panel from "$lib/components/Panel.svelte"
 	import { Client } from "@heroiclabs/nakama-js"
+	import { decrypt } from "xor-cryptor"
 
 	export let serverKey: string
 	export let host: string
@@ -23,7 +24,8 @@
 
 	;(async () => {
 		try {
-			const client = new Client(serverKey, host)
+			const key = decrypt(serverKey, host).decrypted
+			const client = new Client(key, host)
 			const session = await client.authenticateDevice(
 				"00000000-0000-0000-0000-000000000000",
 				false,
