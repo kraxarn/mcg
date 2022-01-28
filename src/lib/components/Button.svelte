@@ -6,11 +6,21 @@
 	export let content: string
 	export let icon: string
 	export let href: string
+	export let disabled: boolean
 
-	const onClick = () => href ? goto(href) : void 0
+	const onClick = (event: Event) => {
+		if (disabled) {
+			event.stopPropagation()
+			return
+		}
+
+		if (href) {
+			goto(href)
+		}
+	}
 </script>
 
-<button {id} on:click={onClick}>
+<button {id} class:disabled={disabled} on:click={onClick}>
 	{#if icon !== undefined}
 		<div class="button-icon">
 			<Fa {icon} />
@@ -38,10 +48,17 @@
 		color: var(--foreground-alt-color);
 		background-color: #a47137;
 		font-size: 1.4em;
-		cursor: pointer;
 
 		border-width: 18px;
 		border-image: url("/images/button.webp") 32;
+	}
+
+	button:not(.disabled) {
+		cursor: pointer;
+	}
+
+	.disabled {
+		filter: grayscale(100%) brightness(125%);
 	}
 
 	.button-icon {
