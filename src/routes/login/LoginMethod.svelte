@@ -4,12 +4,13 @@
 	export let name: string
 	export let icon: string
 	export let selectedItem: string
+	export let disabled: boolean
 
 	const item = name?.toLowerCase()
 </script>
 
 {#if !selectedItem || selectedItem === item}
-	<Button id="login-{item}" content={name} {icon} />
+	<Button id="login-{item}" content={name} {icon} {disabled} />
 	{#if selectedItem === item}
 		<div class="login-item-container">
 			<slot />
