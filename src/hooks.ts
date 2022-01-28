@@ -3,11 +3,14 @@ import { v4 as uuid } from "uuid"
 import { userId } from "$lib/user"
 
 export const handle: Handle = async ({ event, resolve }) => {
-	if (!userId) {
-		userId.set(uuid())
-	}
+	userId.subscribe(u => {
+		if (!u) {
+			userId.set(uuid())
+			return
+		}
+		event.locals.userId = u
+	})
 
-	event.locals.userId = userId
 	return resolve(event)
 }
 
