@@ -4,46 +4,40 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="Mobile Card Games" />
 		<link rel="icon" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<title>Mobile Card Games</title>
-		
-
-		
-
-		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="stylesheet" href="/_app/assets/vendor-ec9510ad.css">
-		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-6b1fb7a8.css">
-		<link rel="stylesheet" href="/_app/assets/Banner-c3c2cfb1.css">
-		<link rel="stylesheet" href="/_app/assets/Panel-b6b465a0.css">
-		<link rel="modulepreload" href="/_app/start-7bd4215a.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-8973b3f2.js">
-		<link rel="modulepreload" href="/_app/chunks/singletons-a42a5e91.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-3555aec3.js">
-		<link rel="modulepreload" href="/_app/pages/dev/nakama.svelte-09d9d544.js">
-		<link rel="modulepreload" href="/_app/chunks/Banner-ef6bc125.js">
-		<link rel="modulepreload" href="/_app/chunks/Panel-3fbae454.js">
-
-		<script type="module">
-			import { start } from "/_app/start-7bd4215a.js";
-			start({
-				target: document.querySelector("#svelte"),
-				paths: {"base":"","assets":""},
-				session: {user:void 0},
-				route: true,
-				spa: false,
-				trailing_slash: "never",
-				hydrate: {
-					status: 200,
-					error: null,
-					nodes: [
-						import("/_app/pages/__layout.svelte-3555aec3.js"),
-						import("/_app/pages/dev/nakama.svelte-09d9d544.js")
-					],
-					url: new URL("http://prerender/dev/nakama"),
-					params: {}
-				}
-			});
-		</script>
+		<meta http-equiv="content-security-policy" content="">
+	<link rel="stylesheet" href="/_app/assets/vendor-ec9510ad.css">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-b533be9e.css">
+	<link rel="stylesheet" href="/_app/assets/Banner-c3c2cfb1.css">
+	<link rel="stylesheet" href="/_app/assets/Panel-b6b465a0.css">
+	<link rel="modulepreload" href="/_app/start-b11e9252.js">
+	<link rel="modulepreload" href="/_app/chunks/vendor-14bb756e.js">
+	<link rel="modulepreload" href="/_app/chunks/singletons-a6a7384f.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-c7b799c0.js">
+	<link rel="modulepreload" href="/_app/pages/dev/nakama.svelte-76dc8edf.js">
+	<link rel="modulepreload" href="/_app/chunks/Banner-93f1a8ae.js">
+	<link rel="modulepreload" href="/_app/chunks/Panel-f82ee498.js"><script type="module">
+		import { start } from "/_app/start-b11e9252.js";
+		start({
+			target: document.querySelector("#svelte"),
+			paths: {"base":"","assets":""},
+			session: {userId:"980c5e8b-2d5a-416f-98c1-e271e5199a91"},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [
+					import("/_app/pages/__layout.svelte-c7b799c0.js"),
+						import("/_app/pages/dev/nakama.svelte-76dc8edf.js")
+				],
+				url: new URL("http://sveltekit-prerender/dev/nakama"),
+				params: {}
+			}
+		});
+	</script>
 	</head>
 	<body>
 		<div id="svelte">
@@ -60,6 +54,6 @@
 
 <script type="application/json" data-type="svelte-data" data-url="/version.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"version\":\"0.0.1\"}"}</script>
 
-	<script type="application/json" data-type="svelte-data" data-url="/nakama/client">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"serverKey\":{\"encrypted\":\"xq\\u000eJ#v\\u0004IJM#e\\u0001VPL\\u001cR\\u0017J6c\\u000eTbv(d=q.x*i0iolde\\u0016Nof$x\\u000eQ\\u0017Nyb\\u0003W\\u0004C!x:p,z=g\\u0002X1o`wVQ\"},\"host\":\"kraxarn.com\"}"}</script></div>
+	<script type="application/json" data-type="svelte-data" data-url="/nakama/client">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"serverKey\":\"ng\\u0005A\\u001aO\\u001eS}z\\tO.yIU\\u000fA)t-x*pym:v\\u0000L\\fZ\\u0015V\\u001cEFEHI3kKB9e\\u0017H!xZA\\u0006R\\u0013T5l\\u0013Y\u003Cj\\u0017M?e\\u0013M|kMJ\",\"host\":\"kraxarn.com\"}"}</script></div>
 	</body>
 </html>
