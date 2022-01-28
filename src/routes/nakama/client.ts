@@ -18,7 +18,7 @@ export const get: RequestHandler<Locals> = async () => {
 		return {
 			status: 500,
 			body: {
-				error: err,
+				message: err,
 			},
 		}
 	}
