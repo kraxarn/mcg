@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://qra5d1d4g3hn"]
+
+[ext_resource type="FontFile" uid="uid://btr2vnhuwtmrf" path="res://assets/fonts/FiraSans-Medium.ttf" id="1_k80a7"]
+
+[resource]
+font = ExtResource("1_k80a7")
+font_size = 38

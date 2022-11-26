@@ -1,15 +1,14 @@
-using MobileCardGames.Shared.Enums;
+using mcg.shared.enums;
 
-namespace MobileCardGames.Shared.Extensions
+namespace mcg.shared.extensions;
+
+public static class PlayingCardValueExtensions
 {
-	public static class PlayingCardValueExtensions
+	public static string GetName(this PlayingCardValue value)
 	{
-		public static string GetName(this PlayingCardValue value)
-		{
-			return (value >= PlayingCardValue.Two && value <= PlayingCardValue.Ten
-					? ((int)value).ToString()
-					: value.ToString())
-				.ToLower();
-		}
+		return (value >= PlayingCardValue.Two && value <= PlayingCardValue.Ten
+				? ((int)value).ToString()
+				: value.ToString())
+			.ToLower();
 	}
 }

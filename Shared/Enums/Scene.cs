@@ -1,16 +1,15 @@
-namespace MobileCardGames.Shared.Enums
+namespace mcg.shared.enums;
+
+public enum Scene
 {
-	public enum Scene
-	{
-		#region Dev
+	#region Dev
 
-		DevMenu,
-		DevDeck,
-		DevScroll,
-		DevInput,
-		DevStorage,
-		DevTcp,
+	DevMenu,
+	DevDeck,
+	DevScroll,
+	DevInput,
+	DevStorage,
+	DevTcp,
 
-		#endregion
-	}
+	#endregion
 }

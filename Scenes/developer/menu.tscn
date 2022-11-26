@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjbsm4mo5h1h0"]
+
+[ext_resource type="LabelSettings" uid="uid://qra5d1d4g3hn" path="res://res/label_settings/title.tres" id="1_a38pq"]
+[ext_resource type="Script" path="res://scripts/scenes/developer/Menu.cs" id="1_gckvu"]
+[ext_resource type="Theme" uid="uid://66aoxn8weej7" path="res://res/themes/button.tres" id="2_rp6nx"]
+
+[node name="menu" type="Node"]
+script = ExtResource("1_gckvu")
+
+[node name="container" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+theme_override_constants/separation = 32
+
+[node name="title" type="Label" parent="container"]
+offset_right = 476.0
+offset_bottom = 50.0
+text = "Developer Menu"
+label_settings = ExtResource("1_a38pq")
+horizontal_alignment = 1
+
+[node name="button_deck" type="Button" parent="container"]
+offset_top = 82.0
+offset_right = 476.0
+offset_bottom = 129.0
+theme = ExtResource("2_rp6nx")
+text = "Deck"
+
+[node name="button_scroll" type="Button" parent="container"]
+offset_top = 161.0
+offset_right = 476.0
+offset_bottom = 208.0
+theme = ExtResource("2_rp6nx")
+text = "Scroll"
+
+[node name="button_input" type="Button" parent="container"]
+offset_top = 240.0
+offset_right = 476.0
+offset_bottom = 287.0
+theme = ExtResource("2_rp6nx")
+text = "Input"
+
+[node name="button_storage" type="Button" parent="container"]
+offset_top = 319.0
+offset_right = 476.0
+offset_bottom = 366.0
+theme = ExtResource("2_rp6nx")
+text = "Storage"
+
+[node name="button_tcp" type="Button" parent="container"]
+offset_top = 398.0
+offset_right = 476.0
+offset_bottom = 445.0
+theme = ExtResource("2_rp6nx")
+text = "TCP"
+
+[node name="button_back" type="Button" parent="container"]
+offset_top = 477.0
+offset_right = 476.0
+offset_bottom = 524.0
+theme = ExtResource("2_rp6nx")
+text = "Back"

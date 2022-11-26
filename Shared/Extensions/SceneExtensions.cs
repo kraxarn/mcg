@@ -1,22 +1,21 @@
 using System;
-using MobileCardGames.Shared.Enums;
+using mcg.shared.enums;
 
-namespace MobileCardGames.Shared.Extensions
+namespace mcg.shared.extensions;
+
+public static class SceneExtensions
 {
-	public static class SceneExtensions
+	public static string GetPath(this Scene scene)
 	{
-		public static string GetPath(this Scene scene)
+		return scene switch
 		{
-			return scene switch
-			{
-				Scene.DevMenu => "res://Scenes/Dev/Menu.tscn",
-				Scene.DevDeck => "res://Scenes/Dev/Deck.tscn",
-				Scene.DevScroll => "res://Scenes/Dev/Scroll.tscn",
-				Scene.DevInput => "res://Scenes/Dev/Input.tscn",
-				Scene.DevStorage => "res://Scenes/Dev/Storage.tscn",
-				Scene.DevTcp => "res://Scenes/Dev/Storage.tscn",
-				_ => throw new ArgumentOutOfRangeException(nameof(scene), scene, null),
-			};
-		}
+			Scene.DevMenu => "res://scenes/developer/menu.tscn",
+			Scene.DevDeck => "res://scenes/developer/deck.tscn",
+			Scene.DevScroll => "res://scenes/developer/scroll.tscn",
+			Scene.DevInput => "res://scenes/developer/input.tscn",
+			Scene.DevStorage => "res://scenes/developer/storage.tscn",
+			Scene.DevTcp => "res://scenes/developer/tcp.tscn",
+			_ => throw new ArgumentOutOfRangeException(nameof(scene), scene, null),
+		};
 	}
 }

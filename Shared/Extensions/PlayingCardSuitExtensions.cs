@@ -1,10 +1,9 @@
-using MobileCardGames.Shared.Enums;
+using mcg.shared.enums;
 
-namespace MobileCardGames.Shared.Extensions
+namespace mcg.shared.extensions;
+
+public static class PlayingCardSuitExtensions
 {
-	public static class PlayingCardSuitExtensions
-	{
-		public static string GetName(this PlayingCardSuit suit) =>
-			suit.ToString().ToLower();
-	}
+	public static string GetName(this PlayingCardSuit suit) =>
+		suit.ToString().ToLower();
 }

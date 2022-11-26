@@ -1,10 +1,9 @@
-namespace MobileCardGames.Shared.Enums
+namespace mcg.shared.enums;
+
+public enum PlayingCardSuit
 {
-	public enum PlayingCardSuit
-	{
-		Spades = 0,
-		Clubs = 1,
-		Diamonds = 2,
-		Hearts = 3,
-	}
+	Spades = 0,
+	Clubs = 1,
+	Diamonds = 2,
+	Hearts = 3,
 }

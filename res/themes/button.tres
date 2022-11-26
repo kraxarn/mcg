@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://66aoxn8weej7"]
+
+[ext_resource type="FontFile" uid="uid://bro4km08udedg" path="res://assets/fonts/FiraSans-Regular.ttf" id="1_0ulvu"]
+
+[resource]
+default_font = ExtResource("1_0ulvu")
+default_font_size = 32
