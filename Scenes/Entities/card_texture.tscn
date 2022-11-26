@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhpk4dx8ibcf8"]
 
-[ext_resource type="Texture2D" uid="uid://r4tntxnexwvl" path="res://assets/textures/playing_cards.png" id="1_51ix7"]
+[ext_resource type="Texture2D" uid="uid://r4tntxnexwvl" path="res://assets/textures/cards/fronts.png" id="1_es3kn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcaoq"]
-atlas = ExtResource("1_51ix7")
+atlas = ExtResource("1_es3kn")
 region = Rect2(8, 8, 280, 380)
 
 [node name="texture" type="TextureRect"]

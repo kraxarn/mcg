@@ -25,7 +25,6 @@ grow_vertical = 2
 theme = ExtResource("1_0bgva")
 
 [node name="texture_card" parent="container_card" instance=ExtResource("3_pfykx")]
-layout_mode = 2
 offset_right = 280.0
 offset_bottom = 380.0
 size_flags_vertical = 10
@@ -34,7 +33,6 @@ stretch_mode = 3
 script = ExtResource("3_inkss")
 
 [node name="label_card" type="Label" parent="container_card"]
-layout_mode = 2
 offset_top = 412.0
 offset_right = 280.0
 offset_bottom = 462.0
@@ -55,7 +53,6 @@ grow_vertical = 0
 theme = ExtResource("1_0bgva")
 
 [node name="button_back" type="Button" parent="container_buttons"]
-layout_mode = 2
 anchors_preset = -1
 offset_right = 476.0
 offset_bottom = 47.0
@@ -63,7 +60,6 @@ theme = ExtResource("1_f8iym")
 text = "Back"
 
 [node name="button_draw_card" type="Button" parent="container_buttons"]
-layout_mode = 2
 anchors_preset = -1
 offset_top = 79.0
 offset_right = 476.0
