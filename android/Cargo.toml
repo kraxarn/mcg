@@ -1,0 +1,30 @@
+[package]
+name = "mcg-android"
+authors = ["kraxarn"]
+description = "Mobile card games - Android"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "mcg"
+crate-type = ["cdylib"]
+
+[dependencies]
+bevy = "0.9"
+
+[dependencies.mcg]
+path = "../game"
+
+[package.metadata.android]
+package = "com.kraxarn.mcg"
+apk_name = "mcg"
+assets = "../assets"
+resources = "res/ic_launcher"
+build_targets = ["aarch64-linux-android"]
+
+[package.metadata.android.sdk]
+target_sdk_version = 31
+
+[package.metadata.android.application]
+icon = "@mipmap/ic_launcher"
+label = "Card Games"

@@ -1,0 +1,9 @@
+[package]
+name = "mcg-desktop"
+authors = ["kraxarn"]
+description = "Mobile card games - Desktop"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.mcg]
+path = "../game"

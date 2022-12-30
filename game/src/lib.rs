@@ -1,5 +1,6 @@
 use bevy::core_pipeline::clear_color::ClearColorConfig;
 use bevy::prelude::*;
+use bevy::render::settings::{WgpuSettings, WgpuSettingsPriority};
 use crate::entities::{Deck, PlayingCard};
 use crate::fonts::DefaultFont;
 use crate::textures::PlayingCardTexture;
@@ -18,10 +19,14 @@ pub enum AppState {
 	Ready,
 }
 
-fn main() {
+pub fn run() {
 	App::new()
 		.init_resource::<PlayingCardTexture>()
 		.init_resource::<DefaultFont>()
+		.insert_resource(WgpuSettings {
+			priority: WgpuSettingsPriority::Compatibility,
+			..default()
+		})
 		.add_plugins(DefaultPlugins
 			.set(WindowPlugin {
 				window: WindowDescriptor {
