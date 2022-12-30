@@ -31,7 +31,7 @@ jobs:
           echo -e "keystore_password = \"$PASSWORD\"" >> Cargo.toml
 
       - name: Build
-        working-directory: ${{runner.workspace}}/android
+        working-directory: ${{runner.workspace}}/mcg/android
         run: ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME cargo apk build --release
 
       - name: Upload Artifact
