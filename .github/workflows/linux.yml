@@ -15,6 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
 
       - name: Install Dependencies
         run: sudo apt install g++ pkg-config libx11-dev libasound2-dev libudev-dev
