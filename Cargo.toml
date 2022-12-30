@@ -2,10 +2,9 @@
 name = "mcg"
 authors = ["kraxarn"]
 description = "Mobile card games"
-edition = "2018"
+edition = "2021"
 
-# Patch is currently automatically incremented until 0.1
-version = "0.0.289"
+version = "0.0.1"
 
 # hi :3
 
@@ -14,17 +13,10 @@ version = "0.0.289"
 opt-level = 2
 
 [dependencies]
-strum = "0.21"
-strum_macros = "0.21"
-nanoserde = "0.1"
-mcg-storage = { path = "storage", version = "0.1.0" }
-
-[dependencies.macroquad]
-version = "0.3"
-features = [
-    # For better crash logs
-    "backtrace",
-]
+bevy = "0.9"
+strum = "0.24"
+strum_macros = "0.24"
+fastrand = "1.8"
 
 [package.metadata.android]
 # Application name
