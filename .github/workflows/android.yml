@@ -31,6 +31,8 @@ jobs:
           PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
         run: |
           echo -n "$KEYSTORE" | base64 -d > "keystore.jks"
+          echo "[package.metadata.android.signing.release]" >> Cargo.toml
+          echo "path = \"keystore.jks\"" >> Cargo.toml
           echo -e "keystore_alias = \"$ALIAS\"" >> Cargo.toml
           echo -e "keystore_password = \"$PASSWORD\"" >> Cargo.toml
 
