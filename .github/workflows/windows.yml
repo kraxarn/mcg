@@ -21,7 +21,7 @@ jobs:
         run: cargo build --bin mcg-desktop --release
 
       - name: Test
-        run: cargo test --bin mch-desktop --release
+        run: cargo test --bin mcg-desktop --release
 
       - name: Bundle
         run: |
