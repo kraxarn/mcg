@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mcg-android
-          path: ${{runner.workspace}}/mcg/target/android-artifacts/release/apk/mcg.apk
+          path: ${{runner.workspace}}/mcg/target/release/apk/mcg.apk
