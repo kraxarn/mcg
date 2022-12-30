@@ -20,7 +20,7 @@ jobs:
         run: cargo install cargo-apk
 
       - name: Prepare APK sign
-        working-directory: ${{runner.workspace}}/android
+        working-directory: ${{runner.workspace}}/mcg/android
         env:
           KEYSTORE: ${{secrets.KEYSTORE}}
           ALIAS: ${{secrets.KEYSTORE_ALIAS}}
