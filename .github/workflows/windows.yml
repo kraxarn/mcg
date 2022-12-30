@@ -30,7 +30,7 @@ jobs:
           cp -r ${{runner.workspace}}/mcg/assets ${{runner.workspace}}/build/
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: mcg-windows
           path: ${{runner.workspace}}/build
