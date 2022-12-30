@@ -17,15 +17,15 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build
-        run: cargo build --release
+        run: cargo build --bin mcg-desktop --release
 
       - name: Test
-        run: cargo test --release
+        run: cargo test --bin mcg-desktop --release
 
       - name: Bundle
         run: |
           mkdir ${{runner.workspace}}/build
-          cp ${{runner.workspace}}/mcg/target/release/mcg ${{runner.workspace}}/build/
+          cp ${{runner.workspace}}/mcg/target/release/mcg-desktop ${{runner.workspace}}/build/
           cp -r ${{runner.workspace}}/mcg/assets ${{runner.workspace}}/build/
 
       - name: Upload Artifact
