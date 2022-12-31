@@ -12,7 +12,7 @@ crate-type = ["cdylib"]
 bevy = "0.9"
 
 [dependencies.mcg]
-path = "../game"
+path = "../mcg"
 
 [package.metadata.android]
 package = "com.kraxarn.mcg"
