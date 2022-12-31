@@ -5,5 +5,8 @@ description = "Mobile card games - Desktop"
 version = "0.1.0"
 edition = "2021"
 
+[dependencies]
+native-dialog = "0.6"
+
 [dependencies.mcg]
 path = ".."
