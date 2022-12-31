@@ -30,7 +30,7 @@ jobs:
         run: |
           mkdir ${{runner.workspace}}/build
           wasm-bindgen --out-dir ${{runner.workspace}}/build --target web ${{runner.workspace}}/mcg/target/wasm32-unknown-unknown/release/mcg-wasm.wasm
-          cp -r ${{runner.workspace}}/mcg/mcg-wasm/res ${{runner.workspace}}/build/
+          cp -r ${{runner.workspace}}/mcg/mcg-wasm/res/* ${{runner.workspace}}/build/
           cp -r ${{runner.workspace}}/mcg/assets ${{runner.workspace}}/build/
 
       - name: Deploy
