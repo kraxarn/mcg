@@ -1,9 +1,39 @@
+[package]
+name = "mcg"
+authors = ["kraxarn"]
+description = "Mobile card games"
+edition = "2021"
+version = "0.0.1"
+
+# hi :3
+
+[dependencies]
+strum = "0.24"
+strum_macros = "0.24"
+fastrand = "1.8"
+
+[dependencies.bevy]
+version = "0.9"
+default-features = false
+features = [
+	"bevy_animation",
+	"bevy_asset",
+	"bevy_audio",
+	"bevy_winit",
+	"bevy_core_pipeline",
+	"bevy_render",
+	"bevy_sprite",
+	"bevy_text",
+	"bevy_ui",
+	"png",
+	"vorbis",
+	"x11",
+]
+
 [workspace]
-resolver = "2"
 members = [
-	"game",
-	"android",
-	"desktop",
+	"mcg-android",
+	"mcg-desktop",
 ]
 
 # Optimize external crates in debug
