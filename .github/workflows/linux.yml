@@ -21,10 +21,10 @@ jobs:
         run: sudo apt install g++ pkg-config libx11-dev libasound2-dev libudev-dev
 
       - name: Build
-        run: cargo build --bin mcg-desktop --release
+        run: cargo build --package mcg-desktop --release
 
       - name: Test
-        run: cargo test --bin mcg-desktop --release
+        run: cargo test --package mcg-desktop --release
 
       - name: Bundle
         run: |
