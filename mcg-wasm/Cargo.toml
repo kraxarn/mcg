@@ -1,0 +1,9 @@
+[package]
+name = "mcg-wasm"
+authors = ["kraxarn"]
+description = "Mobile card games - Web"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.mcg]
+path = ".."

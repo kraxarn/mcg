@@ -34,6 +34,7 @@ features = [
 members = [
 	"mcg-android",
 	"mcg-desktop",
+	"mcg-wasm",
 ]
 
 # Optimize external crates in debug

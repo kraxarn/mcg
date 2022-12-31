@@ -1,6 +1,10 @@
 name: Wasm
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -10,22 +14,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
 
-      - name: Install Dependencies
+      - name: Install WASM target
         run: rustup target add wasm32-unknown-unknown
 
+      - name: Install WASM tools
+        run: cargo install wasm-bindgen-cli
+
       - name: Build
-        run: cargo build --target wasm32-unknown-unknown --release
+        run: cargo build --package mcg-wasm --target wasm32-unknown-unknown --release
 
       - name: Bundle
         run: |
           mkdir ${{runner.workspace}}/build
-          cp ${{runner.workspace}}/mcg/target/wasm32-unknown-unknown/release/mcg.wasm ${{runner.workspace}}/build/
-          cp ${{runner.workspace}}/mcg/res/wasm/index.html ${{runner.workspace}}/build/
-          cp ${{runner.workspace}}/mcg/storage/js/storage.js ${{runner.workspace}}/build/
+          wasm-bindgen --out-dir ${{runner.workspace}}/build --target web ${{runner.workspace}}/mcg/target/wasm32-unknown-unknown/release/mcg-wasm.wasm
+          cp -r ${{runner.workspace}}/mcg/mcg-wasm/res ${{runner.workspace}}/build/
           cp -r ${{runner.workspace}}/mcg/assets ${{runner.workspace}}/build/
-          curl https://raw.githubusercontent.com/not-fl3/miniquad/master/native/sapp-wasm/js/gl.js -o ${{runner.workspace}}/build/gl.js
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -34,7 +40,7 @@ jobs:
           publish_dir: ${{runner.workspace}}/build
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: mcg-wasm
           path: ${{runner.workspace}}/build
