@@ -28,6 +28,7 @@ features = [
 	"png",
 	"vorbis",
 	"x11",
+	"wayland",
 ]
 
 [workspace]
