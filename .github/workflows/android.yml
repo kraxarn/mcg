@@ -24,7 +24,7 @@ jobs:
         run: cargo install cargo-apk
 
       - name: Prepare APK sign
-        working-directory: ${{runner.workspace}}/mcg/android
+        working-directory: ${{runner.workspace}}/mcg/mcg-android
         env:
           KEYSTORE: ${{secrets.KEYSTORE}}
           ALIAS: ${{secrets.KEYSTORE_ALIAS}}
@@ -37,7 +37,7 @@ jobs:
           echo -e "keystore_password = \"$PASSWORD\"" >> Cargo.toml
 
       - name: Build
-        working-directory: ${{runner.workspace}}/mcg/android
+        working-directory: ${{runner.workspace}}/mcg/mcg-android
         run: ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME cargo apk build --release
 
       - name: Upload Artifact
