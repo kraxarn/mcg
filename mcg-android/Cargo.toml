@@ -8,8 +8,9 @@ edition = "2021"
 [lib]
 crate-type = ["cdylib"]
 
-[dependencies]
-bevy = "0.9"
+[dependencies.bevy]
+version = "0.9"
+default-features = false
 
 [dependencies.mcg]
 path = ".."
