@@ -159,22 +159,23 @@ fn update_draw_card_button(
 	mut draw_card_event: EventWriter<DrawCardEvent>,
 ) {
 	for (interaction, mut color, children) in &mut interactions {
-		*color = match *interaction {
+		let new_color = match *interaction {
 			Interaction::Clicked => colors::BUTTON_CLICKED,
-			Interaction::Hovered => {
-				if color.0 == colors::BUTTON_CLICKED {
-					let mut text = texts.get_mut(children[0]).unwrap();
-					if let Some(card) = deck.draw() {
-						text.sections[1].value = (Deck::MAX - deck.len()).to_string();
-						draw_card_event.send(DrawCardEvent { 0: card });
-					} else {
-						text.sections[0].value = String::from("Deck empty");
-						text.sections[1].value = String::new();
-					}
-				}
-				colors::BUTTON_HOVERED
-			},
+			Interaction::Hovered => colors::BUTTON_HOVERED,
 			Interaction::None => colors::BUTTON,
-		}.into();
+		};
+
+		if color.0 == colors::BUTTON_CLICKED {
+			let mut text = texts.get_mut(children[0]).unwrap();
+			if let Some(card) = deck.draw() {
+				text.sections[1].value = (Deck::MAX - deck.len()).to_string();
+				draw_card_event.send(DrawCardEvent { 0: card });
+			} else {
+				text.sections[0].value = String::from("Deck empty");
+				text.sections[1].value = String::new();
+			}
+		}
+
+		*color = BackgroundColor::from(new_color);
 	}
 }
