@@ -1,7 +1,6 @@
 use bevy::asset::HandleId;
 use bevy::prelude::*;
 use strum::IntoEnumIterator;
-use crate::entities::PlayingCard;
 use crate::enums::{PlayingCardSuit, PlayingCardValue};
 
 #[derive(Resource, Default)]
@@ -30,7 +29,7 @@ impl PlayingCardTexture {
 		resource.atlas = texture_atlases.add(atlas);
 	}
 
-	fn atlas_columns() -> usize {
+	pub fn atlas_columns() -> usize {
 		PlayingCardValue::iter().len() + 1 // Joker
 	}
 
@@ -38,16 +37,16 @@ impl PlayingCardTexture {
 		PlayingCardSuit::iter().len()
 	}
 
-	pub fn sprite(&self, card: &PlayingCard) -> SpriteSheetBundle {
-		let row = card.suit as usize;
-		let column = card.value as usize;
-		let index = column + (row * Self::atlas_columns());
-
+	fn sprite(&self, index: usize) -> SpriteSheetBundle {
 		SpriteSheetBundle {
 			sprite: TextureAtlasSprite::new(index),
 			texture_atlas: self.atlas.clone(),
 			..default()
 		}
+	}
+
+	pub fn joker(&self) -> SpriteSheetBundle {
+		self.sprite(Self::atlas_columns() - 1)
 	}
 
 	pub fn id(&self) -> HandleId {

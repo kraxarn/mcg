@@ -1,23 +1,18 @@
+use bevy::prelude::Resource;
 use strum::IntoEnumIterator;
 use crate::entities::PlayingCard;
 use crate::enums::{PlayingCardSuit, PlayingCardValue};
 
+#[derive(Resource)]
 pub struct Deck {
 	cards: Vec<PlayingCard>,
 }
 
 impl Deck {
-	/// Get a 52 card deck of playing cards
-	pub fn new() -> Self {
-		let mut deck = Self {
-			cards: Vec::with_capacity(52_usize),
-		};
+	/// Maximum number of cards in deck
+	pub const MAX: usize = 52;
 
-		deck.reset();
-		deck
-	}
-
-	// Put all cards back in the deck, in order
+	/// Put all cards back in the deck, in order
 	pub fn reset(&mut self) {
 		self.cards.clear();
 
@@ -42,5 +37,13 @@ impl Deck {
 	/// Number of cards currently in the deck
 	pub fn len(&self) -> usize {
 		self.cards.len()
+	}
+}
+
+impl Default for Deck {
+	fn default() -> Self {
+		Self {
+			cards: Vec::with_capacity(Self::MAX),
+		}
 	}
 }
