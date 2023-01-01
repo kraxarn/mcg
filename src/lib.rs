@@ -128,7 +128,7 @@ fn show_example_card(
 		}).with_children(|parent| {
 			parent.spawn(TextBundle::from_sections([
 				TextSection::new("Draw card ", default_font.style()),
-				TextSection::new((Deck::MAX - deck.len()).to_string(), default_font.style()),
+				TextSection::new("1", default_font.style()),
 			]));
 		});
 	});
