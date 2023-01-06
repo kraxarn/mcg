@@ -83,6 +83,7 @@ impl DevCardScene {
 			parent: container.id(),
 			size: Size::new(Val::Percent(75.0), Val::Px(100.0)),
 			text: vec![String::from("Draw card "), String::from("1")],
+			margin: UiRect::default(),
 		});
 
 		deck.reset();

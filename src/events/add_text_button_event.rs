@@ -7,6 +7,7 @@ pub struct AddTextButtonEvent {
 	pub parent: Entity,
 	pub size: Size,
 	pub text: Vec<String>,
+	pub margin: UiRect,
 }
 
 pub fn update_add_text_button(
@@ -20,6 +21,7 @@ pub fn update_add_text_button(
 				parent.spawn(ButtonBundle {
 					style: Style {
 						size: event.size,
+						margin: event.margin,
 						align_items: AlignItems::Center,
 						justify_content: JustifyContent::Center,
 						..default()
