@@ -18,7 +18,7 @@ pub struct DrawCardEvent(PlayingCard);
 
 impl Default for DevCardScene {
 	fn default() -> Self {
-		Self { 0: AppState::Ready }
+		Self(AppState::Ready)
 	}
 }
 
@@ -92,9 +92,7 @@ impl DevCardScene {
 		deck.reset();
 		deck.shuffle();
 
-		draw_card_event.send(DrawCardEvent {
-			0: deck.draw().unwrap(),
-		});
+		draw_card_event.send(DrawCardEvent(deck.draw().unwrap()));
 	}
 
 	pub fn update_card_texture(
@@ -120,7 +118,7 @@ impl DevCardScene {
 			let mut text = texts.get_mut(children[0]).unwrap();
 			if let Some(card) = deck.draw() {
 				text.sections[1].value = (Deck::MAX - deck.len()).to_string();
-				draw_card_event.send(DrawCardEvent { 0: card });
+				draw_card_event.send(DrawCardEvent(card));
 			} else {
 				text.sections[0].value = String::from("Deck empty");
 				text.sections[1].value = String::new();
