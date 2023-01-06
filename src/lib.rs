@@ -46,7 +46,9 @@ pub fn run() {
 		.add_state(AppState::SetupTextures)
 		// Button listeners
 		.add_event::<events::AddTextButtonEvent>()
+		.add_event::<events::ButtonClickedEvent>()
 		.add_system(events::update_add_text_button)
+		.add_system(events::update_button_clicked)
 		// Setup textures
 		.add_system_set(SystemSet::on_enter(AppState::SetupTextures)
 			.with_system(assets::setup_textures))
