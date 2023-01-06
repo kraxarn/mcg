@@ -61,17 +61,17 @@ pub fn run() {
 			.with_system(assets::check_fonts));
 
 	let scenes = [
-		DevCardScene::default(),
+		DevCardScene,
 	];
 
 	for scene in scenes {
 		scene.add(&mut app);
 
 		app.add_system_set(scene
-			.on_enter(SystemSet::on_enter(scene.0.clone())));
+			.on_enter(SystemSet::on_enter(scene.state())));
 
 		app.add_system_set(scene
-			.on_update(SystemSet::on_update(scene.0.clone())));
+			.on_update(SystemSet::on_update(scene.state())));
 	}
 
 	app.run()

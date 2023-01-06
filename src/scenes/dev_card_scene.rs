@@ -6,7 +6,7 @@ use crate::fonts::DefaultFont;
 use crate::scenes::Scene;
 use crate::textures::PlayingCardTexture;
 
-pub struct DevCardScene(pub AppState);
+pub struct DevCardScene;
 
 #[derive(Component)]
 pub struct PlayingCardSprite;
@@ -16,14 +16,10 @@ pub struct PlayingCardText;
 
 pub struct DrawCardEvent(PlayingCard);
 
-impl Default for DevCardScene {
-	fn default() -> Self {
-		Self(AppState::Ready)
-	}
-}
-
 impl Scene for DevCardScene {
-	const STATE: AppState = AppState::Ready;
+	fn state(&self) -> AppState {
+		AppState::Ready
+	}
 
 	fn add(&self, app: &mut App) {
 		app.add_event::<DrawCardEvent>();

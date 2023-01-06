@@ -7,8 +7,7 @@ pub use dev_card_scene::*;
 pub mod dev_card_scene;
 
 pub trait Scene {
-	const STATE: AppState;
-
+	fn state(&self) -> AppState;
 	fn add(&self, app: &mut App);
 
 	fn on_enter(&self, system_set: SystemSet) -> SystemSet;
