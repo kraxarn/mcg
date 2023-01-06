@@ -2,8 +2,7 @@ use bevy::prelude::*;
 use crate::colors;
 use crate::events::ButtonId;
 
-pub struct ButtonClickedEvent
-{
+pub struct ButtonClickedEvent {
 	pub button_id: String,
 	pub entity_id: Entity,
 }
