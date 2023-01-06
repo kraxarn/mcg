@@ -3,7 +3,7 @@ use bevy::prelude::*;
 use bevy::render::settings::{WgpuSettings, WgpuSettingsPriority};
 use crate::entities::Deck;
 use crate::fonts::DefaultFont;
-use crate::scenes::{DevCardScene, Scene};
+use crate::scenes::{DevCardScene, DevMenuScene, Scene};
 use crate::textures::PlayingCardTexture;
 
 mod colors;
@@ -20,6 +20,7 @@ pub enum AppState {
 	SetupTextures,
 	SetupFonts,
 	Ready,
+	DevDeck,
 }
 
 pub fn run() {
@@ -60,8 +61,9 @@ pub fn run() {
 		.add_system_set(SystemSet::on_update(AppState::SetupFonts)
 			.with_system(assets::check_fonts));
 
-	let scenes = [
-		DevCardScene,
+	let scenes: [&dyn Scene; 2] = [
+		&DevMenuScene,
+		&DevCardScene,
 	];
 
 	for scene in scenes {

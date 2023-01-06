@@ -18,7 +18,7 @@ pub struct DrawCardEvent(PlayingCard);
 
 impl Scene for DevCardScene {
 	fn state(&self) -> AppState {
-		AppState::Ready
+		AppState::DevDeck
 	}
 
 	fn add(&self, app: &mut App) {

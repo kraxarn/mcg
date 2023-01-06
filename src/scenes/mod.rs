@@ -2,9 +2,11 @@ use bevy::app::App;
 use bevy::prelude::SystemSet;
 use crate::AppState;
 
-pub use dev_card_scene::*;
+mod dev_card_scene;
+mod dev_menu_scene;
 
-pub mod dev_card_scene;
+pub use dev_card_scene::*;
+pub use dev_menu_scene::DevMenuScene;
 
 pub trait Scene {
 	fn state(&self) -> AppState;
