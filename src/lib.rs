@@ -20,7 +20,7 @@ pub enum AppState {
 	SetupTextures,
 	SetupFonts,
 	Ready,
-	DevDeck,
+	DevCard,
 }
 
 pub fn run() {
