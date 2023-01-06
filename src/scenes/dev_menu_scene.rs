@@ -3,6 +3,9 @@ use crate::AppState;
 use crate::events::{AddTextButtonEvent, ButtonClickedEvent};
 use crate::scenes::Scene;
 
+const DEV_CARD_ID: &str = "dev_card";
+const BLACK_JACK_ID: &str = "black_jack";
+
 pub struct DevMenuScene;
 
 impl Scene for DevMenuScene {
@@ -43,7 +46,7 @@ impl DevMenuScene {
 		});
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from("dev_card"),
+			id: String::from(DEV_CARD_ID),
 			parent: container.id(),
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Card viewer")],
@@ -51,7 +54,7 @@ impl DevMenuScene {
 		});
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from("black_jack"),
+			id: String::from(BLACK_JACK_ID),
 			parent: container.id(),
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Black jack")],
@@ -59,9 +62,15 @@ impl DevMenuScene {
 		});
 	}
 
-	pub fn update_button_clicked(mut clicked: EventReader<ButtonClickedEvent>) {
+	pub fn update_button_clicked(
+		mut state: ResMut<State<AppState>>,
+		mut clicked: EventReader<ButtonClickedEvent>,
+	) {
 		for event in clicked.iter() {
-			info!("Button clicked: {}", &event.button_id);
+			match event.button_id.as_str() {
+				DEV_CARD_ID => state.set(AppState::DevCard).unwrap(),
+				_ => panic!("Unknown button: {}", &event.button_id),
+			}
 		}
 	}
 }
