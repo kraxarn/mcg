@@ -13,6 +13,7 @@ mod textures;
 mod fonts;
 mod assets;
 mod scenes;
+mod events;
 
 #[derive(Debug, Eq, PartialEq, Clone, Hash)]
 pub enum AppState {
@@ -43,6 +44,9 @@ pub fn run() {
 				..default()
 			}))
 		.add_state(AppState::SetupTextures)
+		// Button listeners
+		.add_event::<events::AddTextButtonEvent>()
+		.add_system(events::update_add_text_button)
 		// Setup textures
 		.add_system_set(SystemSet::on_enter(AppState::SetupTextures)
 			.with_system(assets::setup_textures))

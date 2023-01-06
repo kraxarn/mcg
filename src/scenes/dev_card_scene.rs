@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 use crate::{AppState, colors};
 use crate::entities::{Deck, PlayingCard};
+use crate::events::AddTextButtonEvent;
 use crate::fonts::DefaultFont;
 use crate::scenes::Scene;
 use crate::textures::PlayingCardTexture;
@@ -48,6 +49,7 @@ impl DevCardScene {
 		default_font: Res<DefaultFont>,
 		mut deck: ResMut<Deck>,
 		mut draw_card_event: EventWriter<DrawCardEvent>,
+		mut add_button_event: EventWriter<AddTextButtonEvent>,
 	) {
 		let mut sprite = card_texture.joker();
 		let position = Vec3::new(0.0, 120.0, 0.0);
@@ -65,7 +67,7 @@ impl DevCardScene {
 			PlayingCardText,
 		));
 
-		commands.spawn(NodeBundle {
+		let container = commands.spawn(NodeBundle {
 			style: Style {
 				size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 				position: UiRect::new(
@@ -79,22 +81,12 @@ impl DevCardScene {
 				..default()
 			},
 			..default()
-		}).with_children(|parent| {
-			parent.spawn(ButtonBundle {
-				style: Style {
-					size: Size::new(Val::Percent(75.0), Val::Px(100.0)),
-					align_items: AlignItems::Center,
-					justify_content: JustifyContent::Center,
-					..default()
-				},
-				background_color: colors::BUTTON.into(),
-				..default()
-			}).with_children(|parent| {
-				parent.spawn(TextBundle::from_sections([
-					TextSection::new("Draw card ", default_font.style()),
-					TextSection::new("1", default_font.style()),
-				]));
-			});
+		});
+
+		add_button_event.send(AddTextButtonEvent {
+			parent: container.id(),
+			size: Size::new(Val::Percent(75.0), Val::Px(100.0)),
+			text: vec![String::from("Draw card "), String::from("1")],
 		});
 
 		deck.reset();
