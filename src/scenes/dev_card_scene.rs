@@ -27,7 +27,6 @@ impl Scene for DevCardScene {
 
 	fn on_enter(&self, system_set: SystemSet) -> SystemSet {
 		system_set
-			.with_system(crate::setup_camera)
 			.with_system(Self::show_example_card)
 	}
 

@@ -48,6 +48,8 @@ pub fn run() {
 		// Button listeners
 		.add_event::<events::AddTextButtonEvent>()
 		.add_event::<events::ButtonClickedEvent>()
+		// Globals
+		.add_startup_system(setup_camera)
 		.add_system(events::update_add_text_button)
 		.add_system(events::update_button_clicked)
 		// Setup textures
