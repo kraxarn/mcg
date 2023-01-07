@@ -35,6 +35,10 @@ impl Scene for DevCardScene {
 			.with_system(Self::update_card_texture)
 			.with_system(Self::update_draw_card_button)
 	}
+
+	fn on_exit(&self, system_set: SystemSet) -> SystemSet {
+		system_set
+	}
 }
 
 impl DevCardScene {

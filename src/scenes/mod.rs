@@ -14,4 +14,5 @@ pub trait Scene {
 
 	fn on_enter(&self, system_set: SystemSet) -> SystemSet;
 	fn on_update(&self, system_set: SystemSet) -> SystemSet;
+	fn on_exit(&self, system_set: SystemSet) -> SystemSet;
 }

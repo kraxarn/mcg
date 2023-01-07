@@ -8,6 +8,9 @@ const BLACK_JACK_ID: &str = "black_jack";
 
 pub struct DevMenuScene;
 
+#[derive(Resource)]
+pub struct Container(pub Entity);
+
 impl Scene for DevMenuScene {
 	fn state(&self) -> AppState {
 		AppState::Ready
@@ -23,6 +26,10 @@ impl Scene for DevMenuScene {
 	fn on_update(&self, system_set: SystemSet) -> SystemSet {
 		system_set
 			.with_system(Self::update_button_clicked)
+	}
+
+	fn on_exit(&self, system_set: SystemSet) -> SystemSet {
+		system_set.with_system(Self::cleanup)
 	}
 }
 
@@ -42,11 +49,13 @@ impl DevMenuScene {
 				..default()
 			},
 			..default()
-		});
+		}).id();
+
+		commands.insert_resource(Container(container));
 
 		add_button_event.send(AddTextButtonEvent {
 			id: String::from(DEV_CARD_ID),
-			parent: container.id(),
+			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Card viewer")],
 			margin: UiRect::default(),
@@ -54,7 +63,7 @@ impl DevMenuScene {
 
 		add_button_event.send(AddTextButtonEvent {
 			id: String::from(BLACK_JACK_ID),
-			parent: container.id(),
+			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Black jack")],
 			margin: UiRect::top(Val::Px(40.0)),
@@ -71,5 +80,9 @@ impl DevMenuScene {
 				_ => panic!("Unknown button: {}", &event.button_id),
 			}
 		}
+	}
+
+	pub fn cleanup(mut commands: Commands, container: Res<Container>) {
+		commands.entity(container.0).despawn_recursive();
 	}
 }

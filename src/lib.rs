@@ -76,6 +76,9 @@ pub fn run() {
 
 		app.add_system_set(scene
 			.on_update(SystemSet::on_update(scene.state())));
+
+		app.add_system_set(scene
+			.on_exit(SystemSet::on_exit(scene.state())));
 	}
 
 	app.run()
