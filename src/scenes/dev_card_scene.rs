@@ -3,8 +3,11 @@ use crate::AppState;
 use crate::entities::{Deck, PlayingCard};
 use crate::events::{AddTextButtonEvent, ButtonClickedEvent};
 use crate::fonts::DefaultFont;
-use crate::scenes::Scene;
+use crate::scenes::{Container, Scene};
 use crate::textures::PlayingCardTexture;
+
+const DRAW_CARD_ID: &str = "draw_card";
+const BACK_ID: &str = "back";
 
 pub struct DevCardScene;
 
@@ -37,7 +40,7 @@ impl Scene for DevCardScene {
 	}
 
 	fn on_exit(&self, system_set: SystemSet) -> SystemSet {
-		system_set
+		system_set.with_system(super::cleanup)
 	}
 }
 
@@ -54,9 +57,9 @@ impl DevCardScene {
 		let position = Vec3::new(0.0, 120.0, 0.0);
 		sprite.transform.translation = position;
 
-		commands.spawn((sprite, PlayingCardSprite));
+		let sprite = commands.spawn((sprite, PlayingCardSprite)).id();
 
-		commands.spawn((
+		let text = commands.spawn((
 			Text2dBundle {
 				text: Text::from_section(String::new(), default_font.style())
 					.with_alignment(TextAlignment::CENTER),
@@ -64,7 +67,7 @@ impl DevCardScene {
 				..default()
 			},
 			PlayingCardText,
-		));
+		)).id();
 
 		let container = commands.spawn(NodeBundle {
 			style: Style {
@@ -77,19 +80,25 @@ impl DevCardScene {
 				..default()
 			},
 			..default()
-		});
+		}).id();
+
+		commands.insert_resource(Container(vec![
+			container,
+			sprite,
+			text,
+		]));
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from("draw_card"),
-			parent: container.id(),
+			id: String::from(DRAW_CARD_ID),
+			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Draw card "), String::from("1")],
 			margin: UiRect::default(),
 		});
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from("back"),
-			parent: container.id(),
+			id: String::from(BACK_ID),
+			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Back")],
 			margin: UiRect::top(Val::Px(20.0)),
@@ -113,6 +122,7 @@ impl DevCardScene {
 	}
 
 	pub fn update_draw_card_button(
+		mut state: ResMut<State<AppState>>,
 		mut button_clicked_event: EventReader<ButtonClickedEvent>,
 		children: Query<&Children>,
 		mut texts: Query<&mut Text>,
@@ -120,15 +130,21 @@ impl DevCardScene {
 		mut draw_card_event: EventWriter<DrawCardEvent>,
 	) {
 		for event in button_clicked_event.iter() {
-			if let Ok(children) = children.get(event.entity_id) {
-				let mut text = texts.get_mut(children[0]).unwrap();
-				if let Some(card) = deck.draw() {
-					text.sections[1].value = (Deck::MAX - deck.len()).to_string();
-					draw_card_event.send(DrawCardEvent(card));
-				} else {
-					text.sections[0].value = String::from("Deck empty");
-					text.sections[1].value = String::new();
-				}
+			match event.button_id.as_str() {
+				DRAW_CARD_ID => {
+					if let Ok(children) = children.get(event.entity_id) {
+						let mut text = texts.get_mut(children[0]).unwrap();
+						if let Some(card) = deck.draw() {
+							text.sections[1].value = (Deck::MAX - deck.len()).to_string();
+							draw_card_event.send(DrawCardEvent(card));
+						} else {
+							text.sections[0].value = String::from("Deck empty");
+							text.sections[1].value = String::new();
+						}
+					}
+				},
+				BACK_ID => state.set(AppState::Ready).unwrap(),
+				_ => {},
 			}
 		}
 	}

@@ -1,15 +1,12 @@
 use bevy::prelude::*;
 use crate::AppState;
 use crate::events::{AddTextButtonEvent, ButtonClickedEvent};
-use crate::scenes::Scene;
+use crate::scenes::{Container, Scene};
 
 const DEV_CARD_ID: &str = "dev_card";
 const BLACK_JACK_ID: &str = "black_jack";
 
 pub struct DevMenuScene;
-
-#[derive(Resource)]
-pub struct Container(pub Entity);
 
 impl Scene for DevMenuScene {
 	fn state(&self) -> AppState {
@@ -29,7 +26,7 @@ impl Scene for DevMenuScene {
 	}
 
 	fn on_exit(&self, system_set: SystemSet) -> SystemSet {
-		system_set.with_system(Self::cleanup)
+		system_set.with_system(super::cleanup)
 	}
 }
 
@@ -51,7 +48,7 @@ impl DevMenuScene {
 			..default()
 		}).id();
 
-		commands.insert_resource(Container(container));
+		commands.insert_resource(Container(vec![container]));
 
 		add_button_event.send(AddTextButtonEvent {
 			id: String::from(DEV_CARD_ID),
@@ -77,12 +74,8 @@ impl DevMenuScene {
 		for event in clicked.iter() {
 			match event.button_id.as_str() {
 				DEV_CARD_ID => state.set(AppState::DevCard).unwrap(),
-				_ => panic!("Unknown button: {}", &event.button_id),
+				_ => {},
 			}
 		}
-	}
-
-	pub fn cleanup(mut commands: Commands, container: Res<Container>) {
-		commands.entity(container.0).despawn_recursive();
 	}
 }
