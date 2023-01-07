@@ -115,16 +115,16 @@ impl DevCardScene {
 		mut draw_card_event: EventWriter<DrawCardEvent>,
 	) {
 		for event in button_clicked_event.iter() {
-			let children = children.get(event.entity_id).unwrap();
-			let mut text = texts.get_mut(children[0]).unwrap();
-			if let Some(card) = deck.draw() {
-				text.sections[1].value = (Deck::MAX - deck.len()).to_string();
-				draw_card_event.send(DrawCardEvent(card));
-			} else {
-				text.sections[0].value = String::from("Deck empty");
-				text.sections[1].value = String::new();
+			if let Ok(children) = children.get(event.entity_id) {
+				let mut text = texts.get_mut(children[0]).unwrap();
+				if let Some(card) = deck.draw() {
+					text.sections[1].value = (Deck::MAX - deck.len()).to_string();
+					draw_card_event.send(DrawCardEvent(card));
+				} else {
+					text.sections[0].value = String::from("Deck empty");
+					text.sections[1].value = String::new();
+				}
 			}
-			return;
 		}
 	}
 }
