@@ -2,6 +2,7 @@ use bevy::core_pipeline::clear_color::ClearColorConfig;
 use bevy::prelude::*;
 use bevy::render::settings::{WgpuSettings, WgpuSettingsPriority};
 use crate::entities::Deck;
+use crate::enums::AppState;
 use crate::fonts::DefaultFont;
 use crate::scenes::{DevCardScene, DevMenuScene, Scene};
 use crate::textures::PlayingCardTexture;
@@ -14,14 +15,6 @@ mod fonts;
 mod assets;
 mod scenes;
 mod events;
-
-#[derive(Debug, Eq, PartialEq, Clone, Hash)]
-pub enum AppState {
-	SetupTextures,
-	SetupFonts,
-	Ready,
-	DevCard,
-}
 
 pub fn run() {
 	let mut app = App::new();
