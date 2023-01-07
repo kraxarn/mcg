@@ -68,15 +68,12 @@ impl DevCardScene {
 
 		let container = commands.spawn(NodeBundle {
 			style: Style {
-				size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
-				position: UiRect::new(
-					Val::Px(0.0),
-					Val::Px(0.0),
-					Val::Percent(100.0),
-					Val::Px(180.0),
-				),
-				align_items: AlignItems::FlexEnd,
-				justify_content: JustifyContent::Center,
+				size: Size::new(Val::Percent(100.0), Val::Percent(50.0)),
+				position: UiRect::top(Val::Percent(50.0)),
+				padding: UiRect::all(Val::Px(20.0)),
+				align_items: AlignItems::Center,
+				justify_content: JustifyContent::FlexEnd,
+				flex_direction: FlexDirection::Column,
 				..default()
 			},
 			..default()
@@ -85,9 +82,17 @@ impl DevCardScene {
 		add_button_event.send(AddTextButtonEvent {
 			id: String::from("draw_card"),
 			parent: container.id(),
-			size: Size::new(Val::Percent(75.0), Val::Px(100.0)),
+			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Draw card "), String::from("1")],
 			margin: UiRect::default(),
+		});
+
+		add_button_event.send(AddTextButtonEvent {
+			id: String::from("back"),
+			parent: container.id(),
+			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
+			text: vec![String::from("Back")],
+			margin: UiRect::top(Val::Px(20.0)),
 		});
 
 		deck.reset();
