@@ -1,13 +1,11 @@
 use bevy::prelude::*;
 use bevy::ui::Size;
 use crate::colors;
+use crate::enums::ButtonId;
 use crate::fonts::DefaultFont;
 
-#[derive(Component)]
-pub struct ButtonId(pub String);
-
 pub struct AddTextButtonEvent {
-	pub id: String,
+	pub id: ButtonId,
 	pub parent: Entity,
 	pub size: Size,
 	pub text: Vec<String>,
@@ -33,7 +31,7 @@ pub fn update_add_text_button(
 					background_color: colors::BUTTON.into(),
 					..default()
 				};
-				parent.spawn((bundle, ButtonId(event.id.clone()))).with_children(|parent| {
+				parent.spawn((bundle, event.id)).with_children(|parent| {
 					parent.spawn(TextBundle::from_sections(event.text.iter()
 						.map(|text| TextSection::new(text, default_font.style()))));
 				});

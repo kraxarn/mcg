@@ -1,9 +1,9 @@
 use bevy::prelude::*;
 use crate::colors;
-use crate::events::ButtonId;
+use crate::enums::ButtonId;
 
 pub struct ButtonClickedEvent {
-	pub button_id: String,
+	pub button_id: ButtonId,
 	pub entity_id: Entity,
 }
 
@@ -21,7 +21,7 @@ pub fn update_button_clicked(
 
 		if color.0 == colors::BUTTON_CLICKED {
 			clicked_event.send(ButtonClickedEvent {
-				button_id: button_id.0.clone(),
+				button_id: *button_id,
 				entity_id: entity,
 			});
 		}

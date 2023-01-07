@@ -1,10 +1,8 @@
 use bevy::prelude::*;
 use crate::AppState;
+use crate::enums::ButtonId;
 use crate::events::{AddTextButtonEvent, ButtonClickedEvent};
 use crate::scenes::{Container, Scene};
-
-const DEV_CARD_ID: &str = "dev_card";
-const BLACK_JACK_ID: &str = "black_jack";
 
 pub struct DevMenuScene;
 
@@ -51,7 +49,7 @@ impl DevMenuScene {
 		commands.insert_resource(Container(vec![container]));
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from(DEV_CARD_ID),
+			id: ButtonId::GoToDevCard,
 			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Card viewer")],
@@ -59,7 +57,7 @@ impl DevMenuScene {
 		});
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from(BLACK_JACK_ID),
+			id: ButtonId::GoToBlackJack,
 			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Black jack")],
@@ -72,8 +70,8 @@ impl DevMenuScene {
 		mut clicked: EventReader<ButtonClickedEvent>,
 	) {
 		for event in clicked.iter() {
-			match event.button_id.as_str() {
-				DEV_CARD_ID => state.set(AppState::DevCard).unwrap(),
+			match event.button_id {
+				ButtonId::GoToDevCard => state.set(AppState::DevCard).unwrap(),
 				_ => {},
 			}
 		}

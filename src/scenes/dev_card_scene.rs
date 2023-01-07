@@ -1,13 +1,11 @@
 use bevy::prelude::*;
 use crate::AppState;
 use crate::entities::{Deck, PlayingCard};
+use crate::enums::ButtonId;
 use crate::events::{AddTextButtonEvent, ButtonClickedEvent};
 use crate::fonts::DefaultFont;
 use crate::scenes::{Container, Scene};
 use crate::textures::PlayingCardTexture;
-
-const DRAW_CARD_ID: &str = "draw_card";
-const BACK_ID: &str = "back";
 
 pub struct DevCardScene;
 
@@ -89,7 +87,7 @@ impl DevCardScene {
 		]));
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from(DRAW_CARD_ID),
+			id: ButtonId::DrawCard,
 			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Draw card "), String::from("1")],
@@ -97,7 +95,7 @@ impl DevCardScene {
 		});
 
 		add_button_event.send(AddTextButtonEvent {
-			id: String::from(BACK_ID),
+			id: ButtonId::GoToDevMenu,
 			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
 			text: vec![String::from("Back")],
@@ -130,8 +128,8 @@ impl DevCardScene {
 		mut draw_card_event: EventWriter<DrawCardEvent>,
 	) {
 		for event in button_clicked_event.iter() {
-			match event.button_id.as_str() {
-				DRAW_CARD_ID => {
+			match event.button_id {
+				ButtonId::DrawCard => {
 					if let Ok(children) = children.get(event.entity_id) {
 						let mut text = texts.get_mut(children[0]).unwrap();
 						if let Some(card) = deck.draw() {
@@ -143,7 +141,7 @@ impl DevCardScene {
 						}
 					}
 				},
-				BACK_ID => state.set(AppState::Ready).unwrap(),
+				ButtonId::GoToDevMenu => state.set(AppState::Ready).unwrap(),
 				_ => {},
 			}
 		}
