@@ -5,7 +5,6 @@ use crate::enums::ButtonId;
 use crate::events::{AddTextButtonEvent, ButtonClickedEvent};
 use crate::fonts::DefaultFont;
 use crate::scenes::{Container, Scene};
-use crate::textures::PlayingCardTexture;
 
 pub struct DevCardScene;
 
@@ -45,17 +44,17 @@ impl Scene for DevCardScene {
 impl DevCardScene {
 	pub fn show_example_card(
 		mut commands: Commands,
-		card_texture: Res<PlayingCardTexture>,
+		//card_texture: Res<PlayingCardTexture>,
 		default_font: Res<DefaultFont>,
 		mut deck: ResMut<Deck>,
 		mut draw_card_event: EventWriter<DrawCardEvent>,
 		mut add_button_event: EventWriter<AddTextButtonEvent>,
 	) {
-		let mut sprite = card_texture.joker();
+		//let mut sprite = card_texture.joker();
 		let position = Vec3::new(0.0, 120.0, 0.0);
-		sprite.transform.translation = position;
+		//sprite.transform.translation = position;
 
-		let sprite = commands.spawn((sprite, PlayingCardSprite)).id();
+		//let sprite = commands.spawn((sprite, PlayingCardSprite)).id();
 
 		let text = commands.spawn((
 			Text2dBundle {
@@ -82,7 +81,7 @@ impl DevCardScene {
 
 		commands.insert_resource(Container(vec![
 			container,
-			sprite,
+			//sprite,
 			text,
 		]));
 
@@ -109,13 +108,13 @@ impl DevCardScene {
 	}
 
 	pub fn update_card_texture(
-		mut card_sprites: Query<&mut TextureAtlasSprite, With<PlayingCardSprite>>,
+		//mut card_sprites: Query<&mut TextureAtlasSprite, With<PlayingCardSprite>>,
 		mut texts: Query<&mut Text, With<PlayingCardText>>,
 		mut draw_card_event: EventReader<DrawCardEvent>,
 	) {
 		if let Some(event) = draw_card_event.iter().last() {
 			texts.single_mut().sections[0].value = event.0.to_string();
-			card_sprites.single_mut().index = event.0.sprite_index();
+			//card_sprites.single_mut().index = event.0.sprite_index();
 		}
 	}
 
