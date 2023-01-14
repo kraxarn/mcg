@@ -3,9 +3,11 @@ use crate::AppState;
 
 mod dev_card_scene;
 mod dev_menu_scene;
+mod blackjack_scene;
 
-pub use dev_card_scene::*;
+pub use dev_card_scene::DevCardScene;
 pub use dev_menu_scene::DevMenuScene;
+pub use blackjack_scene::BlackjackScene;
 
 #[derive(Resource)]
 pub struct Container(pub Vec<Entity>);

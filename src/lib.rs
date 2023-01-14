@@ -4,7 +4,7 @@ use bevy::render::settings::{WgpuSettings, WgpuSettingsPriority};
 use crate::entities::Deck;
 use crate::enums::AppState;
 use crate::fonts::DefaultFont;
-use crate::scenes::{DevCardScene, DevMenuScene, Scene};
+use crate::scenes::{BlackjackScene, DevCardScene, DevMenuScene, Scene};
 use crate::textures::PlayingCardTexture;
 
 mod colors;
@@ -15,6 +15,7 @@ mod fonts;
 mod assets;
 mod scenes;
 mod events;
+mod bundles;
 
 pub fn run() {
 	let mut app = App::new();
@@ -56,9 +57,10 @@ pub fn run() {
 		.add_system_set(SystemSet::on_update(AppState::SetupFonts)
 			.with_system(assets::check_fonts));
 
-	let scenes: [&dyn Scene; 2] = [
+	let scenes: [&dyn Scene; 3] = [
 		&DevMenuScene,
 		&DevCardScene,
+		&BlackjackScene,
 	];
 
 	for scene in scenes {

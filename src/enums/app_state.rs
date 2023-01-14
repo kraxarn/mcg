@@ -4,4 +4,5 @@ pub enum AppState {
 	SetupFonts,
 	Ready,
 	DevCard,
+	Blackjack,
 }

@@ -4,8 +4,13 @@ use bevy::prelude::Component;
 pub enum ButtonId {
 	// dev_menu_scene
 	GoToDevCard,
-	GoToBlackJack,
+	GoToBlackjack,
 	// dev_card_Scene
 	DrawCard,
 	GoToDevMenu,
+	// blackjack_scene
+	BlackjackHit,
+	BlackjackStand,
+	//BlackjackDoubleDown,
+	//BlackjackSplit,
 }

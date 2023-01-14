@@ -57,10 +57,10 @@ impl DevMenuScene {
 		});
 
 		add_button_event.send(AddTextButtonEvent {
-			id: ButtonId::GoToBlackJack,
+			id: ButtonId::GoToBlackjack,
 			parent: container,
 			size: Size::new(Val::Percent(100.0), Val::Px(100.0)),
-			text: vec![String::from("Black jack")],
+			text: vec![String::from("Blackjack")],
 			margin: UiRect::top(Val::Px(40.0)),
 		});
 	}
@@ -72,6 +72,7 @@ impl DevMenuScene {
 		for event in clicked.iter() {
 			match event.button_id {
 				ButtonId::GoToDevCard => state.set(AppState::DevCard).unwrap(),
+				ButtonId::GoToBlackjack => state.set(AppState::Blackjack).unwrap(),
 				_ => {},
 			}
 		}
