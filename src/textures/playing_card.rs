@@ -1,55 +1,70 @@
+use std::str::FromStr;
 use bevy::asset::HandleId;
 use bevy::prelude::*;
-use strum::IntoEnumIterator;
+use bevy::utils::HashMap;
+use crate::entities::PlayingCard;
 use crate::enums::{PlayingCardSuit, PlayingCardValue};
+
+// This currently uses a very temporary workaround, as
+// texture atlases can't be used for UI elements.
+// See: https://github.com/bevyengine/bevy/pull/5070
 
 #[derive(Resource, Default)]
 pub struct PlayingCardTexture {
-	texture: Handle<Image>,
-	atlas: Handle<TextureAtlas>,
+	handles: HashMap<PlayingCard, Handle<Image>>,
+	default: Handle<Image>,
 }
 
 impl PlayingCardTexture {
 	pub fn load(
 		mut resource: ResMut<PlayingCardTexture>,
 		asset_server: Res<AssetServer>,
-		mut texture_atlases: ResMut<Assets<TextureAtlas>>,
 	) {
-		let texture = asset_server.load("textures/playing_cards.png");
+		let handles = asset_server
+			.load_folder("textures/cards/fronts")
+			.unwrap();
 
-		let scale = 2.0;
-		let tile_size = Vec2::new(140.0, 190.0) * scale;
-		let columns = Self::atlas_columns();
-		let rows = Self::atlas_rows();
-		let padding = Some(Vec2::new(10.0, 10.0) * scale);
-		let offset = Some(Vec2::new(4.0, 4.0) * scale);
-		let atlas = TextureAtlas::from_grid(texture, tile_size, columns, rows, padding, offset);
+		for handle in handles {
+			let handle = handle.typed();
+			let handle_path = asset_server.get_handle_path(&handle).unwrap();
 
-		resource.texture = atlas.texture.clone();
-		resource.atlas = texture_atlases.add(atlas);
-	}
+			let path = handle_path.path()
+				.file_stem().unwrap()
+				.to_str().unwrap();
 
-	pub fn atlas_columns() -> usize {
-		PlayingCardValue::iter().len() + 1 // Joker
-	}
+			if path == "joker" {
+				resource.default = handle;
+				continue;
+			}
 
-	fn atlas_rows() -> usize {
-		PlayingCardSuit::iter().len()
-	}
+			let parts: Vec<&str> = path
+				.split('_')
+				.collect();
 
-	fn sprite(&self, index: usize) -> SpriteSheetBundle {
-		SpriteSheetBundle {
-			sprite: TextureAtlasSprite::new(index),
-			texture_atlas: self.atlas.clone(),
-			..default()
+			let Ok(suit) = PlayingCardSuit::from_str(parts[0]) else {
+				panic!("Unknown suit: {}", parts[0]);
+			};
+
+			let Ok(value) = PlayingCardValue::from_str(parts[1]) else {
+				panic!("Unknown value: {}", parts[1]);
+			};
+
+			let card = PlayingCard::new(value, suit);
+			resource.handles.insert(card, handle);
 		}
 	}
 
-	pub fn joker(&self) -> SpriteSheetBundle {
-		self.sprite(Self::atlas_columns() - 1)
+	pub fn card(&self, card: &PlayingCard) -> UiImage {
+		if let Some(handle) = self.handles.get(card) {
+			UiImage(handle.clone())
+		} else {
+			panic!("Unable to find texture for: {}", &card);
+		}
 	}
 
-	pub fn id(&self) -> HandleId {
-		self.texture.id()
+	pub fn ids(&self) -> Vec<HandleId> {
+		self.handles.values()
+			.map(|handle| handle.id())
+			.collect()
 	}
 }

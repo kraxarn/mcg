@@ -6,10 +6,9 @@ use crate::textures::PlayingCardTexture;
 
 pub fn setup_textures(
 	asset_server: Res<AssetServer>,
-	texture_atlases: ResMut<Assets<TextureAtlas>>,
 	card_texture: ResMut<PlayingCardTexture>,
 ) {
-	PlayingCardTexture::load(card_texture, asset_server, texture_atlases);
+	PlayingCardTexture::load(card_texture, asset_server);
 }
 
 pub fn setup_fonts(
@@ -24,9 +23,7 @@ pub fn check_textures(
 	asset_server: Res<AssetServer>,
 	card_texture: Res<PlayingCardTexture>,
 ) {
-	let handles = [
-		card_texture.id(),
-	];
+	let handles = card_texture.ids();
 	if asset_server.get_group_load_state(handles) == LoadState::Loaded {
 		state.set(AppState::SetupFonts).unwrap();
 	}
